@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      lang="en" xmlns:th="www.thymeLeaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default-layout}">
+<head>
+    <title>Story's Flower</title>
+    <link rel="stylesheet" href="/css/detail.css">
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+<body>
+<div layout:fragment="main-content">
+    <div class="product-title">
+        <h1><span th:text="${occasion.nameOccasion}"></span><span> Flowers</span></h1>
+        <p>
+            <span th:text="${#lists.size(occasions)}"></span>
+            <span th:text="${#lists.size(occasions) <2 } ? 'Result' : 'Results'">Results</span>
+        </p>
+    </div>
+    <div class="row main-contain">
+        <div class="main-left col-12 col-lg-9 m-0">
+            <th:block th:replace="fragments/detail-fragments/list-occasion">
+            </th:block>
+        </div>
+        <div class="main-right col-12 col-lg-3 m-0">
+            <div class="popular-product">
+                <h5 class="main-title pb-2">popular products</h5>
+                <div class="row mt-3">
+                    <img class="small-circle-image rounded-circle mr-3" src="/img/deal4.jpg" alt="popular-product"/>
+                    <div class="my-auto">
+                        <p class="name-product text-left font-weight-normal mb-1">Colorful bouquet</p>
+                        <p class="price text-left mb-0"><span>price: </span><span>600,000</span><span>d</span></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <img class="small-circle-image rounded-circle mr-3" src="/img/deal1.jpg" alt="popular-product"/>
+                    <div class="my-auto">
+                        <p class="name-product text-left font-weight-normal mb-1">Colorful bouquet</p>
+                        <p class="price text-left mb-0"><span>price: </span><span>600,000</span><span>d</span></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <img class="small-circle-image rounded-circle mr-3" src="/img/deal.png" alt="popular-product"/>
+                    <div class="my-auto">
+                        <p class="name-product text-left font-weight-normal mb-1">Colorful bouquet</p>
+                        <p class="price text-left mb-0"><span>price: </span><span>600,000</span><span>d</span></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="hr my-5"/>
+
+            <div class="view-your-card">
+                <h5 class="main-title pb-2">your cards</h5>
+                <div class="row mt-3">
+                    <img class="small-circle-image rounded-circle mr-3" src="/img/deal5.jpg" alt="popular-product"/>
+                    <div class="my-auto">
+                        <p class="name-product text-left font-weight-normal mb-1">Colorful bouquet</p>
+                        <p class="price text-left mb-0"><span>price: </span><span>600,000</span><span>d</span></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <img class="small-circle-image rounded-circle mr-3" src="/img/deal4.jpg" alt="popular-product"/>
+                    <div class="my-auto">
+                        <p class="name-product text-left font-weight-normal mb-1">Colorful bouquet</p>
+                        <p class="price text-left mb-0"><span>price: </span><span>600,000</span><span>d</span></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <img class="small-circle-image rounded-circle mr-3" src="/img/deal2.jpg" alt="popular-product"/>
+                    <div class="my-auto">
+                        <p class="name-product text-left font-weight-normal mb-1">Colorful bouquet</p>
+                        <p class="price text-left mb-0"><span>price: </span><span>600,000</span><span>d</span></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<th:block layout:fragment="custom-script">
+</th:block>
+</body>
+</html>

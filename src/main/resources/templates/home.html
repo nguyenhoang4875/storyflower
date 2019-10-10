@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      lang="en" xmlns:th="www.thymeLeaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default-layout}">
+<head>
+    <title>Story's Flower</title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+<div layout:fragment="main-content">
+    <div>
+        <img class="main-banner" src="/img/main-banner.jpg" alt="main-banner">
+    </div>
+    <div class="row mx-3 mx-md-5 d-flex justify-content-center">
+        <div th:if="${not #lists.isEmpty(occasions)}" th:each="item: ${occasions}">
+            <a class="occasion-image d-inline-block" th:href="@{/occasion/} + ${item.occasionId}">
+                <img
+                        th:src="${item.imageId!=null}?@{/api/image/}+${item.imageId}:@{/img/no-img.png}"
+                        class="rounded-circle" alt="${item.nameOccasion}">
+                <p th:text="${item.nameOccasion}"></p>
+            </a>
+        </div>
+    </div>
+
+    <div class="deals-of-day">
+        <h1 class="d-flex justify-content-center">Deals of the day</h1>
+        <th:block th:replace="fragments/detail-fragments/list-product">
+        </th:block>
+    </div>
+</div>
+</div>
+<th:block layout:fragment="custom-script">
+</th:block>
+</body>
+</html>
