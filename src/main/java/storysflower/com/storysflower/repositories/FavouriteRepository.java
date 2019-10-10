@@ -1,6 +1,5 @@
 package storysflower.com.storysflower.repositories;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
