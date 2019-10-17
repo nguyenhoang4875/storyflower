@@ -40,6 +40,7 @@ public class ProductRepository {
                 .where(PRODUCT.ID.eq(id))
                 .and(IMAGE_PRODUCT.MAIN_IMAGE.eq(true))
                 .fetchOneInto(ProductDetailDTO.class);
+
         List<CategoryDTO> categories = getCategoriesByProductId(id);
         if (categories.size() == 0) {
             productDetailDTO.setCategories(Collections.emptyList());
