@@ -49,22 +49,11 @@ public class UserRepository {
                 .fetchOne(0, Integer.class);
     }
 
-  /*  public static void main(String[] args) {
-        UserRepository userRepository = new UserRepository();
-        List<UserProfileDTO> listUserProfile =userRepository.findAllPagination(0,2);
-        System.out.println("size"+listUserProfile.size());
-
-
-
-
-    }*/
-
-    public List<UserProfileDTO> findAllPagination(int offset, int defaultPagingCustomerSize) {
+    public List<UserProfileDTO> findAll() {
         List<UserProfileDTO> listUserProfile = dslContext
                 .select(USER.ID, USER.FIRSTNAME, USER.LASTNAME, USER.EMAIL, USER.PASSWORD, USER.IMAGE_ID)
                 .from(USER)
                 .orderBy(USER.ID)
-                .limit(offset, defaultPagingCustomerSize)
                 .fetchInto(UserProfileDTO.class);
         return  listUserProfile.size()==0? Collections.emptyList() : listUserProfile;
     }

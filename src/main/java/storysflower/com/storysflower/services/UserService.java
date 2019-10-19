@@ -15,5 +15,5 @@ public interface UserService {
 
     public boolean registerNewUserAccount(UserProfileDTO userProfileDTO);
 
-    List<UserProfileDTO> findAllPagination(int offset, int defaultPagingCustomerSize);
+    List<UserProfileDTO> findAll();
 }

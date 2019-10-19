@@ -41,15 +41,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserProfileDTO> findAllPagination(int offset, int defaultPagingCustomerSize) {
-        List<UserProfileDTO> listUserProfile = userRepository.findAllPagination(offset,defaultPagingCustomerSize);
+    public List<UserProfileDTO> findAll() {
+        List<UserProfileDTO> listUserProfile = userRepository.findAll();
         for (UserProfileDTO u: listUserProfile) {
-            String name =Character.toString(u.getFisrtName().charAt(0)).toUpperCase();
-            u.setFisrtName(name+u.getFisrtName().substring(1)+" ");
-
-            String name1 =Character.toString(u.getLastName().charAt(0)).toUpperCase();
-            u.setLastName(name1+u.getLastName().substring(1));
-
+            String f = Character.toString(u.getFisrtName().charAt(0)).toUpperCase();
+            u.setFisrtName(f+u.getFisrtName().substring(1));
+            String l = Character.toString(u.getLastName().charAt(0)).toUpperCase();
+            u.setLastName(l+u.getLastName().substring(1));
         }
         return listUserProfile;
     }
