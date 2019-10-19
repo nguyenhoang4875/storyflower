@@ -4,8 +4,9 @@ package storysflower.com.storysflower.dto;
  * @author ntynguyen
  */
 public class UserProfileDTO {
-    private String fisrtName;
-    private String lastName;
+    private   Long id;
+    private String firstname;
+    private String lastname;
     private String email;
     private String password;
     private Long imageID;
@@ -18,34 +19,42 @@ public class UserProfileDTO {
     };
 
     public UserProfileDTO(String fisrtName, String lastName, String email, String password) {
-        this.fisrtName = fisrtName;
-        this.lastName = lastName;
+        this.firstname = fisrtName;
+        this.lastname = lastName;
         this.email = email;
         this.password = password;
     }
 
     public UserProfileDTO(String fisrtName, String lastName, String email, String password, Long imageID) {
-        this.fisrtName = fisrtName;
-        this.lastName = lastName;
+        this.firstname = fisrtName;
+        this.lastname = lastName;
         this.email = email;
         this.password = password;
         this.imageID = imageID;
     }
 
+    public UserProfileDTO(Long id,String fisrtName, String lastName, String email, String password, Long imageID) {
+        this.id= id;
+        this.firstname = fisrtName;
+        this.lastname = lastName;
+        this.email = email;
+        this.password = password;
+        this.imageID = imageID;
+    }
     public String getFisrtName() {
-        return fisrtName;
+        return firstname;
     }
 
     public void setFisrtName(String fisrtName) {
-        this.fisrtName = fisrtName;
+        this.firstname = fisrtName;
     }
 
     public String getLastName() {
-        return lastName;
+        return lastname;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastname = lastName;
     }
 
     public String getEmail() {
@@ -70,5 +79,13 @@ public class UserProfileDTO {
 
     public void setImageID(Long imageID) {
         this.imageID = imageID;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

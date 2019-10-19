@@ -41,7 +41,7 @@ import storysflower.com.storysflower.model.tables.tables.records.ImageRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Image extends TableImpl<ImageRecord> {
 
-    private static final long serialVersionUID = -1744376353;
+    private static final long serialVersionUID = -1602907861;
 
     /**
      * The reference instance of <code>public.image</code>
@@ -112,7 +112,7 @@ public class Image extends TableImpl<ImageRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.PK_IMAGE);
+        return Arrays.<Index>asList(Indexes.IMAGE_PKEY);
     }
 
     /**
@@ -128,7 +128,7 @@ public class Image extends TableImpl<ImageRecord> {
      */
     @Override
     public UniqueKey<ImageRecord> getPrimaryKey() {
-        return Keys.PK_IMAGE;
+        return Keys.IMAGE_PKEY;
     }
 
     /**
@@ -136,7 +136,7 @@ public class Image extends TableImpl<ImageRecord> {
      */
     @Override
     public List<UniqueKey<ImageRecord>> getKeys() {
-        return Arrays.<UniqueKey<ImageRecord>>asList(Keys.PK_IMAGE);
+        return Arrays.<UniqueKey<ImageRecord>>asList(Keys.IMAGE_PKEY);
     }
 
     /**

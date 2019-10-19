@@ -1,15 +1,14 @@
 package storysflower.com.storysflower.repositories;
 
-import org.apache.naming.factory.DataSourceLinkFactory;
 import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 import storysflower.com.storysflower.dto.UserProfileDTO;
+import storysflower.com.storysflower.model.tables.tables.User;
 import storysflower.com.storysflower.model.tables.tables.records.UserRecord;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static storysflower.com.storysflower.model.tables.Tables.USER_ROLE;
@@ -43,5 +42,30 @@ public class UserRepository {
                 .set(USER.EMAIL,userProfileDTO.getEmail())
                 .set(USER.PASSWORD, userProfileDTO.getPassword())
                 .execute()>0;
+    }
+    public int countPagination(){
+        return dslContext.selectCount()
+                .from(USER)
+                .fetchOne(0, Integer.class);
+    }
+
+  /*  public static void main(String[] args) {
+        UserRepository userRepository = new UserRepository();
+        List<UserProfileDTO> listUserProfile =userRepository.findAllPagination(0,2);
+        System.out.println("size"+listUserProfile.size());
+
+
+
+
+    }*/
+
+    public List<UserProfileDTO> findAllPagination(int offset, int defaultPagingCustomerSize) {
+        List<UserProfileDTO> listUserProfile = dslContext
+                .select(USER.ID, USER.FIRSTNAME, USER.LASTNAME, USER.EMAIL, USER.PASSWORD, USER.IMAGE_ID)
+                .from(USER)
+                .orderBy(USER.ID)
+                .limit(offset, defaultPagingCustomerSize)
+                .fetchInto(UserProfileDTO.class);
+        return  listUserProfile.size()==0? Collections.emptyList() : listUserProfile;
     }
 }

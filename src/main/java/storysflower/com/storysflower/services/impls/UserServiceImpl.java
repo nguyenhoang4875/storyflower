@@ -9,6 +9,8 @@ import storysflower.com.storysflower.dto.UserProfileDTO;
 import storysflower.com.storysflower.repositories.UserRepository;
 import storysflower.com.storysflower.services.UserService;
 
+import java.util.List;
+
 /**
  * @author ntynguyen
  */
@@ -31,5 +33,24 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean registerNewUserAccount(UserProfileDTO userProfileDTO) {
         return userRepository.registerNewUserAccount(userProfileDTO);
+    }
+
+    @Override
+    public int countPagination() {
+        return userRepository.countPagination();
+    }
+
+    @Override
+    public List<UserProfileDTO> findAllPagination(int offset, int defaultPagingCustomerSize) {
+        List<UserProfileDTO> listUserProfile = userRepository.findAllPagination(offset,defaultPagingCustomerSize);
+        for (UserProfileDTO u: listUserProfile) {
+            String name =Character.toString(u.getFisrtName().charAt(0)).toUpperCase();
+            u.setFisrtName(name+u.getFisrtName().substring(1)+" ");
+
+            String name1 =Character.toString(u.getLastName().charAt(0)).toUpperCase();
+            u.setLastName(name1+u.getLastName().substring(1));
+
+        }
+        return listUserProfile;
     }
 }
