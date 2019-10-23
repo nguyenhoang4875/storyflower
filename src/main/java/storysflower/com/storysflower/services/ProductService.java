@@ -16,4 +16,6 @@ public interface ProductService {
     public List<ProductDTO> getListProductDTOByOccasionId(Long occasionId);
 
     public List<ProductDTO> getListBestProductDTOByRatting();
+
+    List<ProductDTO> findListProductByIdCustomer(Long id);
 }

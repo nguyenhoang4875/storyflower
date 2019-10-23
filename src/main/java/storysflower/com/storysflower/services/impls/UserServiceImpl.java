@@ -51,4 +51,20 @@ public class UserServiceImpl implements UserService {
         }
         return listUserProfile;
     }
+
+    @Override
+    public UserProfileDTO findCustomerById(Long id) {
+        return userRepository.findCustomerById(id);
+    }
+
+    @Override
+    public String getFullNameById(Long id) {
+        UserProfileDTO userProfileDTO = findCustomerById(id);
+        String f = Character.toString(userProfileDTO.getFisrtName().charAt(0)).toUpperCase();
+        userProfileDTO.setFisrtName(f+userProfileDTO.getFisrtName().substring(1));
+        String l = Character.toString(userProfileDTO.getLastName().charAt(0)).toUpperCase();
+        userProfileDTO.setLastName(l+userProfileDTO.getLastName().substring(1));
+
+        return userProfileDTO.getFisrtName()+" "+userProfileDTO.getLastName();
+    }
 }

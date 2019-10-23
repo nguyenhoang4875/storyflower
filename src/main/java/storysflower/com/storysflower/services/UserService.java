@@ -16,4 +16,8 @@ public interface UserService {
     public boolean registerNewUserAccount(UserProfileDTO userProfileDTO);
 
     List<UserProfileDTO> findAll();
+
+    UserProfileDTO findCustomerById(Long id);
+
+    String getFullNameById(Long id);
 }

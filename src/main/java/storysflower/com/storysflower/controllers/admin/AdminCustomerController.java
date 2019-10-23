@@ -6,14 +6,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import storysflower.com.storysflower.constants.CommonConstants;
 import storysflower.com.storysflower.constants.UrlConstants;
+import storysflower.com.storysflower.dto.ProductDTO;
 import storysflower.com.storysflower.dto.UserProfileDTO;
+import storysflower.com.storysflower.services.ProductService;
 import storysflower.com.storysflower.services.UserService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 @Controller
@@ -22,6 +28,9 @@ public class AdminCustomerController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    ProductService productService;
 
     @GetMapping({UrlConstants.URL_ADMIN_CUSTOMER_INDEX})
         public String index(Model model, HttpServletRequest request , RedirectAttributes redirect) {
@@ -62,6 +71,21 @@ public class AdminCustomerController {
         model.addAttribute("customerlist", pages);
 
         return "admin/customer/index";
+    }
+
+    @GetMapping({UrlConstants.URL_ADMIN_CUSTOMER_DETAIL})
+    public String showListProductByCustomer(HttpServletRequest request,@PathVariable Long id, Model model) {
+        String fullNameCustomer = userService.getFullNameById(id);
+        List<ProductDTO> listProduct = productService.findListProductByIdCustomer(id);
+        model.addAttribute("customername", "Orderer: "+fullNameCustomer);
+        System.out.println(id);
+        return "admin/customer/product";
+    }
+
+    @PostMapping("/ajax/active")
+    public void ajax(HttpServletResponse response) throws IOException {
+        PrintWriter out = response.getWriter();
+        out.println("<p>Done</p>");
     }
 
 }

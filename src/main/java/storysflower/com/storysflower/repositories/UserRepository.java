@@ -57,4 +57,13 @@ public class UserRepository {
                 .fetchInto(UserProfileDTO.class);
         return  listUserProfile.size()==0? Collections.emptyList() : listUserProfile;
     }
+
+    public UserProfileDTO findCustomerById(Long id) {
+        UserProfileDTO userProfileDTO = dslContext
+                .select(USER.ID, USER.FIRSTNAME, USER.LASTNAME, USER.EMAIL, USER.PASSWORD, USER.IMAGE_ID)
+                .from(USER)
+                .where(USER.ID.eq(id))
+                .fetchOneInto(UserProfileDTO.class);
+        return  userProfileDTO;
+    }
 }

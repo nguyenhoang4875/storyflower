@@ -20,8 +20,19 @@
                             <td>AAA</td>
                             <td th:text= "${item.fisrtName+' '+item.lastName}"></td>
                             <td th:text= "${item.email}"></td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                            <td>
+                               <span th:id ="${item.id}">
+                                   <a href="javascript:void(0)" th:onclick="'active('+ *{item.id} +','+ 1 +')'">
+                                   <img src="/img/admin/images/ac.png" class="image">
+                               </a>
+                               </span>
+                            </td>
+                            <td>
+                                <a class="page-link" style="width: 90px; background: pink;"
+                                   th:href="@{/admin/customer/detail/{id}(id=${item.id})}">
+                                  <span>Click me</span>
+                                </a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -58,3 +69,52 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    function active(nid,active)
+    {
+        var url_get_picture_active ="/admin/ajax/active";
+        var tmp="#"+nid;
+        $.ajax({
+            type : "POST",
+            url:url_get_picture_active,
+            dataType: "html",
+            data: {
+                "nid" :nid,
+                "active" : active,
+            },
+            success: function(data) {
+                tmp="#"+nid;
+                if(active ==1){
+                    var ac = "<a href='javascript:void(0)'  onclick='active("+nid+" ,0);'> " +
+                        "<img src='/img/admin/images/unac.jpg' class='image'> " +
+                        "</a>" ;
+                    $(tmp).html(ac);
+                }else{
+                    var de = "<a href='javascript:void(0)'  onclick='active("+nid+" ,1);'> " +
+                        "<img src='/img/admin/images/ac.png' class='image'> " +
+                        "</a>" ;
+                    $(tmp).html(de);
+                }
+            },
+            error : function(e) {
+            }
+        });
+        return false;
+    }
+
+    /*function numberNoActive(){
+        var url_get_number_no_active = '<%=request.getContextPath()%>/admin/news/numbernoactive';
+        $.ajax({
+            url:url_get_number_no_active,
+            dataType: "html",
+            data: {
+            },
+            success: function(data) {
+                $("#no_ac").html(data);
+                $("#no_ac1").html(data);
+
+            },
+        });
+        return false;
+    }*/
+</script>
