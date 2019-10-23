@@ -10,13 +10,17 @@ import org.jooq.Index;
 import org.jooq.OrderField;
 import org.jooq.impl.Internal;
 
+import storysflower.com.storysflower.model.tables.tables.BuyProduct;
+import storysflower.com.storysflower.model.tables.tables.Cart;
 import storysflower.com.storysflower.model.tables.tables.Category;
+import storysflower.com.storysflower.model.tables.tables.Customer;
 import storysflower.com.storysflower.model.tables.tables.DealProduct;
 import storysflower.com.storysflower.model.tables.tables.Favourite;
 import storysflower.com.storysflower.model.tables.tables.Image;
 import storysflower.com.storysflower.model.tables.tables.Occasion;
 import storysflower.com.storysflower.model.tables.tables.Product;
 import storysflower.com.storysflower.model.tables.tables.Rating;
+import storysflower.com.storysflower.model.tables.tables.Recipient;
 import storysflower.com.storysflower.model.tables.tables.Review;
 import storysflower.com.storysflower.model.tables.tables.Topic;
 import storysflower.com.storysflower.model.tables.tables.User;
@@ -40,8 +44,24 @@ public class Indexes {
     // INDEX definitions
     // -------------------------------------------------------------------------
 
+    public static final Index BUY_PRODUCT_CART_ID_KEY = Indexes0.BUY_PRODUCT_CART_ID_KEY;
+    public static final Index BUY_PRODUCT_PRODUCT_ID_KEY = Indexes0.BUY_PRODUCT_PRODUCT_ID_KEY;
+    public static final Index BUY_PRODUCT_QUANTITY_KEY = Indexes0.BUY_PRODUCT_QUANTITY_KEY;
+    public static final Index PK_BUY_PRODUCT = Indexes0.PK_BUY_PRODUCT;
+    public static final Index CART_BUY_DATE_KEY = Indexes0.CART_BUY_DATE_KEY;
+    public static final Index CART_CUSTOMER_KEY = Indexes0.CART_CUSTOMER_KEY;
+    public static final Index CART_DELIVERY_DATE_KEY = Indexes0.CART_DELIVERY_DATE_KEY;
+    public static final Index CART_DELIVERY_HOUR_KEY = Indexes0.CART_DELIVERY_HOUR_KEY;
+    public static final Index CART_RECIPIENT_ID_KEY = Indexes0.CART_RECIPIENT_ID_KEY;
+    public static final Index CART_USER_ID_KEY = Indexes0.CART_USER_ID_KEY;
+    public static final Index PK_CART = Indexes0.PK_CART;
     public static final Index CATEGORY_CATEGORY_NAME_KEY = Indexes0.CATEGORY_CATEGORY_NAME_KEY;
     public static final Index PK_CATEGORY = Indexes0.PK_CATEGORY;
+    public static final Index CUSTOMER_ADDRESS_KEY = Indexes0.CUSTOMER_ADDRESS_KEY;
+    public static final Index CUSTOMER_EMAIL_KEY = Indexes0.CUSTOMER_EMAIL_KEY;
+    public static final Index CUSTOMER_FULL_NAME_KEY = Indexes0.CUSTOMER_FULL_NAME_KEY;
+    public static final Index CUSTOMER_PHONE_NUMBER_KEY = Indexes0.CUSTOMER_PHONE_NUMBER_KEY;
+    public static final Index PK_CUSTOMER = Indexes0.PK_CUSTOMER;
     public static final Index PK_DEAL_PRODUCT = Indexes0.PK_DEAL_PRODUCT;
     public static final Index PK_FAVOURITE = Indexes0.PK_FAVOURITE;
     public static final Index PK_IMAGE = Indexes0.PK_IMAGE;
@@ -50,6 +70,12 @@ public class Indexes {
     public static final Index PK_PRODUCT = Indexes0.PK_PRODUCT;
     public static final Index PRODUCT_PRODUCT_NAME_KEY = Indexes0.PRODUCT_PRODUCT_NAME_KEY;
     public static final Index PK_RATING = Indexes0.PK_RATING;
+    public static final Index PK_RECIPIENT = Indexes0.PK_RECIPIENT;
+    public static final Index RECIPIENT_ADDRESS_KEY = Indexes0.RECIPIENT_ADDRESS_KEY;
+    public static final Index RECIPIENT_FULL_NAME_KEY = Indexes0.RECIPIENT_FULL_NAME_KEY;
+    public static final Index RECIPIENT_MESSAGE_TO_RECIPIENT_KEY = Indexes0.RECIPIENT_MESSAGE_TO_RECIPIENT_KEY;
+    public static final Index RECIPIENT_MESSAGE_TO_US_KEY = Indexes0.RECIPIENT_MESSAGE_TO_US_KEY;
+    public static final Index RECIPIENT_PHONE_NUMBER_KEY = Indexes0.RECIPIENT_PHONE_NUMBER_KEY;
     public static final Index PK_REVIEW = Indexes0.PK_REVIEW;
     public static final Index PK_TOPIC = Indexes0.PK_TOPIC;
     public static final Index TOPIC_TOPIC_NAME_KEY = Indexes0.TOPIC_TOPIC_NAME_KEY;
@@ -62,8 +88,24 @@ public class Indexes {
     // -------------------------------------------------------------------------
 
     private static class Indexes0 {
+        public static Index BUY_PRODUCT_CART_ID_KEY = Internal.createIndex("buy_product_cart_id_key", BuyProduct.BUY_PRODUCT, new OrderField[] { BuyProduct.BUY_PRODUCT.CART_ID }, true);
+        public static Index BUY_PRODUCT_PRODUCT_ID_KEY = Internal.createIndex("buy_product_product_id_key", BuyProduct.BUY_PRODUCT, new OrderField[] { BuyProduct.BUY_PRODUCT.PRODUCT_ID }, true);
+        public static Index BUY_PRODUCT_QUANTITY_KEY = Internal.createIndex("buy_product_quantity_key", BuyProduct.BUY_PRODUCT, new OrderField[] { BuyProduct.BUY_PRODUCT.QUANTITY }, true);
+        public static Index PK_BUY_PRODUCT = Internal.createIndex("pk_buy_product", BuyProduct.BUY_PRODUCT, new OrderField[] { BuyProduct.BUY_PRODUCT.ID }, true);
+        public static Index CART_BUY_DATE_KEY = Internal.createIndex("cart_buy_date_key", Cart.CART, new OrderField[] { Cart.CART.BUY_DATE }, true);
+        public static Index CART_CUSTOMER_KEY = Internal.createIndex("cart_customer_key", Cart.CART, new OrderField[] { Cart.CART.CUSTOMER }, true);
+        public static Index CART_DELIVERY_DATE_KEY = Internal.createIndex("cart_delivery_date_key", Cart.CART, new OrderField[] { Cart.CART.DELIVERY_DATE }, true);
+        public static Index CART_DELIVERY_HOUR_KEY = Internal.createIndex("cart_delivery_hour_key", Cart.CART, new OrderField[] { Cart.CART.DELIVERY_HOUR }, true);
+        public static Index CART_RECIPIENT_ID_KEY = Internal.createIndex("cart_recipient_id_key", Cart.CART, new OrderField[] { Cart.CART.RECIPIENT_ID }, true);
+        public static Index CART_USER_ID_KEY = Internal.createIndex("cart_user_id_key", Cart.CART, new OrderField[] { Cart.CART.USER_ID }, true);
+        public static Index PK_CART = Internal.createIndex("pk_cart", Cart.CART, new OrderField[] { Cart.CART.ID }, true);
         public static Index CATEGORY_CATEGORY_NAME_KEY = Internal.createIndex("category_category_name_key", Category.CATEGORY, new OrderField[] { Category.CATEGORY.CATEGORY_NAME }, true);
         public static Index PK_CATEGORY = Internal.createIndex("pk_category", Category.CATEGORY, new OrderField[] { Category.CATEGORY.ID }, true);
+        public static Index CUSTOMER_ADDRESS_KEY = Internal.createIndex("customer_address_key", Customer.CUSTOMER, new OrderField[] { Customer.CUSTOMER.ADDRESS }, true);
+        public static Index CUSTOMER_EMAIL_KEY = Internal.createIndex("customer_email_key", Customer.CUSTOMER, new OrderField[] { Customer.CUSTOMER.EMAIL }, true);
+        public static Index CUSTOMER_FULL_NAME_KEY = Internal.createIndex("customer_full_name_key", Customer.CUSTOMER, new OrderField[] { Customer.CUSTOMER.FULL_NAME }, true);
+        public static Index CUSTOMER_PHONE_NUMBER_KEY = Internal.createIndex("customer_phone_number_key", Customer.CUSTOMER, new OrderField[] { Customer.CUSTOMER.PHONE_NUMBER }, true);
+        public static Index PK_CUSTOMER = Internal.createIndex("pk_customer", Customer.CUSTOMER, new OrderField[] { Customer.CUSTOMER.ID }, true);
         public static Index PK_DEAL_PRODUCT = Internal.createIndex("pk_deal_product", DealProduct.DEAL_PRODUCT, new OrderField[] { DealProduct.DEAL_PRODUCT.ID }, true);
         public static Index PK_FAVOURITE = Internal.createIndex("pk_favourite", Favourite.FAVOURITE, new OrderField[] { Favourite.FAVOURITE.ID }, true);
         public static Index PK_IMAGE = Internal.createIndex("pk_image", Image.IMAGE, new OrderField[] { Image.IMAGE.IMAGE_ID }, true);
@@ -72,6 +114,12 @@ public class Indexes {
         public static Index PK_PRODUCT = Internal.createIndex("pk_product", Product.PRODUCT, new OrderField[] { Product.PRODUCT.ID }, true);
         public static Index PRODUCT_PRODUCT_NAME_KEY = Internal.createIndex("product_product_name_key", Product.PRODUCT, new OrderField[] { Product.PRODUCT.PRODUCT_NAME }, true);
         public static Index PK_RATING = Internal.createIndex("pk_rating", Rating.RATING, new OrderField[] { Rating.RATING.ID }, true);
+        public static Index PK_RECIPIENT = Internal.createIndex("pk_recipient", Recipient.RECIPIENT, new OrderField[] { Recipient.RECIPIENT.ID }, true);
+        public static Index RECIPIENT_ADDRESS_KEY = Internal.createIndex("recipient_address_key", Recipient.RECIPIENT, new OrderField[] { Recipient.RECIPIENT.ADDRESS }, true);
+        public static Index RECIPIENT_FULL_NAME_KEY = Internal.createIndex("recipient_full_name_key", Recipient.RECIPIENT, new OrderField[] { Recipient.RECIPIENT.FULL_NAME }, true);
+        public static Index RECIPIENT_MESSAGE_TO_RECIPIENT_KEY = Internal.createIndex("recipient_message_to_recipient_key", Recipient.RECIPIENT, new OrderField[] { Recipient.RECIPIENT.MESSAGE_TO_RECIPIENT }, true);
+        public static Index RECIPIENT_MESSAGE_TO_US_KEY = Internal.createIndex("recipient_message_to_us_key", Recipient.RECIPIENT, new OrderField[] { Recipient.RECIPIENT.MESSAGE_TO_US }, true);
+        public static Index RECIPIENT_PHONE_NUMBER_KEY = Internal.createIndex("recipient_phone_number_key", Recipient.RECIPIENT, new OrderField[] { Recipient.RECIPIENT.PHONE_NUMBER }, true);
         public static Index PK_REVIEW = Internal.createIndex("pk_review", Review.REVIEW, new OrderField[] { Review.REVIEW.ID }, true);
         public static Index PK_TOPIC = Internal.createIndex("pk_topic", Topic.TOPIC, new OrderField[] { Topic.TOPIC.TOPIC_ID }, true);
         public static Index TOPIC_TOPIC_NAME_KEY = Internal.createIndex("topic_topic_name_key", Topic.TOPIC, new OrderField[] { Topic.TOPIC.TOPIC_NAME }, true);

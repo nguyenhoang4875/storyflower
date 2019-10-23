@@ -11,7 +11,10 @@ import org.jooq.Identity;
 import org.jooq.UniqueKey;
 import org.jooq.impl.Internal;
 
+import storysflower.com.storysflower.model.tables.tables.BuyProduct;
+import storysflower.com.storysflower.model.tables.tables.Cart;
 import storysflower.com.storysflower.model.tables.tables.Category;
+import storysflower.com.storysflower.model.tables.tables.Customer;
 import storysflower.com.storysflower.model.tables.tables.DealProduct;
 import storysflower.com.storysflower.model.tables.tables.Favourite;
 import storysflower.com.storysflower.model.tables.tables.Image;
@@ -20,11 +23,15 @@ import storysflower.com.storysflower.model.tables.tables.Occasion;
 import storysflower.com.storysflower.model.tables.tables.Product;
 import storysflower.com.storysflower.model.tables.tables.ProductCategory;
 import storysflower.com.storysflower.model.tables.tables.Rating;
+import storysflower.com.storysflower.model.tables.tables.Recipient;
 import storysflower.com.storysflower.model.tables.tables.Review;
 import storysflower.com.storysflower.model.tables.tables.Topic;
 import storysflower.com.storysflower.model.tables.tables.User;
 import storysflower.com.storysflower.model.tables.tables.UserRole;
+import storysflower.com.storysflower.model.tables.tables.records.BuyProductRecord;
+import storysflower.com.storysflower.model.tables.tables.records.CartRecord;
 import storysflower.com.storysflower.model.tables.tables.records.CategoryRecord;
+import storysflower.com.storysflower.model.tables.tables.records.CustomerRecord;
 import storysflower.com.storysflower.model.tables.tables.records.DealProductRecord;
 import storysflower.com.storysflower.model.tables.tables.records.FavouriteRecord;
 import storysflower.com.storysflower.model.tables.tables.records.ImageProductRecord;
@@ -33,6 +40,7 @@ import storysflower.com.storysflower.model.tables.tables.records.OccasionRecord;
 import storysflower.com.storysflower.model.tables.tables.records.ProductCategoryRecord;
 import storysflower.com.storysflower.model.tables.tables.records.ProductRecord;
 import storysflower.com.storysflower.model.tables.tables.records.RatingRecord;
+import storysflower.com.storysflower.model.tables.tables.records.RecipientRecord;
 import storysflower.com.storysflower.model.tables.tables.records.ReviewRecord;
 import storysflower.com.storysflower.model.tables.tables.records.TopicRecord;
 import storysflower.com.storysflower.model.tables.tables.records.UserRecord;
@@ -57,13 +65,17 @@ public class Keys {
     // IDENTITY definitions
     // -------------------------------------------------------------------------
 
+    public static final Identity<BuyProductRecord, Long> IDENTITY_BUY_PRODUCT = Identities0.IDENTITY_BUY_PRODUCT;
+    public static final Identity<CartRecord, Long> IDENTITY_CART = Identities0.IDENTITY_CART;
     public static final Identity<CategoryRecord, Long> IDENTITY_CATEGORY = Identities0.IDENTITY_CATEGORY;
+    public static final Identity<CustomerRecord, Long> IDENTITY_CUSTOMER = Identities0.IDENTITY_CUSTOMER;
     public static final Identity<DealProductRecord, Long> IDENTITY_DEAL_PRODUCT = Identities0.IDENTITY_DEAL_PRODUCT;
     public static final Identity<FavouriteRecord, Long> IDENTITY_FAVOURITE = Identities0.IDENTITY_FAVOURITE;
     public static final Identity<ImageRecord, Long> IDENTITY_IMAGE = Identities0.IDENTITY_IMAGE;
     public static final Identity<OccasionRecord, Long> IDENTITY_OCCASION = Identities0.IDENTITY_OCCASION;
     public static final Identity<ProductRecord, Long> IDENTITY_PRODUCT = Identities0.IDENTITY_PRODUCT;
     public static final Identity<RatingRecord, Long> IDENTITY_RATING = Identities0.IDENTITY_RATING;
+    public static final Identity<RecipientRecord, Long> IDENTITY_RECIPIENT = Identities0.IDENTITY_RECIPIENT;
     public static final Identity<ReviewRecord, Long> IDENTITY_REVIEW = Identities0.IDENTITY_REVIEW;
     public static final Identity<TopicRecord, Long> IDENTITY_TOPIC = Identities0.IDENTITY_TOPIC;
     public static final Identity<UserRecord, Long> IDENTITY_USER = Identities0.IDENTITY_USER;
@@ -73,8 +85,24 @@ public class Keys {
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final UniqueKey<BuyProductRecord> PK_BUY_PRODUCT = UniqueKeys0.PK_BUY_PRODUCT;
+    public static final UniqueKey<BuyProductRecord> BUY_PRODUCT_CART_ID_KEY = UniqueKeys0.BUY_PRODUCT_CART_ID_KEY;
+    public static final UniqueKey<BuyProductRecord> BUY_PRODUCT_PRODUCT_ID_KEY = UniqueKeys0.BUY_PRODUCT_PRODUCT_ID_KEY;
+    public static final UniqueKey<BuyProductRecord> BUY_PRODUCT_QUANTITY_KEY = UniqueKeys0.BUY_PRODUCT_QUANTITY_KEY;
+    public static final UniqueKey<CartRecord> PK_CART = UniqueKeys0.PK_CART;
+    public static final UniqueKey<CartRecord> CART_USER_ID_KEY = UniqueKeys0.CART_USER_ID_KEY;
+    public static final UniqueKey<CartRecord> CART_CUSTOMER_KEY = UniqueKeys0.CART_CUSTOMER_KEY;
+    public static final UniqueKey<CartRecord> CART_RECIPIENT_ID_KEY = UniqueKeys0.CART_RECIPIENT_ID_KEY;
+    public static final UniqueKey<CartRecord> CART_BUY_DATE_KEY = UniqueKeys0.CART_BUY_DATE_KEY;
+    public static final UniqueKey<CartRecord> CART_DELIVERY_DATE_KEY = UniqueKeys0.CART_DELIVERY_DATE_KEY;
+    public static final UniqueKey<CartRecord> CART_DELIVERY_HOUR_KEY = UniqueKeys0.CART_DELIVERY_HOUR_KEY;
     public static final UniqueKey<CategoryRecord> PK_CATEGORY = UniqueKeys0.PK_CATEGORY;
     public static final UniqueKey<CategoryRecord> CATEGORY_CATEGORY_NAME_KEY = UniqueKeys0.CATEGORY_CATEGORY_NAME_KEY;
+    public static final UniqueKey<CustomerRecord> PK_CUSTOMER = UniqueKeys0.PK_CUSTOMER;
+    public static final UniqueKey<CustomerRecord> CUSTOMER_FULL_NAME_KEY = UniqueKeys0.CUSTOMER_FULL_NAME_KEY;
+    public static final UniqueKey<CustomerRecord> CUSTOMER_ADDRESS_KEY = UniqueKeys0.CUSTOMER_ADDRESS_KEY;
+    public static final UniqueKey<CustomerRecord> CUSTOMER_PHONE_NUMBER_KEY = UniqueKeys0.CUSTOMER_PHONE_NUMBER_KEY;
+    public static final UniqueKey<CustomerRecord> CUSTOMER_EMAIL_KEY = UniqueKeys0.CUSTOMER_EMAIL_KEY;
     public static final UniqueKey<DealProductRecord> PK_DEAL_PRODUCT = UniqueKeys0.PK_DEAL_PRODUCT;
     public static final UniqueKey<FavouriteRecord> PK_FAVOURITE = UniqueKeys0.PK_FAVOURITE;
     public static final UniqueKey<ImageRecord> PK_IMAGE = UniqueKeys0.PK_IMAGE;
@@ -83,6 +111,12 @@ public class Keys {
     public static final UniqueKey<ProductRecord> PK_PRODUCT = UniqueKeys0.PK_PRODUCT;
     public static final UniqueKey<ProductRecord> PRODUCT_PRODUCT_NAME_KEY = UniqueKeys0.PRODUCT_PRODUCT_NAME_KEY;
     public static final UniqueKey<RatingRecord> PK_RATING = UniqueKeys0.PK_RATING;
+    public static final UniqueKey<RecipientRecord> PK_RECIPIENT = UniqueKeys0.PK_RECIPIENT;
+    public static final UniqueKey<RecipientRecord> RECIPIENT_FULL_NAME_KEY = UniqueKeys0.RECIPIENT_FULL_NAME_KEY;
+    public static final UniqueKey<RecipientRecord> RECIPIENT_ADDRESS_KEY = UniqueKeys0.RECIPIENT_ADDRESS_KEY;
+    public static final UniqueKey<RecipientRecord> RECIPIENT_PHONE_NUMBER_KEY = UniqueKeys0.RECIPIENT_PHONE_NUMBER_KEY;
+    public static final UniqueKey<RecipientRecord> RECIPIENT_MESSAGE_TO_RECIPIENT_KEY = UniqueKeys0.RECIPIENT_MESSAGE_TO_RECIPIENT_KEY;
+    public static final UniqueKey<RecipientRecord> RECIPIENT_MESSAGE_TO_US_KEY = UniqueKeys0.RECIPIENT_MESSAGE_TO_US_KEY;
     public static final UniqueKey<ReviewRecord> PK_REVIEW = UniqueKeys0.PK_REVIEW;
     public static final UniqueKey<TopicRecord> PK_TOPIC = UniqueKeys0.PK_TOPIC;
     public static final UniqueKey<TopicRecord> TOPIC_TOPIC_NAME_KEY = UniqueKeys0.TOPIC_TOPIC_NAME_KEY;
@@ -94,6 +128,11 @@ public class Keys {
     // FOREIGN KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final ForeignKey<BuyProductRecord, CartRecord> BUY_PRODUCT__FK_BUY_PRODUCT_CART = ForeignKeys0.BUY_PRODUCT__FK_BUY_PRODUCT_CART;
+    public static final ForeignKey<BuyProductRecord, ProductRecord> BUY_PRODUCT__FK_BUY_PRODUCT_PRODUCT = ForeignKeys0.BUY_PRODUCT__FK_BUY_PRODUCT_PRODUCT;
+    public static final ForeignKey<CartRecord, UserRecord> CART__FK_CART_USER = ForeignKeys0.CART__FK_CART_USER;
+    public static final ForeignKey<CartRecord, CustomerRecord> CART__FK_CART_CUSTOMER = ForeignKeys0.CART__FK_CART_CUSTOMER;
+    public static final ForeignKey<CartRecord, RecipientRecord> CART__FK_CART_RECIPIENT = ForeignKeys0.CART__FK_CART_RECIPIENT;
     public static final ForeignKey<DealProductRecord, ProductRecord> DEAL_PRODUCT__FK_DEAL_PRODUCT_PRODUCT = ForeignKeys0.DEAL_PRODUCT__FK_DEAL_PRODUCT_PRODUCT;
     public static final ForeignKey<FavouriteRecord, ProductRecord> FAVOURITE__FK_FAVOURITE_PRODUCT = ForeignKeys0.FAVOURITE__FK_FAVOURITE_PRODUCT;
     public static final ForeignKey<FavouriteRecord, UserRecord> FAVOURITE__FK_FAVOURITE_USER = ForeignKeys0.FAVOURITE__FK_FAVOURITE_USER;
@@ -115,13 +154,17 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     private static class Identities0 {
+        public static Identity<BuyProductRecord, Long> IDENTITY_BUY_PRODUCT = Internal.createIdentity(BuyProduct.BUY_PRODUCT, BuyProduct.BUY_PRODUCT.ID);
+        public static Identity<CartRecord, Long> IDENTITY_CART = Internal.createIdentity(Cart.CART, Cart.CART.ID);
         public static Identity<CategoryRecord, Long> IDENTITY_CATEGORY = Internal.createIdentity(Category.CATEGORY, Category.CATEGORY.ID);
+        public static Identity<CustomerRecord, Long> IDENTITY_CUSTOMER = Internal.createIdentity(Customer.CUSTOMER, Customer.CUSTOMER.ID);
         public static Identity<DealProductRecord, Long> IDENTITY_DEAL_PRODUCT = Internal.createIdentity(DealProduct.DEAL_PRODUCT, DealProduct.DEAL_PRODUCT.ID);
         public static Identity<FavouriteRecord, Long> IDENTITY_FAVOURITE = Internal.createIdentity(Favourite.FAVOURITE, Favourite.FAVOURITE.ID);
         public static Identity<ImageRecord, Long> IDENTITY_IMAGE = Internal.createIdentity(Image.IMAGE, Image.IMAGE.IMAGE_ID);
         public static Identity<OccasionRecord, Long> IDENTITY_OCCASION = Internal.createIdentity(Occasion.OCCASION, Occasion.OCCASION.OCCASION_ID);
         public static Identity<ProductRecord, Long> IDENTITY_PRODUCT = Internal.createIdentity(Product.PRODUCT, Product.PRODUCT.ID);
         public static Identity<RatingRecord, Long> IDENTITY_RATING = Internal.createIdentity(Rating.RATING, Rating.RATING.ID);
+        public static Identity<RecipientRecord, Long> IDENTITY_RECIPIENT = Internal.createIdentity(Recipient.RECIPIENT, Recipient.RECIPIENT.ID);
         public static Identity<ReviewRecord, Long> IDENTITY_REVIEW = Internal.createIdentity(Review.REVIEW, Review.REVIEW.ID);
         public static Identity<TopicRecord, Long> IDENTITY_TOPIC = Internal.createIdentity(Topic.TOPIC, Topic.TOPIC.TOPIC_ID);
         public static Identity<UserRecord, Long> IDENTITY_USER = Internal.createIdentity(User.USER, User.USER.ID);
@@ -129,8 +172,24 @@ public class Keys {
     }
 
     private static class UniqueKeys0 {
+        public static final UniqueKey<BuyProductRecord> PK_BUY_PRODUCT = Internal.createUniqueKey(BuyProduct.BUY_PRODUCT, "pk_buy_product", BuyProduct.BUY_PRODUCT.ID);
+        public static final UniqueKey<BuyProductRecord> BUY_PRODUCT_CART_ID_KEY = Internal.createUniqueKey(BuyProduct.BUY_PRODUCT, "buy_product_cart_id_key", BuyProduct.BUY_PRODUCT.CART_ID);
+        public static final UniqueKey<BuyProductRecord> BUY_PRODUCT_PRODUCT_ID_KEY = Internal.createUniqueKey(BuyProduct.BUY_PRODUCT, "buy_product_product_id_key", BuyProduct.BUY_PRODUCT.PRODUCT_ID);
+        public static final UniqueKey<BuyProductRecord> BUY_PRODUCT_QUANTITY_KEY = Internal.createUniqueKey(BuyProduct.BUY_PRODUCT, "buy_product_quantity_key", BuyProduct.BUY_PRODUCT.QUANTITY);
+        public static final UniqueKey<CartRecord> PK_CART = Internal.createUniqueKey(Cart.CART, "pk_cart", Cart.CART.ID);
+        public static final UniqueKey<CartRecord> CART_USER_ID_KEY = Internal.createUniqueKey(Cart.CART, "cart_user_id_key", Cart.CART.USER_ID);
+        public static final UniqueKey<CartRecord> CART_CUSTOMER_KEY = Internal.createUniqueKey(Cart.CART, "cart_customer_key", Cart.CART.CUSTOMER);
+        public static final UniqueKey<CartRecord> CART_RECIPIENT_ID_KEY = Internal.createUniqueKey(Cart.CART, "cart_recipient_id_key", Cart.CART.RECIPIENT_ID);
+        public static final UniqueKey<CartRecord> CART_BUY_DATE_KEY = Internal.createUniqueKey(Cart.CART, "cart_buy_date_key", Cart.CART.BUY_DATE);
+        public static final UniqueKey<CartRecord> CART_DELIVERY_DATE_KEY = Internal.createUniqueKey(Cart.CART, "cart_delivery_date_key", Cart.CART.DELIVERY_DATE);
+        public static final UniqueKey<CartRecord> CART_DELIVERY_HOUR_KEY = Internal.createUniqueKey(Cart.CART, "cart_delivery_hour_key", Cart.CART.DELIVERY_HOUR);
         public static final UniqueKey<CategoryRecord> PK_CATEGORY = Internal.createUniqueKey(Category.CATEGORY, "pk_category", Category.CATEGORY.ID);
         public static final UniqueKey<CategoryRecord> CATEGORY_CATEGORY_NAME_KEY = Internal.createUniqueKey(Category.CATEGORY, "category_category_name_key", Category.CATEGORY.CATEGORY_NAME);
+        public static final UniqueKey<CustomerRecord> PK_CUSTOMER = Internal.createUniqueKey(Customer.CUSTOMER, "pk_customer", Customer.CUSTOMER.ID);
+        public static final UniqueKey<CustomerRecord> CUSTOMER_FULL_NAME_KEY = Internal.createUniqueKey(Customer.CUSTOMER, "customer_full_name_key", Customer.CUSTOMER.FULL_NAME);
+        public static final UniqueKey<CustomerRecord> CUSTOMER_ADDRESS_KEY = Internal.createUniqueKey(Customer.CUSTOMER, "customer_address_key", Customer.CUSTOMER.ADDRESS);
+        public static final UniqueKey<CustomerRecord> CUSTOMER_PHONE_NUMBER_KEY = Internal.createUniqueKey(Customer.CUSTOMER, "customer_phone_number_key", Customer.CUSTOMER.PHONE_NUMBER);
+        public static final UniqueKey<CustomerRecord> CUSTOMER_EMAIL_KEY = Internal.createUniqueKey(Customer.CUSTOMER, "customer_email_key", Customer.CUSTOMER.EMAIL);
         public static final UniqueKey<DealProductRecord> PK_DEAL_PRODUCT = Internal.createUniqueKey(DealProduct.DEAL_PRODUCT, "pk_deal_product", DealProduct.DEAL_PRODUCT.ID);
         public static final UniqueKey<FavouriteRecord> PK_FAVOURITE = Internal.createUniqueKey(Favourite.FAVOURITE, "pk_favourite", Favourite.FAVOURITE.ID);
         public static final UniqueKey<ImageRecord> PK_IMAGE = Internal.createUniqueKey(Image.IMAGE, "pk_image", Image.IMAGE.IMAGE_ID);
@@ -139,6 +198,12 @@ public class Keys {
         public static final UniqueKey<ProductRecord> PK_PRODUCT = Internal.createUniqueKey(Product.PRODUCT, "pk_product", Product.PRODUCT.ID);
         public static final UniqueKey<ProductRecord> PRODUCT_PRODUCT_NAME_KEY = Internal.createUniqueKey(Product.PRODUCT, "product_product_name_key", Product.PRODUCT.PRODUCT_NAME);
         public static final UniqueKey<RatingRecord> PK_RATING = Internal.createUniqueKey(Rating.RATING, "pk_rating", Rating.RATING.ID);
+        public static final UniqueKey<RecipientRecord> PK_RECIPIENT = Internal.createUniqueKey(Recipient.RECIPIENT, "pk_recipient", Recipient.RECIPIENT.ID);
+        public static final UniqueKey<RecipientRecord> RECIPIENT_FULL_NAME_KEY = Internal.createUniqueKey(Recipient.RECIPIENT, "recipient_full_name_key", Recipient.RECIPIENT.FULL_NAME);
+        public static final UniqueKey<RecipientRecord> RECIPIENT_ADDRESS_KEY = Internal.createUniqueKey(Recipient.RECIPIENT, "recipient_address_key", Recipient.RECIPIENT.ADDRESS);
+        public static final UniqueKey<RecipientRecord> RECIPIENT_PHONE_NUMBER_KEY = Internal.createUniqueKey(Recipient.RECIPIENT, "recipient_phone_number_key", Recipient.RECIPIENT.PHONE_NUMBER);
+        public static final UniqueKey<RecipientRecord> RECIPIENT_MESSAGE_TO_RECIPIENT_KEY = Internal.createUniqueKey(Recipient.RECIPIENT, "recipient_message_to_recipient_key", Recipient.RECIPIENT.MESSAGE_TO_RECIPIENT);
+        public static final UniqueKey<RecipientRecord> RECIPIENT_MESSAGE_TO_US_KEY = Internal.createUniqueKey(Recipient.RECIPIENT, "recipient_message_to_us_key", Recipient.RECIPIENT.MESSAGE_TO_US);
         public static final UniqueKey<ReviewRecord> PK_REVIEW = Internal.createUniqueKey(Review.REVIEW, "pk_review", Review.REVIEW.ID);
         public static final UniqueKey<TopicRecord> PK_TOPIC = Internal.createUniqueKey(Topic.TOPIC, "pk_topic", Topic.TOPIC.TOPIC_ID);
         public static final UniqueKey<TopicRecord> TOPIC_TOPIC_NAME_KEY = Internal.createUniqueKey(Topic.TOPIC, "topic_topic_name_key", Topic.TOPIC.TOPIC_NAME);
@@ -148,6 +213,11 @@ public class Keys {
     }
 
     private static class ForeignKeys0 {
+        public static final ForeignKey<BuyProductRecord, CartRecord> BUY_PRODUCT__FK_BUY_PRODUCT_CART = Internal.createForeignKey(storysflower.com.storysflower.model.tables.Keys.PK_CART, BuyProduct.BUY_PRODUCT, "buy_product__fk_buy_product_cart", BuyProduct.BUY_PRODUCT.CART_ID);
+        public static final ForeignKey<BuyProductRecord, ProductRecord> BUY_PRODUCT__FK_BUY_PRODUCT_PRODUCT = Internal.createForeignKey(storysflower.com.storysflower.model.tables.Keys.PK_PRODUCT, BuyProduct.BUY_PRODUCT, "buy_product__fk_buy_product_product", BuyProduct.BUY_PRODUCT.PRODUCT_ID);
+        public static final ForeignKey<CartRecord, UserRecord> CART__FK_CART_USER = Internal.createForeignKey(storysflower.com.storysflower.model.tables.Keys.PK_USER, Cart.CART, "cart__fk_cart_user", Cart.CART.USER_ID);
+        public static final ForeignKey<CartRecord, CustomerRecord> CART__FK_CART_CUSTOMER = Internal.createForeignKey(storysflower.com.storysflower.model.tables.Keys.PK_CUSTOMER, Cart.CART, "cart__fk_cart_customer", Cart.CART.CUSTOMER);
+        public static final ForeignKey<CartRecord, RecipientRecord> CART__FK_CART_RECIPIENT = Internal.createForeignKey(storysflower.com.storysflower.model.tables.Keys.PK_RECIPIENT, Cart.CART, "cart__fk_cart_recipient", Cart.CART.RECIPIENT_ID);
         public static final ForeignKey<DealProductRecord, ProductRecord> DEAL_PRODUCT__FK_DEAL_PRODUCT_PRODUCT = Internal.createForeignKey(storysflower.com.storysflower.model.tables.Keys.PK_PRODUCT, DealProduct.DEAL_PRODUCT, "deal_product__fk_deal_product_product", DealProduct.DEAL_PRODUCT.PRODUCT_ID);
         public static final ForeignKey<FavouriteRecord, ProductRecord> FAVOURITE__FK_FAVOURITE_PRODUCT = Internal.createForeignKey(storysflower.com.storysflower.model.tables.Keys.PK_PRODUCT, Favourite.FAVOURITE, "favourite__fk_favourite_product", Favourite.FAVOURITE.PRODUCT_ID);
         public static final ForeignKey<FavouriteRecord, UserRecord> FAVOURITE__FK_FAVOURITE_USER = Internal.createForeignKey(storysflower.com.storysflower.model.tables.Keys.PK_USER, Favourite.FAVOURITE, "favourite__fk_favourite_user", Favourite.FAVOURITE.USER_ID);
