@@ -11,22 +11,22 @@
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
             <column name="user_id" type="bigint">
-                <constraints nullable="true" unique="true" foreignKeyName="fk_cart_user" references="public.user(id)"/>
+                <constraints nullable="true" foreignKeyName="fk_cart_user" references="public.user(id)"/>
             </column>
             <column name="customer" type="bigint">
-                <constraints nullable="false" unique="true" foreignKeyName="fk_cart_customer" references="customer(id)"/>
+                <constraints nullable="false" foreignKeyName="fk_cart_customer" references="customer(id)"/>
             </column>
             <column name="recipient_id" type="bigint">
-                <constraints nullable="false" unique="true" foreignKeyName="fk_cart_recipient" references="recipient(id)"/>
+                <constraints nullable="false"  foreignKeyName="fk_cart_recipient" references="recipient(id)"/>
             </column>
-            <column name="buy_date" type="timestamp">
-                <constraints nullable="false" unique="true"/>
+            <column name="buy_date" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false" />
             </column>
-            <column name="delivery_date" type="timestamp">
-                <constraints nullable="false" unique="true"/>
+            <column name="delivery_date" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false" />
             </column>
             <column name="delivery_hour" type="time">
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="true" />
             </column>
         </createTable>
     </changeSet>

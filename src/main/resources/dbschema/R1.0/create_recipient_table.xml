@@ -8,22 +8,22 @@
     <changeSet id="create_recipient_table" author="ntynguyen">
         <createTable tableName="recipient" remarks="recipient table">
             <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false" unique="true"/>
+                <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="full_name" type="varchar(50)">
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="false" />
             </column>
             <column name="address" type="varchar(100)">
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="false" />
             </column>
             <column name="phone_number" type="varchar(20)">
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="false"/>
             </column>
             <column name="message_to_recipient" type="varchar(1000)">
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="false"/>
             </column>
             <column name="message_to_us" type="varchar(100)">
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="false" />
             </column>
         </createTable>
     </changeSet>
