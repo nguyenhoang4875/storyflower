@@ -4,7 +4,7 @@ import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
-import storysflower.com.storysflower.dto.ImageDTO;
+import storysflower.com.storysflower.dto .ImageDTO;
 import storysflower.com.storysflower.model.tables.tables.Image;
 import storysflower.com.storysflower.model.tables.tables.records.ImageRecord;
 

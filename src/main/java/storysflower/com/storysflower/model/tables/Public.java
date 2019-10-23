@@ -15,7 +15,10 @@ import org.jooq.Sequence;
 import org.jooq.Table;
 import org.jooq.impl.SchemaImpl;
 
+import storysflower.com.storysflower.model.tables.tables.BuyProduct;
+import storysflower.com.storysflower.model.tables.tables.Cart;
 import storysflower.com.storysflower.model.tables.tables.Category;
+import storysflower.com.storysflower.model.tables.tables.Customer;
 import storysflower.com.storysflower.model.tables.tables.DealProduct;
 import storysflower.com.storysflower.model.tables.tables.Favourite;
 import storysflower.com.storysflower.model.tables.tables.Image;
@@ -24,6 +27,7 @@ import storysflower.com.storysflower.model.tables.tables.Occasion;
 import storysflower.com.storysflower.model.tables.tables.Product;
 import storysflower.com.storysflower.model.tables.tables.ProductCategory;
 import storysflower.com.storysflower.model.tables.tables.Rating;
+import storysflower.com.storysflower.model.tables.tables.Recipient;
 import storysflower.com.storysflower.model.tables.tables.Review;
 import storysflower.com.storysflower.model.tables.tables.Topic;
 import storysflower.com.storysflower.model.tables.tables.User;
@@ -43,7 +47,7 @@ import storysflower.com.storysflower.model.tables.tables.UserRole;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = 1431544323;
+    private static final long serialVersionUID = -1075189717;
 
     /**
      * The reference instance of <code>public</code>
@@ -51,9 +55,24 @@ public class Public extends SchemaImpl {
     public static final Public PUBLIC = new Public();
 
     /**
+     * buy product table
+     */
+    public final BuyProduct BUY_PRODUCT = storysflower.com.storysflower.model.tables.tables.BuyProduct.BUY_PRODUCT;
+
+    /**
+     * cart table
+     */
+    public final Cart CART = storysflower.com.storysflower.model.tables.tables.Cart.CART;
+
+    /**
      * category table
      */
     public final Category CATEGORY = storysflower.com.storysflower.model.tables.tables.Category.CATEGORY;
+
+    /**
+     * customer table
+     */
+    public final Customer CUSTOMER = storysflower.com.storysflower.model.tables.tables.Customer.CUSTOMER;
 
     /**
      * deal product table
@@ -94,6 +113,11 @@ public class Public extends SchemaImpl {
      * rating table
      */
     public final Rating RATING = storysflower.com.storysflower.model.tables.tables.Rating.RATING;
+
+    /**
+     * recipient table
+     */
+    public final Recipient RECIPIENT = storysflower.com.storysflower.model.tables.tables.Recipient.RECIPIENT;
 
     /**
      * review table
@@ -140,13 +164,17 @@ public class Public extends SchemaImpl {
 
     private final List<Sequence<?>> getSequences0() {
         return Arrays.<Sequence<?>>asList(
+            Sequences.BUY_PRODUCT_ID_SEQ,
+            Sequences.CART_ID_SEQ,
             Sequences.CATEGORY_ID_SEQ,
+            Sequences.CUSTOMER_ID_SEQ,
             Sequences.DEAL_PRODUCT_ID_SEQ,
             Sequences.FAVOURITE_ID_SEQ,
             Sequences.IMAGE_IMAGE_ID_SEQ,
             Sequences.OCCASION_OCCASION_ID_SEQ,
             Sequences.PRODUCT_ID_SEQ,
             Sequences.RATING_ID_SEQ,
+            Sequences.RECIPIENT_ID_SEQ,
             Sequences.REVIEW_ID_SEQ,
             Sequences.TOPIC_TOPIC_ID_SEQ,
             Sequences.USER_ID_SEQ,
@@ -162,7 +190,10 @@ public class Public extends SchemaImpl {
 
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
+            BuyProduct.BUY_PRODUCT,
+            Cart.CART,
             Category.CATEGORY,
+            Customer.CUSTOMER,
             DealProduct.DEAL_PRODUCT,
             Favourite.FAVOURITE,
             Image.IMAGE,
@@ -171,6 +202,7 @@ public class Public extends SchemaImpl {
             Product.PRODUCT,
             ProductCategory.PRODUCT_CATEGORY,
             Rating.RATING,
+            Recipient.RECIPIENT,
             Review.REVIEW,
             Topic.TOPIC,
             User.USER,

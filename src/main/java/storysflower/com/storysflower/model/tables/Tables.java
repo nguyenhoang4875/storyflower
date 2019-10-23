@@ -6,7 +6,10 @@ package storysflower.com.storysflower.model.tables;
 
 import javax.annotation.Generated;
 
+import storysflower.com.storysflower.model.tables.tables.BuyProduct;
+import storysflower.com.storysflower.model.tables.tables.Cart;
 import storysflower.com.storysflower.model.tables.tables.Category;
+import storysflower.com.storysflower.model.tables.tables.Customer;
 import storysflower.com.storysflower.model.tables.tables.DealProduct;
 import storysflower.com.storysflower.model.tables.tables.Favourite;
 import storysflower.com.storysflower.model.tables.tables.Image;
@@ -15,6 +18,7 @@ import storysflower.com.storysflower.model.tables.tables.Occasion;
 import storysflower.com.storysflower.model.tables.tables.Product;
 import storysflower.com.storysflower.model.tables.tables.ProductCategory;
 import storysflower.com.storysflower.model.tables.tables.Rating;
+import storysflower.com.storysflower.model.tables.tables.Recipient;
 import storysflower.com.storysflower.model.tables.tables.Review;
 import storysflower.com.storysflower.model.tables.tables.Topic;
 import storysflower.com.storysflower.model.tables.tables.User;
@@ -35,9 +39,24 @@ import storysflower.com.storysflower.model.tables.tables.UserRole;
 public class Tables {
 
     /**
+     * buy product table
+     */
+    public static final BuyProduct BUY_PRODUCT = storysflower.com.storysflower.model.tables.tables.BuyProduct.BUY_PRODUCT;
+
+    /**
+     * cart table
+     */
+    public static final Cart CART = storysflower.com.storysflower.model.tables.tables.Cart.CART;
+
+    /**
      * category table
      */
     public static final Category CATEGORY = storysflower.com.storysflower.model.tables.tables.Category.CATEGORY;
+
+    /**
+     * customer table
+     */
+    public static final Customer CUSTOMER = storysflower.com.storysflower.model.tables.tables.Customer.CUSTOMER;
 
     /**
      * deal product table
@@ -78,6 +97,11 @@ public class Tables {
      * rating table
      */
     public static final Rating RATING = storysflower.com.storysflower.model.tables.tables.Rating.RATING;
+
+    /**
+     * recipient table
+     */
+    public static final Recipient RECIPIENT = storysflower.com.storysflower.model.tables.tables.Recipient.RECIPIENT;
 
     /**
      * review table
