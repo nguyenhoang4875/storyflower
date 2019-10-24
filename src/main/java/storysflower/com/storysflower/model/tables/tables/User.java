@@ -41,7 +41,7 @@ import storysflower.com.storysflower.model.tables.tables.records.UserRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User extends TableImpl<UserRecord> {
 
-    private static final long serialVersionUID = 1113844533;
+    private static final long serialVersionUID = -828193675;
 
     /**
      * The reference instance of <code>public.user</code>
@@ -132,7 +132,7 @@ public class User extends TableImpl<UserRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.PK_USER, Indexes.USER_EMAIL_KEY);
+        return Arrays.<Index>asList(Indexes.USER_EMAIL_KEY, Indexes.USER_PKEY);
     }
 
     /**
@@ -148,7 +148,7 @@ public class User extends TableImpl<UserRecord> {
      */
     @Override
     public UniqueKey<UserRecord> getPrimaryKey() {
-        return Keys.PK_USER;
+        return Keys.USER_PKEY;
     }
 
     /**
@@ -156,7 +156,7 @@ public class User extends TableImpl<UserRecord> {
      */
     @Override
     public List<UniqueKey<UserRecord>> getKeys() {
-        return Arrays.<UniqueKey<UserRecord>>asList(Keys.PK_USER, Keys.USER_EMAIL_KEY);
+        return Arrays.<UniqueKey<UserRecord>>asList(Keys.USER_PKEY, Keys.USER_EMAIL_KEY);
     }
 
     /**
