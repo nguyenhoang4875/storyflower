@@ -12,5 +12,7 @@ public class UrlConstants {
     public static final String URL_ADMIN_CUSTOMER_DETAIL = "customer/detail/{id}";
 
 
+    public static final String URL_ADMIN_PRODUCT_INDEX = "/product/index";
+
 
 }
