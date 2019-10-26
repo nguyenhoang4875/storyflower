@@ -17,7 +17,8 @@ import storysflower.com.storysflower.services.ProductService;
 public class ProductController {
     public static final String OCCASION = "occasion";
     public static final String OCCASIONS = "occasions";
-
+    public static final String BESTRATINGPRODUCTS = "bestRatingProducts";
+    public static final String POPULARPRODUCTS = "popularProducts";
 
     @Autowired
     private OccasionService occasionService;
@@ -28,6 +29,9 @@ public class ProductController {
     public String getOccasionPage(@PathVariable Long occasionId, Model model){
         model.addAttribute(OCCASION, occasionService.getOccasionDTOById(occasionId));
         model.addAttribute(OCCASIONS, productService.getListProductDTOByOccasionId(occasionId));
+        model.addAttribute(BESTRATINGPRODUCTS, productService.getListBestProductDTOByRattingAndOccasion(occasionId));
+//        model.addAttribute(POPULARPRODUCTS, productService.getListBestProductDTOBySellerAndOccasion(occasionId));
+
         return "occasion";
     }
 }

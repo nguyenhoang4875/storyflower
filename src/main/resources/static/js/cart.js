@@ -1,3 +1,5 @@
+
+
 $(window).ready(
     function () {
         $('#add-card-button').click(function () {
@@ -15,6 +17,11 @@ $(window).ready(
 )
 
 var cartListSize = $('#cart-list-size').text();
+
+function handleClickBuyNow() {
+    handleClickAddCart();
+
+}
 
 function handleClickDeleteProductCart(item) {
     $.ajax({

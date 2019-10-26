@@ -108,4 +108,28 @@ public class ProductRepository {
                 .fetchAnyInto(ProductDTO.class);
 
     }
+
+    public List<ProductDTO> getListBestProductDTOByRattingAndOccasion(Long occasionId) {
+        List<ProductDTO> productDTOS = dslContext.select()
+                .from(PRODUCT)
+                .join(IMAGE_PRODUCT).on(IMAGE_PRODUCT.PRODUCT_ID.eq(PRODUCT.ID))
+                .and(IMAGE_PRODUCT.MAIN_IMAGE.eq(true))
+                .where(PRODUCT.OCCASION_ID.eq(occasionId))
+                .fetchInto(ProductDTO.class);
+        rattingService.setRating(productDTOS);
+        return productDTOS.stream().sorted((t1,t2)-> t2.getRating() - t1.getRating()).collect(Collectors.toList()).subList(0,3);
+    }
+
+    public List<ProductDTO> getListBestProductDTOBySellerAndOccasion(Long occasionId) {
+        return null;
+    }
+
+    public List<ProductDTO> getAllFlowers() {
+        return dslContext.select()
+                .from(PRODUCT)
+                .join(IMAGE_PRODUCT).on(IMAGE_PRODUCT.PRODUCT_ID.eq(PRODUCT.ID))
+                .and(IMAGE_PRODUCT.MAIN_IMAGE.eq(true))
+                .where(PRODUCT.TOPIC_ID.eq(1L))
+                .fetchInto(ProductDTO.class);
+    }
 }

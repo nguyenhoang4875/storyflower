@@ -16,4 +16,10 @@ public interface ProductService {
     public List<ProductDTO> getListProductDTOByOccasionId(Long occasionId);
 
     public List<ProductDTO> getListBestProductDTOByRatting();
+
+    List<ProductDTO> getListBestProductDTOByRattingAndOccasion(Long occasionId);
+
+    List<ProductDTO> getListBestProductDTOBySellerAndOccasion(Long occasionId);
+
+    List<ProductDTO> getAllFlower();
 }
