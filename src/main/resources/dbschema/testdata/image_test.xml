@@ -254,5 +254,413 @@
             <column name="image_data" valueBlobFile="images/product_images/wedding10.jpg"></column>
         </insert>
 
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary1.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary1a.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary1b.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary1c.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary1d.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary1e.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary2.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary2a.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary2b.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary2c.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary2d.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary2e.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary3.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary3a.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary3b.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary3c.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary3d.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary3e.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary4.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary4a.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary4b.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary4c.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary4d.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary4e.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary5.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary5a.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary5b.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary5c.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary5d.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary5e.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary6.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary6a.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary6b.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary6c.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary6d.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Anniversary6e.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Justbecause1.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Justbecause1a.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Justbecause1b.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Justbecause1c.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Justbecause1d.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Justbecause1e.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Justbecause2.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Justbecause2a.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Justbecause2b.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Justbecause2c.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Justbecause2d.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Justbecause2e.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation1.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation1a.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation1b.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation1c.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation1d.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation1e.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation2.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation2a.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation2b.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation2c.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation2d.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation2e.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation3.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation3a.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation3b.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation3c.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation3d.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation3e.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation4.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation4a.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation4b.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation4c.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation4d.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/congratuation4e.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy1.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy1a.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy1b.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy1c.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy1d.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy1e.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy2.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy2a.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy2b.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy2c.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy2d.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy2e.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy3.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy3a.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy3b.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy3c.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy3d.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy3e.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy4.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy4a.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy4b.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy4c.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy4d.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy4e.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy5.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy5a.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy5b.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy5c.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy5d.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/product_images/Sympathy5e.jpg"></column>
+        </insert>
+
     </changeSet>
 </databaseChangeLog>

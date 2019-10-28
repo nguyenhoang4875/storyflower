@@ -39,7 +39,7 @@
                         </th>
                         <td class="text-center" th:text="${item.productDTO.price}"></td>
                         <td class="text-center" th:text="${item.quantity}"></td>
-                        <td class="text-center"><i class="fa fa-trash delete" th:id="delete + ${item.productDTO.id}"></i></td>
+                        <td class="text-center" id="delete-cart"><i class="fa fa-trash delete" th:id="delete + ${item.productDTO.id}"></i></td>
                     </tr>
                     <tr>
                         <td colspan="4" class="text-right">
@@ -52,24 +52,24 @@
                     </tr>
                 </table>
             </div>
+<!--
             <div class="shopping-cart mb-3 pb-2">
-                <h5 class="px-3 py-1 title-cart">
+               &lt;!&ndash; <h5 class="px-3 py-1 title-cart">
                     Time delivery and payment
                 </h5>
                 <div class="p-2 d-flex justify-content-around">
                     <div>
                         <label>Delivery date: </label>
-                        <input type="date" id="date-time-picker" name="Delivery date" placeholder=""
+                        <input type="date" id="date-time-picker" name="deliveryDate" placeholder=""
                                class="custom-form-control d-inline-block"/>
                     </div>
                     <div>
                         <label>Hours: </label>
-                        <input id="appt-time" class="custom-form-control d-inline-block" type="time" name="appt-time"
+                        <input id="appt-time" class="custom-form-control d-inline-block" type="time" name="deliveryTime"
                                value="13:30">
                     </div>
-                </div>
-                <hr class="custom-hr"/>
-                <div class="d-flex justify-content-start ml-3">
+                </div>&ndash;&gt;
+                &lt;!&ndash;<div class="d-flex justify-content-start ml-3">
                     <h6>
                         Payment method:
                     </h6>
@@ -88,12 +88,13 @@
                             <input type="radio" value="4" name="paymentMethod"> Cash payment at the headquaters
                         </p>
                     </div>
-                </div>
+                </div>&ndash;&gt;
             </div>
+-->
 
         </div>
         <div class="col-12 col-lg-4 m-0">
-            <form>
+            <form th:action="@{/cart}" method="post" th:object="${receiptDTO}">
                 <div class="product-content mb-3" id="contact-information">
                     <h6 class="main-title text-center mt-1 pb-2 w-100">Contact Information</h6>
                     <div class="alert alert-danger create-error" role="alert" style="display: none;">Email has exit,
@@ -101,22 +102,22 @@
                     </div>
                     <div class="form-group">
                         <label>Full Name</label>
-                        <input type="text" class="form-control" id="fullName" placeholder="Enter full name"
+                        <input type="text" class="form-control" id="fullName"  th:field="*{customerDTO.fullName}" placeholder="Enter full name"
                                required="">
                     </div>
                     <div class="form-group">
                         <label>Address</label>
-                        <input type="text" class="form-control" id="address" placeholder="Enter address" required="">
+                        <input type="text" class="form-control" id="address" placeholder="Enter address" th:field ="*{customerDTO.address}"  required="">
                     </div>
                     <div class="form-group">
                         <label>Phone Number</label>
                         <input type="text" class="form-control" id="phonenumber" placeholder="Enter phone number"
-                               required="">
+                               required="" th:field ="*{customerDTO.phoneNumber}">
                     </div>
                     <div class="form-group">
                         <label>Email</label>
                         <input type="text" class="form-control" id="email" placeholder="Enter email"
-                               required="">
+                               required="" th:field ="*{customerDTO.email}">
                     </div>
                     <div class="d-flex justify-content-end">
                         <a href="/" class="continue-shopping p-2 px-3"><span
@@ -136,34 +137,47 @@
                     </div>
                     <div class="form-group">
                         <label>Full Name</label>
-                        <input type="text" class="form-control" id="recipient-fullName" placeholder="Enter full name"
+                        <input type="text" class="form-control" id="recipient-fullName" placeholder="Enter full name" th:field ="*{recipientDTO.fullName}"
                                required="">
                     </div>
                     <div class="form-group">
                         <label>Address</label>
                         <input type="text" class="form-control" id="recipient-address" placeholder="Enter address"
-                               required="">
+                               required="" th:field ="*{recipientDTO.address}">
                     </div>
                     <div class="form-group">
                         <label>Phone Number</label>
                         <input type="text" class="form-control" id="recipient-phonenumber"
                                placeholder="Enter phone number"
-                               required="">
+                               required="" th:field ="*{recipientDTO.phoneNumber}">
                     </div>
                     <div class="form-group">
                         <label>Message to recipient</label>
                         <input type="text" class="form-control" id="message-to-recipient"
                                placeholder="Enter your message to recipient"
-                               required="">
+                               required="" th:field ="*{recipientDTO.messageToRecipient}">
                     </div>
                     <div class="form-group">
                         <label>Message to us</label>
                         <input type="text" class="form-control" id="message-to-us"
                                placeholder="Enter your message to us"
-                               required="">
+                               required="" th:field ="*{recipientDTO.messageToUs}">
+                    </div>
+                    <div class="p-2 d-flex justify-content-around">
+                        <div>
+                            <label>Delivery date: </label>
+                            <input type="date" id="date-time-picker" name="deliveryDate" placeholder=""
+                                   class="custom-form-control d-inline-block" th:field="*{deliveryDate}" value = 10/30/2019/>
+                        </div>
+                        <div>
+                            <label>Hours: </label>
+                            <input id="appt-time" value="13:30:00" class="custom-form-control d-inline-block" type="time" name="deliveryTime" th:field="*{deliveryHour}"
+                                   >
+                        </div>
                     </div>
                     <div class="d-flex justify-content-end">
-                        <button>Buy now</button>
+                        <a href="#" class="continue-shopping p-2 px-3" id="button-back"><span class="fa fa-chevron-left pr-2"></span><span class="d-none d-lg-inline">Back</span></a>
+                        <button class="button" type="submit">Buy now</button>
                     </div>
                 </div>
             </form>

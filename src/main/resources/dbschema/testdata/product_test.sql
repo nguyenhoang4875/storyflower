@@ -39,3 +39,46 @@ INSERT INTO product(product_name, topic_id, occasion_id, description , price)
 VALUES ('Delicate wedding flower bouquet', 1, 4, 'Looking for a floral gift that will make someone happy? Choose this lovely miniature yellow rose bush with buds that are ready to bloom and grow.', 300000 );
 INSERT INTO product(product_name, topic_id, occasion_id, description , price)
 VALUES ('Beautiful wedding flower bouquet', 1, 4, 'Looking for a floral gift that will make someone happy? Choose this lovely miniature yellow rose bush with buds that are ready to bloom and grow.', 300000 );
+
+
+
+INSERT INTO product(product_name, topic_id, occasion_id, description , price)
+VALUES ('Beautiful wedding flower bouquet', 1, 3, 'Looking for a floral gift that will make someone happy? Choose this lovely miniature yellow rose bush with buds that are ready to bloom and grow.', 300000 );
+INSERT INTO product(product_name, topic_id, occasion_id, description , price)
+VALUES ('Beautiful wedding flower bouquet', 1, 3, 'Looking for a floral gift that will make someone happy? Choose this lovely miniature yellow rose bush with buds that are ready to bloom and grow.', 300000 );
+INSERT INTO product(product_name, topic_id, occasion_id, description , price)
+VALUES ('Beautiful wedding flower bouquet', 1, 3, 'Looking for a floral gift that will make someone happy? Choose this lovely miniature yellow rose bush with buds that are ready to bloom and grow.', 300000 );
+INSERT INTO product(product_name, topic_id, occasion_id, description , price)
+VALUES ('Beautiful wedding flower bouquet', 1, 3, 'Looking for a floral gift that will make someone happy? Choose this lovely miniature yellow rose bush with buds that are ready to bloom and grow.', 300000 );
+INSERT INTO product(product_name, topic_id, occasion_id, description , price)
+VALUES ('Beautiful wedding flower bouquet', 1, 3, 'Looking for a floral gift that will make someone happy? Choose this lovely miniature yellow rose bush with buds that are ready to bloom and grow.', 300000 );
+INSERT INTO product(product_name, topic_id, occasion_id, description , price)
+VALUES ('Beautiful wedding flower bouquet', 1, 3, 'Looking for a floral gift that will make someone happy? Choose this lovely miniature yellow rose bush with buds that are ready to bloom and grow.', 300000 );
+
+
+INSERT INTO product(product_name, topic_id, occasion_id, description , price)
+VALUES ('Beautiful wedding flower bouquet', 1, 6, 'Looking for a floral gift that will make someone happy? Choose this lovely miniature yellow rose bush with buds that are ready to bloom and grow.', 300000 );
+INSERT INTO product(product_name, topic_id, occasion_id, description , price)
+VALUES ('Beautiful wedding flower bouquet', 1, 6, 'Looking for a floral gift that will make someone happy? Choose this lovely miniature yellow rose bush with buds that are ready to bloom and grow.', 300000 );
+
+
+INSERT INTO product(product_name, topic_id, occasion_id, description , price)
+VALUES ('Beautiful wedding flower bouquet', 1, 2, 'Looking for a floral gift that will make someone happy? Choose this lovely miniature yellow rose bush with buds that are ready to bloom and grow.', 300000 );
+INSERT INTO product(product_name, topic_id, occasion_id, description , price)
+VALUES ('Beautiful wedding flower bouquet', 1, 2, 'Looking for a floral gift that will make someone happy? Choose this lovely miniature yellow rose bush with buds that are ready to bloom and grow.', 300000 );
+INSERT INTO product(product_name, topic_id, occasion_id, description , price)
+VALUES ('Beautiful wedding flower bouquet', 1, 2, 'Looking for a floral gift that will make someone happy? Choose this lovely miniature yellow rose bush with buds that are ready to bloom and grow.', 300000 );
+INSERT INTO product(product_name, topic_id, occasion_id, description , price)
+VALUES ('Beautiful wedding flower bouquet', 1, 2, 'Looking for a floral gift that will make someone happy? Choose this lovely miniature yellow rose bush with buds that are ready to bloom and grow.', 300000 );
+
+
+INSERT INTO product(product_name, topic_id, occasion_id, description , price)
+VALUES ('Beautiful wedding flower bouquet', 1, 5, 'Looking for a floral gift that will make someone happy? Choose this lovely miniature yellow rose bush with buds that are ready to bloom and grow.', 300000 );
+INSERT INTO product(product_name, topic_id, occasion_id, description , price)
+VALUES ('Beautiful wedding flower bouquet', 1, 5, 'Looking for a floral gift that will make someone happy? Choose this lovely miniature yellow rose bush with buds that are ready to bloom and grow.', 300000 );
+INSERT INTO product(product_name, topic_id, occasion_id, description , price)
+VALUES ('Beautiful wedding flower bouquet', 1, 5, 'Looking for a floral gift that will make someone happy? Choose this lovely miniature yellow rose bush with buds that are ready to bloom and grow.', 300000 );
+INSERT INTO product(product_name, topic_id, occasion_id, description , price)
+VALUES ('Beautiful wedding flower bouquet', 1, 5, 'Looking for a floral gift that will make someone happy? Choose this lovely miniature yellow rose bush with buds that are ready to bloom and grow.', 300000 );
+INSERT INTO product(product_name, topic_id, occasion_id, description , price)
+VALUES ('Beautiful wedding flower bouquet', 1, 5, 'Looking for a floral gift that will make someone happy? Choose this lovely miniature yellow rose bush with buds that are ready to bloom and grow.', 300000 );

@@ -1,4 +1,5 @@
 
+
 $(window).ready(
     function () {
         $('#add-card-button').click(function () {
@@ -9,7 +10,7 @@ $(window).ready(
         })
 
         $('.delete').click(function (event) {
-            let id = event.target.id;
+            var id = event.target.id;
             handleClickDeleteProductCart(id);
         })
     }
@@ -17,15 +18,20 @@ $(window).ready(
 
 var cartListSize = $('#cart-list-size').text();
 
+function handleClickBuyNow() {
+    handleClickAddCart();
+
+}
+
 function handleClickDeleteProductCart(item) {
     $.ajax({
         url: "/api/cart/delete/" + getProductId(),
         type: "GET",
     }).done(function (data) {
         cartListSize--;
-        if(cartListSize == 0){
+        if (cartListSize == 0) {
             $('.shopping-cart').addClass('d-none')
-        }else{
+        } else {
             handleDelete();
             $('#total-cart').text(data.totalCart);
         }
@@ -36,9 +42,9 @@ function handleClickDeleteProductCart(item) {
     function getProductId() {
         return item.substr(6);
     }
-    
+
     function handleDelete() {
-        $('#product'+ getProductId()).addClass("d-none")
+        $('#product' + getProductId()).addClass("d-none")
     }
 
 }
@@ -46,10 +52,10 @@ function handleClickDeleteProductCart(item) {
 
 function handleClickAddCart() {
     $.ajax({
-        url : "/api/cart/" + getProductId(),
+        url: "/api/cart/" + getProductId(),
         type: "GET",
-        data:{
-            quantity : $("#quantity").val()
+        data: {
+            quantity: $("#quantity").val()
         }
     }).done(function (data) {
 
@@ -62,6 +68,18 @@ $('#button-next').click(function () {
     $('#contact-information').addClass('d-none');
     $('#recipient-information').removeClass('d-none')
 })
+
+$('#button-back').click(function () {
+    $('#contact-information').removeClass('d-none');
+    $('#recipient-information').addClass('d-none')
+})
+
+
+
+
+
+
+
 
 
 

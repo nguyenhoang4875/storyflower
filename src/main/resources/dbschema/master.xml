@@ -18,4 +18,9 @@
     <include file="R1.0/create_product_category_table.xml" relativeToChangelogFile="true"/>
     <include file="R1.0/create_favourite_table.xml" relativeToChangelogFile="true"/>
     <include file="R1.0/create_review_table.xml" relativeToChangelogFile="true"/>
+    <include file="R1.0/create_customer_table.xml" relativeToChangelogFile="true"/>
+    <include file="R1.0/create_recipient_table.xml" relativeToChangelogFile="true"/>
+    <include file="R1.0/create_cart_table.xml" relativeToChangelogFile="true"/>
+    <include file="R1.0/create_buy_product_table.xml" relativeToChangelogFile="true"/>
+
 </databaseChangeLog>

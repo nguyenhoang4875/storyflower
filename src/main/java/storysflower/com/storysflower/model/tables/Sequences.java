@@ -24,9 +24,24 @@ import org.jooq.impl.SequenceImpl;
 public class Sequences {
 
     /**
+     * The sequence <code>public.buy_product_id_seq</code>
+     */
+    public static final Sequence<Long> BUY_PRODUCT_ID_SEQ = new SequenceImpl<Long>("buy_product_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
+     * The sequence <code>public.cart_id_seq</code>
+     */
+    public static final Sequence<Long> CART_ID_SEQ = new SequenceImpl<Long>("cart_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
      * The sequence <code>public.category_id_seq</code>
      */
     public static final Sequence<Long> CATEGORY_ID_SEQ = new SequenceImpl<Long>("category_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
+     * The sequence <code>public.customer_id_seq</code>
+     */
+    public static final Sequence<Long> CUSTOMER_ID_SEQ = new SequenceImpl<Long>("customer_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 
     /**
      * The sequence <code>public.deal_product_id_seq</code>
@@ -57,6 +72,11 @@ public class Sequences {
      * The sequence <code>public.rating_id_seq</code>
      */
     public static final Sequence<Long> RATING_ID_SEQ = new SequenceImpl<Long>("rating_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
+     * The sequence <code>public.recipient_id_seq</code>
+     */
+    public static final Sequence<Long> RECIPIENT_ID_SEQ = new SequenceImpl<Long>("recipient_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 
     /**
      * The sequence <code>public.review_id_seq</code>

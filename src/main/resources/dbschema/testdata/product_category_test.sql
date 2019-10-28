@@ -33,3 +33,6 @@ VALUES (10,1);
 INSERT INTO product_category (product_id, category_id)
 VALUES (10,7);
 
+INSERT INTO product_category (product_id, category_id)
+VALUES (10,7);
+
