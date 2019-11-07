@@ -40,8 +40,17 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductDTO> findListProductByIdCustomer(Long id) {
-
         return null;
+    }
+
+    @Override
+    public List<ProductDTO> getListBestProductDTOBySellerAndOccasion(Long occasionId) {
+        return productRepository.getListBestProductDTOBySellerAndOccasion(occasionId);
+    }
+
+    @Override
+    public List<ProductDTO> getAllFlower() {
+        return productRepository.getAllFlowers();
     }
 
     @Override
