@@ -41,7 +41,11 @@ import storysflower.com.storysflower.model.tables.tables.records.BuyProductRecor
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class BuyProduct extends TableImpl<BuyProductRecord> {
 
+<<<<<<< HEAD
     private static final long serialVersionUID = 1304549385;
+=======
+    private static final long serialVersionUID = 1524587951;
+>>>>>>> origin/master
 
     /**
      * The reference instance of <code>public.buy_product</code>
@@ -77,11 +81,14 @@ public class BuyProduct extends TableImpl<BuyProductRecord> {
     public final TableField<BuyProductRecord, Integer> QUANTITY = createField("quantity", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
 
     /**
+<<<<<<< HEAD
      * The column <code>public.buy_product.status</code>.
      */
     public final TableField<BuyProductRecord, Integer> STATUS = createField("status", org.jooq.impl.SQLDataType.INTEGER.nullable(false).defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
+=======
+>>>>>>> origin/master
      * Create a <code>public.buy_product</code> table reference
      */
     public BuyProduct() {
@@ -127,7 +134,11 @@ public class BuyProduct extends TableImpl<BuyProductRecord> {
      */
     @Override
     public List<Index> getIndexes() {
+<<<<<<< HEAD
         return Arrays.<Index>asList(Indexes.BUY_PRODUCT_PKEY);
+=======
+        return Arrays.<Index>asList(Indexes.PK_BUY_PRODUCT);
+>>>>>>> origin/master
     }
 
     /**
@@ -143,7 +154,11 @@ public class BuyProduct extends TableImpl<BuyProductRecord> {
      */
     @Override
     public UniqueKey<BuyProductRecord> getPrimaryKey() {
+<<<<<<< HEAD
         return Keys.BUY_PRODUCT_PKEY;
+=======
+        return Keys.PK_BUY_PRODUCT;
+>>>>>>> origin/master
     }
 
     /**
@@ -151,7 +166,11 @@ public class BuyProduct extends TableImpl<BuyProductRecord> {
      */
     @Override
     public List<UniqueKey<BuyProductRecord>> getKeys() {
+<<<<<<< HEAD
         return Arrays.<UniqueKey<BuyProductRecord>>asList(Keys.BUY_PRODUCT_PKEY);
+=======
+        return Arrays.<UniqueKey<BuyProductRecord>>asList(Keys.PK_BUY_PRODUCT);
+>>>>>>> origin/master
     }
 
     /**
