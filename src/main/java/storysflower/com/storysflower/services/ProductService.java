@@ -22,4 +22,6 @@ public interface ProductService {
     List<ProductDTO> getListBestProductDTOBySellerAndOccasion(Long occasionId);
 
     List<ProductDTO> getAllFlower();
+
+    List<ProductDTO> getAllGitfAndSweet();
 }

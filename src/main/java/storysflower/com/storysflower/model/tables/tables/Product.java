@@ -42,7 +42,7 @@ import storysflower.com.storysflower.model.tables.tables.records.ProductRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Product extends TableImpl<ProductRecord> {
 
-    private static final long serialVersionUID = 1488577780;
+    private static final long serialVersionUID = 621006003;
 
     /**
      * The reference instance of <code>public.product</code>
@@ -80,7 +80,7 @@ public class Product extends TableImpl<ProductRecord> {
     /**
      * The column <code>public.product.description</code>.
      */
-    public final TableField<ProductRecord, String> DESCRIPTION = createField("description", org.jooq.impl.SQLDataType.VARCHAR(1000).nullable(false), this, "");
+    public final TableField<ProductRecord, String> DESCRIPTION = createField("description", org.jooq.impl.SQLDataType.VARCHAR(1000), this, "");
 
     /**
      * The column <code>public.product.meaning</code>.

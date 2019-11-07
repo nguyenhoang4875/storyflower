@@ -662,5 +662,71 @@
             <column name="image_data" valueBlobFile="images/product_images/Sympathy5e.jpg"></column>
         </insert>
 
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/GiftSweet/bear1a.png"></column>
+        </insert>
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/GiftSweet/bear1b.jpg"></column>
+        </insert>
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/GiftSweet/bear1c.jpg"></column>
+        </insert>
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/GiftSweet/bear1e.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/GiftSweet/bear2a.jpg"></column>
+        </insert>
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/GiftSweet/bear2b.jpg"></column>
+        </insert>
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/GiftSweet/bear2c.jpg"></column>
+        </insert>
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/GiftSweet/bear2d.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/GiftSweet/bear3a.jpg"></column>
+        </insert>
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/GiftSweet/bear3b.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/GiftSweet/bear4a.jpg"></column>
+        </insert>
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/GiftSweet/bear4b.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/GiftSweet/bear5a.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/GiftSweet/bear6a.jpg"></column>
+        </insert>
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/GiftSweet/bear6b.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/GiftSweet/bear7a.jpg"></column>
+        </insert>
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/GiftSweet/bear7b.jpg"></column>
+        </insert>
+
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/GiftSweet/bear8a.jpg"></column>
+        </insert>
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/GiftSweet/bear8b.png"></column>
+        </insert>
+
     </changeSet>
 </databaseChangeLog>

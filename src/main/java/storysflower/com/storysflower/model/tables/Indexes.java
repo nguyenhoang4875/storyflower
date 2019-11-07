@@ -49,7 +49,6 @@ public class Indexes {
     public static final Index CATEGORY_CATEGORY_NAME_KEY = Indexes0.CATEGORY_CATEGORY_NAME_KEY;
     public static final Index PK_CATEGORY = Indexes0.PK_CATEGORY;
     public static final Index CUSTOMER_EMAIL_KEY = Indexes0.CUSTOMER_EMAIL_KEY;
-    public static final Index CUSTOMER_FULL_NAME_KEY = Indexes0.CUSTOMER_FULL_NAME_KEY;
     public static final Index PK_CUSTOMER = Indexes0.PK_CUSTOMER;
     public static final Index PK_DEAL_PRODUCT = Indexes0.PK_DEAL_PRODUCT;
     public static final Index PK_FAVOURITE = Indexes0.PK_FAVOURITE;
@@ -76,7 +75,6 @@ public class Indexes {
         public static Index CATEGORY_CATEGORY_NAME_KEY = Internal.createIndex("category_category_name_key", Category.CATEGORY, new OrderField[] { Category.CATEGORY.CATEGORY_NAME }, true);
         public static Index PK_CATEGORY = Internal.createIndex("pk_category", Category.CATEGORY, new OrderField[] { Category.CATEGORY.ID }, true);
         public static Index CUSTOMER_EMAIL_KEY = Internal.createIndex("customer_email_key", Customer.CUSTOMER, new OrderField[] { Customer.CUSTOMER.EMAIL }, true);
-        public static Index CUSTOMER_FULL_NAME_KEY = Internal.createIndex("customer_full_name_key", Customer.CUSTOMER, new OrderField[] { Customer.CUSTOMER.FULL_NAME }, true);
         public static Index PK_CUSTOMER = Internal.createIndex("pk_customer", Customer.CUSTOMER, new OrderField[] { Customer.CUSTOMER.ID }, true);
         public static Index PK_DEAL_PRODUCT = Internal.createIndex("pk_deal_product", DealProduct.DEAL_PRODUCT, new OrderField[] { DealProduct.DEAL_PRODUCT.ID }, true);
         public static Index PK_FAVOURITE = Internal.createIndex("pk_favourite", Favourite.FAVOURITE, new OrderField[] { Favourite.FAVOURITE.ID }, true);

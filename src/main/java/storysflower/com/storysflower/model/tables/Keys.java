@@ -90,7 +90,6 @@ public class Keys {
     public static final UniqueKey<CategoryRecord> PK_CATEGORY = UniqueKeys0.PK_CATEGORY;
     public static final UniqueKey<CategoryRecord> CATEGORY_CATEGORY_NAME_KEY = UniqueKeys0.CATEGORY_CATEGORY_NAME_KEY;
     public static final UniqueKey<CustomerRecord> PK_CUSTOMER = UniqueKeys0.PK_CUSTOMER;
-    public static final UniqueKey<CustomerRecord> CUSTOMER_FULL_NAME_KEY = UniqueKeys0.CUSTOMER_FULL_NAME_KEY;
     public static final UniqueKey<CustomerRecord> CUSTOMER_EMAIL_KEY = UniqueKeys0.CUSTOMER_EMAIL_KEY;
     public static final UniqueKey<DealProductRecord> PK_DEAL_PRODUCT = UniqueKeys0.PK_DEAL_PRODUCT;
     public static final UniqueKey<FavouriteRecord> PK_FAVOURITE = UniqueKeys0.PK_FAVOURITE;
@@ -160,7 +159,6 @@ public class Keys {
         public static final UniqueKey<CategoryRecord> PK_CATEGORY = Internal.createUniqueKey(Category.CATEGORY, "pk_category", Category.CATEGORY.ID);
         public static final UniqueKey<CategoryRecord> CATEGORY_CATEGORY_NAME_KEY = Internal.createUniqueKey(Category.CATEGORY, "category_category_name_key", Category.CATEGORY.CATEGORY_NAME);
         public static final UniqueKey<CustomerRecord> PK_CUSTOMER = Internal.createUniqueKey(Customer.CUSTOMER, "pk_customer", Customer.CUSTOMER.ID);
-        public static final UniqueKey<CustomerRecord> CUSTOMER_FULL_NAME_KEY = Internal.createUniqueKey(Customer.CUSTOMER, "customer_full_name_key", Customer.CUSTOMER.FULL_NAME);
         public static final UniqueKey<CustomerRecord> CUSTOMER_EMAIL_KEY = Internal.createUniqueKey(Customer.CUSTOMER, "customer_email_key", Customer.CUSTOMER.EMAIL);
         public static final UniqueKey<DealProductRecord> PK_DEAL_PRODUCT = Internal.createUniqueKey(DealProduct.DEAL_PRODUCT, "pk_deal_product", DealProduct.DEAL_PRODUCT.ID);
         public static final UniqueKey<FavouriteRecord> PK_FAVOURITE = Internal.createUniqueKey(Favourite.FAVOURITE, "pk_favourite", Favourite.FAVOURITE.ID);

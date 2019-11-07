@@ -132,4 +132,13 @@ public class ProductRepository {
                 .where(PRODUCT.TOPIC_ID.eq(1L))
                 .fetchInto(ProductDTO.class);
     }
+
+    public List<ProductDTO> getAllGitfSweet() {
+        return dslContext.select()
+                .from(PRODUCT)
+                .join(IMAGE_PRODUCT).on(IMAGE_PRODUCT.PRODUCT_ID.eq(PRODUCT.ID))
+                .and(IMAGE_PRODUCT.MAIN_IMAGE.eq(true))
+                .where(PRODUCT.TOPIC_ID.eq(3L))
+                .fetchInto(ProductDTO.class);
+    }
 }
