@@ -1,6 +1,7 @@
 package storysflower.com.storysflower.services;
 
 import storysflower.com.storysflower.config.security.CustomUserDetail;
+import storysflower.com.storysflower.dto.UserDTO;
 import storysflower.com.storysflower.dto.UserProfileDTO;
 
 import java.util.List;
@@ -15,9 +16,17 @@ public interface UserService {
 
     public boolean registerNewUserAccount(UserProfileDTO userProfileDTO);
 
-    List<UserProfileDTO> findAll();
+    List<UserDTO> findAll();
 
-    UserProfileDTO findCustomerById(Long id);
+    UserProfileDTO findCustomerByIdUser(Long id);
+
+    boolean addUser(UserDTO userDTO);
+
+    UserDTO findUserByIdUser(Long id);
 
     String getFullNameById(Long id);
+
+    boolean edit(UserDTO userDTO);
+
+    boolean del(Long id);
 }

@@ -5,6 +5,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import storysflower.com.storysflower.config.security.CustomUserDetail;
+import storysflower.com.storysflower.dto.UserDTO;
 import storysflower.com.storysflower.dto.UserProfileDTO;
 import storysflower.com.storysflower.repositories.UserRepository;
 import storysflower.com.storysflower.services.UserService;
@@ -41,30 +42,67 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserProfileDTO> findAll() {
-        List<UserProfileDTO> listUserProfile = userRepository.findAll();
-        for (UserProfileDTO u: listUserProfile) {
-            String f = Character.toString(u.getFisrtName().charAt(0)).toUpperCase();
-            u.setFisrtName(f+u.getFisrtName().substring(1));
+    public List<UserDTO> findAll() {
+        List<UserDTO> listUser = userRepository.findAll();
+        for (UserDTO u: listUser) {
+            u.setRole(u.getRole().replace("ROLE_",""));
+            String f = Character.toString(u.getFirstName().charAt(0)).toUpperCase();
+            u.setFirstName(f+u.getFirstName().substring(1));
             String l = Character.toString(u.getLastName().charAt(0)).toUpperCase();
             u.setLastName(l+u.getLastName().substring(1));
         }
-        return listUserProfile;
+        return listUser;
     }
 
     @Override
-    public UserProfileDTO findCustomerById(Long id) {
-        return userRepository.findCustomerById(id);
+    public UserProfileDTO findCustomerByIdUser(Long id) {
+        return userRepository.findCustomerByIdUser(id);
+    }
+
+    @Override
+    public boolean addUser(UserDTO userDTO) {
+        if(userRepository.addUser(userDTO)== true){
+            return userRepository.addUser_ROLE(userDTO);
+        }else {
+            System.out.println("false");
+            return false;
+        }
     }
 
     @Override
     public String getFullNameById(Long id) {
-        UserProfileDTO userProfileDTO = findCustomerById(id);
+        UserProfileDTO userProfileDTO = findCustomerByIdUser(id);
         String f = Character.toString(userProfileDTO.getFisrtName().charAt(0)).toUpperCase();
         userProfileDTO.setFisrtName(f+userProfileDTO.getFisrtName().substring(1));
         String l = Character.toString(userProfileDTO.getLastName().charAt(0)).toUpperCase();
         userProfileDTO.setLastName(l+userProfileDTO.getLastName().substring(1));
-
         return userProfileDTO.getFisrtName()+" "+userProfileDTO.getLastName();
+    }
+
+    @Override
+    public boolean edit(UserDTO userDTO) {
+        if(userRepository.edit(userDTO)== true){
+            return userRepository.edit_ROLE(userDTO);
+        }else {
+            System.out.println("false");
+            return false;
+        }
+    }
+
+    @Override
+    public boolean del(Long id) {
+        if(userRepository.del_ROLE(userRepository.getUserByIdUser(id).getEmail())){
+            return userRepository.del(id);
+        }else {
+            System.out.println("false");
+            return false;
+        }
+    }
+
+    @Override
+    public UserDTO findUserByIdUser(Long id) {
+        UserDTO u = userRepository.getUserByIdUser(id);
+        u.setRole(u.getRole().replace("ROLE_",""));
+        return u;
     }
 }

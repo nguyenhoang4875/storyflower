@@ -1,5 +1,6 @@
 package storysflower.com.storysflower.services;
 
+import storysflower.com.storysflower.dto.ProductCartDTO;
 import storysflower.com.storysflower.dto.ProductDTO;
 import storysflower.com.storysflower.dto.ProductDetailDTO;
 
@@ -18,4 +19,6 @@ public interface ProductService {
     public List<ProductDTO> getListBestProductDTOByRatting();
 
     List<ProductDTO> findListProductByIdCustomer(Long id);
+
+    ProductCartDTO findProductCartByIdBuyProduct(Long idProduct);
 }

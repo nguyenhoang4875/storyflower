@@ -4,6 +4,7 @@ import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import storysflower.com.storysflower.dto.CategoryDTO;
+import storysflower.com.storysflower.dto.ProductCartDTO;
 import storysflower.com.storysflower.dto.ProductDTO;
 import storysflower.com.storysflower.dto.ProductDetailDTO;
 import storysflower.com.storysflower.services.RattingService;
@@ -132,5 +133,14 @@ public class ProductRepository {
                 .and(IMAGE_PRODUCT.MAIN_IMAGE.eq(true))
                 .where(PRODUCT.TOPIC_ID.eq(1L))
                 .fetchInto(ProductDTO.class);
+    }
+    public ProductCartDTO getProductCartByIdBuyProduct(Long idByProduct) {
+        return  dslContext.select(PRODUCT.PRODUCT_NAME.as("productName"), RECIPIENT.MESSAGE_TO_RECIPIENT.as("messageToRecipient"), PRODUCT.PRICE, BUY_PRODUCT.QUANTITY)
+                .from(BUY_PRODUCT)
+                .join(CART).on(BUY_PRODUCT.CART_ID.eq(CART.ID))
+                .join(PRODUCT).on(BUY_PRODUCT.PRODUCT_ID.eq(PRODUCT.ID))
+                .join(RECIPIENT).on(CART.RECIPIENT_ID.eq(RECIPIENT.ID))
+                .where(BUY_PRODUCT.ID.eq(idByProduct))
+                .fetchOneInto(ProductCartDTO.class);
     }
 }

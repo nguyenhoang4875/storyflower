@@ -23,7 +23,7 @@ public class FlowerController {
     private static final String OCCASION = "occasions";
     @GetMapping()
     public String getOccasionPage(Model model){
-        model.addAttribute(FLOWERS, productService.getAllFlower());
+   //     model.addAttribute(FLOWERS, productService.getAllFlower());
         model.addAttribute(OCCASION, occasionService.findAllOccasion());
         return "flower";
     }

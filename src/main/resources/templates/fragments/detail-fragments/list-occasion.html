@@ -1,9 +1,9 @@
 <th:block xmlns:th="www.thymeLeaf.org" th:fragment="list-occasion">
     <div id="image-container mx-auto">
         <div class="row d-flex justify-content-center">
-            <div class="image-link mx-2 my-2 p-2" th:if="${not #lists.isEmpty(occasions)}"
+            <div class="@{/product/{id}(id=${item.id})}image-link mx-2 my-2 p-2" th:if="${not #lists.isEmpty(occasions)}"
                  th:each="item: ${occasions}">
-                <a th:href="@{/product/{id}(id=${item.id})}">
+                <a th:href="">
                     <div><img
                             th:src="${item.imageId!=null}?@{/api/image/}+${item.imageId}:@{/img/no-img.png}"
                             class="image">

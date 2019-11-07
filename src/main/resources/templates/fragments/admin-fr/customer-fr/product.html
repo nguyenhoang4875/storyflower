@@ -13,23 +13,23 @@
                         <th>Product Name</th>
                         <th>Order Date</th>
                         <th>Status</th>
-                        <th>Amount</th>
+                        <th>Quantity</th>
                         <th>Total Money</th>
                     </tr>
                     </thead>
                     <tbody>
-                        <tr >
-                            <td>A</td>
-                            <td>AAA</td>
-                            <td>B</td>
-                            <td>C</td>
-                            <td>Otto</td>
-                            <td>B</td>
+                        <tr th:each="item : ${listProduct}">
+                            <td th:text = "${item.id}"t></td>
+                            <td th:text = "${item.product_name}">AAA</td>
+                            <td th:text = "${item.buy_date}"></td>
+                            <td >C</td>
+                            <td th:text = "${item.quantity}"></td>
+                            <td th:text = "${#numbers.formatDecimal(item.total_Money, 0, 'COMMA', 0, 'POINT')+' VND'}"></td>
                         </tr>
                     </tbody>
                 </table>
             <div>
-                <label style="color: #0f6674">The total amount of all orders: 500,000 VND</label>
+                <label style="color: #0f6674" th:text = "${'The total amount of all orders: '+#numbers.formatDecimal(totalAmountAll, 0, 'COMMA', 0, 'POINT')} +' VND'"/>
             </div>
         </div>
     </div>

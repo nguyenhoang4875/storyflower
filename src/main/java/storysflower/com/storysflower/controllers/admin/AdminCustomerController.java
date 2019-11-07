@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import storysflower.com.storysflower.constants.CommonConstants;
 import storysflower.com.storysflower.constants.UrlConstants;
+import storysflower.com.storysflower.dto.CustomerDTO;
+import storysflower.com.storysflower.dto.ProductCustomerDTO;
 import storysflower.com.storysflower.dto.ProductDTO;
 import storysflower.com.storysflower.dto.UserProfileDTO;
+import storysflower.com.storysflower.services.CustomerService;
 import storysflower.com.storysflower.services.ProductService;
 import storysflower.com.storysflower.services.UserService;
 
@@ -27,13 +30,13 @@ import java.util.List;
 public class AdminCustomerController {
 
     @Autowired
-    UserService userService;
+    CustomerService customerService;
 
     @Autowired
     ProductService productService;
 
     @GetMapping({UrlConstants.URL_ADMIN_CUSTOMER_INDEX})
-        public String index(Model model, HttpServletRequest request , RedirectAttributes redirect) {
+    public String index(Model model, HttpServletRequest request , RedirectAttributes redirect) {
             request.getSession().setAttribute("customer", null);
             if(model.asMap().get("success") != null)
                 redirect.addFlashAttribute("success",model.asMap().get("success").toString());
@@ -44,9 +47,7 @@ public class AdminCustomerController {
     public String shoListCustomerPage(HttpServletRequest request,@PathVariable int page, Model model) {
 
         PagedListHolder<?> pages = (PagedListHolder<?>) request.getSession().getAttribute("customer");
-        List<UserProfileDTO> list =(List<UserProfileDTO>) userService.findAll();
-        System.out.println(list.size());
-        System.out.println(list.size());
+        List<CustomerDTO> list = (List<CustomerDTO>)customerService.findAll();
         if (pages == null) {
             pages = new PagedListHolder<>(list);
             pages.setPageSize(CommonConstants.DEFAULT_PAGING_CUSTOMER_SIZE);
@@ -75,10 +76,17 @@ public class AdminCustomerController {
 
     @GetMapping({UrlConstants.URL_ADMIN_CUSTOMER_DETAIL})
     public String showListProductByCustomer(HttpServletRequest request,@PathVariable Long id, Model model) {
-        String fullNameCustomer = userService.getFullNameById(id);
-        List<ProductDTO> listProduct = productService.findListProductByIdCustomer(id);
-        model.addAttribute("customername", "Orderer: "+fullNameCustomer);
-        System.out.println(id);
+        CustomerDTO customerDTO = customerService.findCustomerById(id);
+        List<ProductCustomerDTO> listProduct = customerService.findAllProductByIdCustomer(id);
+        int totalAmountAll = 0;
+        if(listProduct.size()>0) {
+            for (ProductCustomerDTO productCustomerDTO : listProduct) {
+                totalAmountAll += productCustomerDTO.getTotal_Money();
+            }
+        }
+        model.addAttribute("customername", "Orderer: "+customerDTO.getFullName());
+        model.addAttribute("listProduct", listProduct);
+        model.addAttribute("totalAmountAll", totalAmountAll);
         return "admin/customer/product";
     }
 
@@ -87,5 +95,4 @@ public class AdminCustomerController {
         PrintWriter out = response.getWriter();
         out.println("<p>Done</p>");
     }
-
 }

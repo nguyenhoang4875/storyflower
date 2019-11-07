@@ -36,3 +36,4 @@ INSERT INTO category (category_name)
 VALUES ('teddy bear');
 INSERT INTO category (category_name)
 VALUES ('gitf');
+

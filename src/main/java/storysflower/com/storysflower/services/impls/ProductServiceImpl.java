@@ -2,6 +2,7 @@ package storysflower.com.storysflower.services.impls;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import storysflower.com.storysflower.dto.ProductCartDTO;
 import storysflower.com.storysflower.dto.ProductDTO;
 import storysflower.com.storysflower.dto.ProductDetailDTO;
 import storysflower.com.storysflower.repositories.ProductRepository;
@@ -41,6 +42,13 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductDTO> findListProductByIdCustomer(Long id) {
 
         return null;
+    }
+
+    @Override
+    public ProductCartDTO findProductCartByIdBuyProduct(Long idProduct) {
+        ProductCartDTO productCartDTO = productRepository.getProductCartByIdBuyProduct(idProduct);
+        productCartDTO.setTotalMoney(productCartDTO.getPrice()*productCartDTO.getQuantity());
+        return productCartDTO;
     }
 
 

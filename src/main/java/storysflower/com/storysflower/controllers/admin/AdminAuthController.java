@@ -7,10 +7,13 @@ import storysflower.com.storysflower.constants.UrlConstants;
 
 public class AdminAuthController {
 
-
-        @GetMapping(UrlConstants.URL_LOGIN)
-        public String index() {
+    @GetMapping(UrlConstants.URL_LOGIN)
+    public String index() {
             return "admin/login";
         }
+    @GetMapping(UrlConstants.URL_403_)
+    public String error403() {
+        return "admin/error404";
+    }
 
 }

@@ -46,20 +46,32 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.addFilterBefore(characterEncodingFilter(), CsrfFilter.class)
                 .authorizeRequests()
-                .antMatchers( "/api/rating/**", "/api/favourite/**", "/api/review/**")
-                .authenticated()
-                .anyRequest().permitAll()
-                .and()
+
+                    .antMatchers("/admin/user/del").hasRole("ADMIN")
+                    .antMatchers("/admin/user/add").hasRole("ADMIN")
+                    .antMatchers("/admin/customer/**").hasAnyRole("ADMIN","USER")
+                    .antMatchers("/admin/cart/**").hasAnyRole("ADMIN","USER")
+                    .antMatchers("/admin/user/**").hasAnyRole("ADMIN","USER")
+                    .antMatchers( "/api/rating/**", "/api/favourite/**", "/api/review/**")
+                    .authenticated()
+                    .anyRequest().permitAll()
+                    .and()
+
                 .formLogin()
-                .loginPage("/login")
-                .usernameParameter("email")
-                .passwordParameter("password")
-                .failureUrl("/login?error")
-                .and()
-                .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/")
-                .and().csrf().disable();
+                    .loginPage("/login")
+                    .usernameParameter("email")
+                    .passwordParameter("password")
+                    .defaultSuccessUrl("/admin/user/index")
+                    .failureUrl("/login?error")
+                    .and()
+                    .logout()
+                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                    .logoutSuccessUrl("/login")
+                    .and()
+                .exceptionHandling()
+                    .accessDeniedPage("/403");
+
+
     }
 
     private CharacterEncodingFilter characterEncodingFilter() {

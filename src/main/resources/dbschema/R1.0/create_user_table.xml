@@ -25,6 +25,9 @@
             <column name="image_id" type="bigint">
                 <constraints nullable="true"/>
             </column>
+           <!-- <column name="enable" type="int" defaultValue="0">
+                <constraints nullable="false"></constraints>
+            </column>-->
         </createTable>
     </changeSet>
 

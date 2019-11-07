@@ -1,14 +1,11 @@
 package storysflower.com.storysflower.repositories;
 
-
 import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import storysflower.com.storysflower.dto.CartDTO;
-import storysflower.com.storysflower.dto.CustomerDTO;
-import storysflower.com.storysflower.dto.ReceiptDTO;
-import storysflower.com.storysflower.dto.RecipientDTO;
+import storysflower.com.storysflower.dto.*;
+import storysflower.com.storysflower.model.tables.Tables;
 import storysflower.com.storysflower.model.tables.tables.Cart;
 import storysflower.com.storysflower.model.tables.tables.Customer;
 import storysflower.com.storysflower.model.tables.tables.Recipient;
@@ -18,15 +15,18 @@ import storysflower.com.storysflower.utils.TimeUtil;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.Collections;
 import java.util.List;
 
 import static storysflower.com.storysflower.model.tables.Tables.BUY_PRODUCT;
+import static storysflower.com.storysflower.model.tables.Tables.PRODUCT;
 import static storysflower.com.storysflower.model.tables.tables.Cart.CART;
 import static storysflower.com.storysflower.model.tables.tables.Customer.CUSTOMER;
 import static storysflower.com.storysflower.model.tables.tables.Recipient.RECIPIENT;
 
 @Repository
 public class CartRepository {
+
     @Autowired
     private DSLContext dslContext;
 
@@ -103,6 +103,37 @@ public class CartRepository {
                 .where(CART.CUSTOMER_ID.eq(customerId))
                 .and(CART.RECIPIENT_ID.eq(recipientId))
                 .fetchOneInto(Long.class);
+    }
+    public List<CartAdminDTO> findAll() {
+        List<CartAdminDTO> listCart = dslContext
+                //Long id, String full_name, String product_name, int status, Date delivery_date, String message_to_us
+                .select(BUY_PRODUCT.ID, CUSTOMER.FULL_NAME, PRODUCT.PRODUCT_NAME, BUY_PRODUCT.STATUS, CART.DELIVERY_DATE, RECIPIENT.MESSAGE_TO_US )
+                .from(BUY_PRODUCT)
+                .join(Tables.CART).on(Tables.CART.ID.eq(BUY_PRODUCT.CART_ID))
+                .join(Tables.CUSTOMER).on(Tables.CUSTOMER.ID.eq(Tables.CART.CUSTOMER_ID))
+                .join(PRODUCT).on(PRODUCT.ID.eq(BUY_PRODUCT.PRODUCT_ID))
+                .join(Tables.RECIPIENT).on(Tables.RECIPIENT.ID.eq(Tables.CART.RECIPIENT_ID))
+                .fetchInto(CartAdminDTO.class);
+        return  listCart.size()==0? Collections.emptyList() : listCart;
+    }
+
+    public int countPagination() {
+        return dslContext.selectCount()
+                .from(BUY_PRODUCT)
+                .fetchOne(0, Integer.class);
+    }
+
+    public CartAdminDTO findCartById() {
+        CartAdminDTO cart = dslContext
+                .select(Tables.CUSTOMER.ID, BUY_PRODUCT.ID, Tables.RECIPIENT.ID, Tables.CART.ID,
+                        Tables.CUSTOMER.FULL_NAME, PRODUCT.PRODUCT_NAME, BUY_PRODUCT.STATUS, Tables.CART.DELIVERY_DATE, Tables.RECIPIENT.MESSAGE_TO_US )
+                .from(BUY_PRODUCT)
+                .join(Tables.CART).on(Tables.CART.ID.eq(BUY_PRODUCT.CART_ID))
+                .join(Tables.CUSTOMER).on(Tables.CUSTOMER.ID.eq(Tables.CART.CUSTOMER_ID))
+                .join(PRODUCT).on(PRODUCT.ID.eq(BUY_PRODUCT.PRODUCT_ID))
+                .join(Tables.RECIPIENT).on(Tables.RECIPIENT.ID.eq(Tables.CART.RECIPIENT_ID))
+                .fetchOneInto(CartAdminDTO.class);
+        return  null;
     }
 
 }

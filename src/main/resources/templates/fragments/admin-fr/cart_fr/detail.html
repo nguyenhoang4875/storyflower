@@ -1,0 +1,55 @@
+<div xmlns:th="http://www.w3.org/1999/xhtml">
+    <div>
+        <h4>Basic  information</h4>
+    </div>
+    <div class="row invoice-info">
+        <div class="col-4">From
+            <address>
+                <strong>Full Name: </strong>
+                <label th:text = "${customerCartDTO.fullName}">Full Name</label><br>
+                <strong>Buy Date: </strong>
+                <label th:text = "${ customerCartDTO.buyDate}">Buy Date</label><br>
+                <strong>Full Name: </strong>
+                <label th:text = "${ customerCartDTO.address}">Address</label><br>
+                <strong>Phone Number: </strong>
+                <label th:text = "${ customerCartDTO.phoneNumber}">Phone Number</label><br>
+                <strong>Email: </strong>
+                <label th:text = "${ customerCartDTO.email}">Email</label><br>
+                <strong>Message to us: </strong>
+                <label th:text = "${ customerCartDTO.messagesToUs}">Message to us</label><br>
+            </address>
+        </div>
+        <div class="col-4">To
+            <address>
+                <strong>Full Name: </strong>
+                <label th:text = "${ recipientCartDTO.fullName}" >Full Name</label><br>
+                <strong>Address: </strong>
+                <label th:text = "${ recipientCartDTO.address}">Address</label><br>
+                <strong>Phone Number: </strong>
+                <label th:text = "${ recipientCartDTO.phoneNumber}">Phone Number</label><br>
+                <strong>Delivery date: </strong>
+                <label th:text = "${ recipientCartDTO.deliveryDate}">Delivery date</label><br>
+                <strong>Delivery Hour: </strong>
+                <label th:text = "${ recipientCartDTO.deliveryHour}">Delivery Hour</label><br>
+            </address>
+        </div>
+
+    </div>
+    <div>
+        <h4>Order information</h4>
+        <div>
+            <strong>Product Name: </strong>
+            <label th:text = "${ productCartDTO.productName}" >Product Name</label><br>
+            <strong>Message to recipient: </strong>
+            <label th:text = "${ productCartDTO.messageToRecipient}" >Message to recipient</label><br>
+            <strong>Quanlity: </strong>
+            <label th:text = "${ productCartDTO.quantity}" >Quanlity</label><br>
+            <strong>Total Money: </strong>
+            <label th:text = "${ #numbers.formatDecimal(productCartDTO.totalMoney, 0, 'COMMA', 0, 'POINT')} +' VND'" >Total Money</label><br>
+        </div>
+
+    </div>
+    <div style="margin-top: 25px;">
+        <a class="btn btn-info" th:href="@{/admin/cart/order/{id}(id=${id})}">Order confirmation</a>
+    </div>
+</div>

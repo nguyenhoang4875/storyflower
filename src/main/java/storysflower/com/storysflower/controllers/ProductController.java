@@ -29,7 +29,7 @@ public class ProductController {
     public String getOccasionPage(@PathVariable Long occasionId, Model model){
         model.addAttribute(OCCASION, occasionService.getOccasionDTOById(occasionId));
         model.addAttribute(OCCASIONS, productService.getListProductDTOByOccasionId(occasionId));
-        model.addAttribute(BESTRATINGPRODUCTS, productService.getListBestProductDTOByRattingAndOccasion(occasionId));
+    //    model.addAttribute(BESTRATINGPRODUCTS, productService.getListBestProductDTOByRattingAndOccasion(occasionId));
 //        model.addAttribute(POPULARPRODUCTS, productService.getListBestProductDTOBySellerAndOccasion(occasionId));
 
         return "occasion";
