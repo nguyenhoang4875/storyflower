@@ -7,7 +7,7 @@
             <div>
                 <button class="fa fa-bars d-lg-none d-block" id="button-nav" onclick="openNav()"></button>
             </div>
-            <a  href="/"><img src="/img/logo.png" class="logo logo-image"></a>
+            <a href="/"><img src="/img/logo.png" class="logo logo-image"></a>
             <ul class="navbar-nav d-none d-lg-block">
                 <div class="row">
                     <li class="nav-item active">
@@ -20,12 +20,13 @@
                         <a class="nav-link" href="#">PLANTS</a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link" href="#">GIFTS & SWEETS</a>
+                        <a class="nav-link" href="/gitfandsweet">GIFTS & SWEETS</a>
                     </li>
                 </div>
             </ul>
             <div class="row d-flex align-items-center">
-                <button type="button" data-toggle="collapse" data-target="#search" th:href="@{/search}" class="nav-icon search">
+                <button type="button" data-toggle="collapse" data-target="#search" th:href="@{/search}"
+                        class="nav-icon search">
                     <i class="fa fa-search"></i>
                     <p class="d-none d-md-block mb-0">Search</p>
                 </button>
@@ -50,10 +51,14 @@
                 </div>
             </div>
         </nav>
-        <div id="search" class="collapse row mb-2">
-            <div class="col-1 col-md-2 col-lg-3"></div>
-            <input type="text" class="form-control col-10 col-md-8 col-lg-6" id="searchInfor" name="searchInfor" placeholder="Search for activities"></div>
 
+        <form th:action="@{/search}" method="get" id="searchForm">
+            <div id="search" class="collapse row mb-2">
+                <div class="col-1 col-md-2 col-lg-3"></div>
+                <input type="text" class="form-control col-10 col-md-8 col-lg-6" id="searchInfor" name="searchKey"
+                       placeholder="Search for activities">
+            </div>
+        </form>
         <div id="mySidenav" class="sidenav col-lg-4 col-md-6 col-12 p-0">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <div class="col-8 col-md-10 col-lg-10 mx-auto mt-5">
@@ -155,7 +160,7 @@
                         </div>
                         <div>
                             <li class="nav-item py-2">
-                                <a class="menu-link"><span class="fa fa-gift mr-2"></span><span>Gifts And Sweets</span></a>
+                                <a class="menu-link" th:href="@{/giftandsweet}"><span class="fa fa-gift mr-2"></span><span>Gifts And Sweets</span></a>
                             </li>
                         </div>
                         <div>

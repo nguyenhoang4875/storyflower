@@ -51,5 +51,10 @@ public class ProductServiceImpl implements ProductService {
         return productCartDTO;
     }
 
+    @Override
+    public List<ProductDTO> getAllGitfAndSweet() {
+        return productRepository.getAllGitfSweet();
+    }
+
 
 }

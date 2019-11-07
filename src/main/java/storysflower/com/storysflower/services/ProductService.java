@@ -20,5 +20,10 @@ public interface ProductService {
 
     List<ProductDTO> findListProductByIdCustomer(Long id);
 
+    List<ProductDTO> getListBestProductDTOBySellerAndOccasion(Long occasionId);
+
+    List<ProductDTO> getAllFlower();
+
+    List<ProductDTO> getAllGitfAndSweet();
     ProductCartDTO findProductCartByIdBuyProduct(Long idProduct);
 }

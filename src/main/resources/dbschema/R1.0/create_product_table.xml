@@ -20,7 +20,7 @@
                 <constraints nullable="true" foreignKeyName="fk_product_occasion" references="occasion(occasion_id)" deleteCascade="true"/>
             </column>
             <column name="description" type="varchar(1000)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="meaning" type="varchar(1000)">
                 <constraints nullable="true"/>

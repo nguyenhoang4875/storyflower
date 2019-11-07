@@ -41,7 +41,6 @@ public class ProductRepository {
                 .where(PRODUCT.ID.eq(id))
                 .and(IMAGE_PRODUCT.MAIN_IMAGE.eq(true))
                 .fetchOneInto(ProductDetailDTO.class);
-
         List<CategoryDTO> categories = getCategoriesByProductId(id);
         if (categories.size() == 0) {
             productDetailDTO.setCategories(Collections.emptyList());
@@ -142,5 +141,14 @@ public class ProductRepository {
                 .join(RECIPIENT).on(CART.RECIPIENT_ID.eq(RECIPIENT.ID))
                 .where(BUY_PRODUCT.ID.eq(idByProduct))
                 .fetchOneInto(ProductCartDTO.class);
+    }
+
+    public List<ProductDTO> getAllGitfSweet() {
+        return dslContext.select()
+                .from(PRODUCT)
+                .join(IMAGE_PRODUCT).on(IMAGE_PRODUCT.PRODUCT_ID.eq(PRODUCT.ID))
+                .and(IMAGE_PRODUCT.MAIN_IMAGE.eq(true))
+                .where(PRODUCT.TOPIC_ID.eq(3L))
+                .fetchInto(ProductDTO.class);
     }
 }
