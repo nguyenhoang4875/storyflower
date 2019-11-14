@@ -25,15 +25,16 @@
                 <div th:if="${not #lists.isEmpty(occasions)}" th:each="item: ${occasions}">
 
                     <ul class="treeview-menu">
-                        <li>
-                            <a th:href="@{/occasion/} + ${item.occasionId}">
-                                <p th:text="${item.nameOccasion}"></p>
-                            </a>
-                        </li>
+
+                        <a class="treeview-item" th:href="@{admin/product/index/} + ${item.occasionId}">
+                            <li>
+                                <span th:text="${item.nameOccasion}"></span>
+                            </li>
+
+                        </a>
                     </ul>
                 </div>
             </li>
-
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i
                     class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Tables</span><i
                     class="treeview-indicator fa fa-angle-right"></i></a>
