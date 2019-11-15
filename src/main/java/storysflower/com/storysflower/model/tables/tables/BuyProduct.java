@@ -41,7 +41,7 @@ import storysflower.com.storysflower.model.tables.tables.records.BuyProductRecor
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class BuyProduct extends TableImpl<BuyProductRecord> {
 
-    private static final long serialVersionUID = 209099991;
+    private static final long serialVersionUID = 2094831329;
 
     /**
      * The reference instance of <code>public.buy_product</code>
@@ -75,11 +75,6 @@ public class BuyProduct extends TableImpl<BuyProductRecord> {
      * The column <code>public.buy_product.quantity</code>.
      */
     public final TableField<BuyProductRecord, Integer> QUANTITY = createField("quantity", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
-
-    /**
-     * The column <code>public.buy_product.status</code>.
-     */
-    public final TableField<BuyProductRecord, Integer> STATUS = createField("status", org.jooq.impl.SQLDataType.INTEGER.nullable(false).defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
      * Create a <code>public.buy_product</code> table reference
@@ -127,7 +122,7 @@ public class BuyProduct extends TableImpl<BuyProductRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.PK_BUY_PRODUCT);
+        return Arrays.<Index>asList(Indexes.BUY_PRODUCT_PKEY);
     }
 
     /**
@@ -143,7 +138,7 @@ public class BuyProduct extends TableImpl<BuyProductRecord> {
      */
     @Override
     public UniqueKey<BuyProductRecord> getPrimaryKey() {
-        return Keys.PK_BUY_PRODUCT;
+        return Keys.BUY_PRODUCT_PKEY;
     }
 
     /**
@@ -151,7 +146,7 @@ public class BuyProduct extends TableImpl<BuyProductRecord> {
      */
     @Override
     public List<UniqueKey<BuyProductRecord>> getKeys() {
-        return Arrays.<UniqueKey<BuyProductRecord>>asList(Keys.PK_BUY_PRODUCT);
+        return Arrays.<UniqueKey<BuyProductRecord>>asList(Keys.BUY_PRODUCT_PKEY);
     }
 
     /**

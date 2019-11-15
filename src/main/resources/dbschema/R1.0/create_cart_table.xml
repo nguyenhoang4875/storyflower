@@ -11,7 +11,7 @@
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
             <column name="user_id" type="bigint">
-                <constraints nullable="true" unique="false" foreignKeyName="fk_cart_user" references="public.user(id)"/>
+                <constraints nullable="true" unique="false"/>
             </column>
             <column name="customer_id" type="bigint">
                 <constraints nullable="false" unique="false" foreignKeyName="fk_cart_customer" references="customer(id)"/>
@@ -27,6 +27,9 @@
             </column>
             <column name="delivery_hour" type="time" defaultValueComputed="CURRENT_TIME">
                 <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="status" type="int" defaultValue="0">
+                <constraints nullable="false"></constraints>
             </column>
         </createTable>
     </changeSet>

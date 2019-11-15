@@ -1,5 +1,5 @@
 <div xmlns:th="http://www.springframework.org/tags/form" >
-    <form action="/admin/user/add" method="post">
+    <form th:action="@{/admin/user/add}" method="POST">
         <h4>Add User</h4>
         <div class="form-group">
             <label for="firstName">Fist Name</label>

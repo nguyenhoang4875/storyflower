@@ -23,13 +23,9 @@ import java.util.List;
 @RequestMapping(UrlConstants.URL_ADMIN)
 public class AdminCartController {
     @Autowired
-    BuyProductServicel buyProductServicel;
-    @Autowired
     private CartService cartService;
     @Autowired
     private CustomerService customerService;
-    @Autowired
-    private ProductService productService;
     @Autowired
     private RecipientService recipientService;
 
@@ -68,25 +64,34 @@ public class AdminCartController {
         return "admin/cart/index";
     }
     @GetMapping({UrlConstants.URL_ADMIN_CART_DETAIL})
-    public String detail( @PathVariable Long id, Model model) {
+    public String detail( @PathVariable Long id, Model model, RedirectAttributes redirect) {
+
         RecipientCartDTO recipientCartDTO = recipientService.findRecipientCartDTObyIdBuyProduct(id);
+        if(recipientCartDTO == null){
+            return "redirect:"+UrlConstants.URL_ADMIN+UrlConstants.URL_404_;
+        }
         CustomerCartDTO customerCartDTO = customerService.findCustomerCartDTOByIdBuyProduct(id);
-        ProductCartDTO productCartDTO = productService.findProductCartByIdBuyProduct(id);
+        List<ProductCartDTO> listProduct = cartService.findAllListProductByIdCart(id);
+        int status = cartService.getStatus(id);
+        Double totalMoney = 0.0;
+        for(ProductCartDTO p : listProduct){
+            totalMoney += p.getTotalMoney();
+        }
         model.addAttribute("recipientCartDTO",recipientCartDTO);
         model.addAttribute("customerCartDTO",customerCartDTO);
-        model.addAttribute("productCartDTO",productCartDTO);
-        model.addAttribute("id",id);
+        model.addAttribute("productCartDTO",listProduct);
+        model.addAttribute("totalMoney",totalMoney);
+        model.addAttribute("status",status);
         return "admin/cart/detail";
     }
     @GetMapping({UrlConstants.URL_ADMIN_CART_ORDER})
     public String order( @PathVariable Long id,  RedirectAttributes redirect) {
-        if(buyProductServicel.updateStatusByIdBuyProduct(id)){
-            redirect.addFlashAttribute("msg","Thành công");
+        if(cartService.updateStatus(id)){
+            redirect.addFlashAttribute("msg","Success");
             return "redirect:"+UrlConstants.URL_ADMIN+UrlConstants.URL_ADMIN_CART_INDEX;
         }else {
             redirect.addFlashAttribute("msg","Error");
             return "redirect:"+UrlConstants.URL_ADMIN+"/cart/detail/"+id;
         }
-
     }
 }

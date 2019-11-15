@@ -8,25 +8,24 @@
                     <table class="table table-hover table-bordered" id="sampleTable">
                         <thead>
                         <tr>
-                            <th width="5%">#</th>
-                            <th width="12%">Orderer</th>
-                            <th width="25%">Product Name</th>
-                            <th width="10%">Delivery date</th>
-                            <th width="30%">Messages</th>
-                            <th width="10%">Status</th>
-                            <th>Action</th>
+                            <th width="10%">#</th>
+                            <th width="15%">Orderer</th>
+                            <th width="35%">Messages</th>
+                            <th width="15%">Delivery date</th>
+                            <th width="15%">Status</th>
+                            <th width="10%">Action</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="item : ${cartlist.getPageList()}">
                             <td th:text ="${ item.id}"></td>
                             <td th:text = "${ item.full_name }"></td>
-                            <td th:text = "${ item.product_name}" ></td>
-                            <td th:text = "${ item.delivery_date}"> </td>
                             <td th:text = "${ item.message_to_us}"></td>
+                            <td th:text = "${ item.delivery_date}"> </td>
+
                             <td th:switch="${item.status}">
                                 <span th:case="'0'" style="color: red">No</span>
-                                <span th:case="'1'" style="color: blue">Yes</span>
+                                <span th:case="'1'" style="color: blue">Processed</span>
                             </td>
                             <td><a th:href="@{/admin/cart/detail/{id}(id=${item.id})}">Detail</a></td>
                         </tr>

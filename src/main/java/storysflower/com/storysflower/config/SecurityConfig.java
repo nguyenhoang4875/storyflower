@@ -52,24 +52,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/admin/customer/**").hasAnyRole("ADMIN","USER")
                     .antMatchers("/admin/cart/**").hasAnyRole("ADMIN","USER")
                     .antMatchers("/admin/user/**").hasAnyRole("ADMIN","USER")
+                    .antMatchers("/admin/revenue/**").hasAnyRole("ADMIN","USER")
                     .antMatchers( "/api/rating/**", "/api/favourite/**", "/api/review/**")
                     .authenticated()
                     .anyRequest().permitAll()
                     .and()
 
                 .formLogin()
-                    .loginPage("/login")
+                    .loginPage("/admin/login")
                     .usernameParameter("email")
                     .passwordParameter("password")
                     .defaultSuccessUrl("/admin/user/index")
-                    .failureUrl("/login?error")
+                    .failureUrl("/admin/login?error")
                     .and()
                     .logout()
-                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                    .logoutSuccessUrl("/login")
+                    .logoutRequestMatcher(new AntPathRequestMatcher("/admin/logout"))
+                    .logoutSuccessUrl("/admin/login").deleteCookies("JSESSIONID").invalidateHttpSession(true)
                     .and()
                 .exceptionHandling()
-                    .accessDeniedPage("/403");
+                    .accessDeniedPage("/admin/403");
 
 
     }

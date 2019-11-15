@@ -41,7 +41,7 @@ import storysflower.com.storysflower.model.tables.tables.records.OccasionRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Occasion extends TableImpl<OccasionRecord> {
 
-    private static final long serialVersionUID = 633240658;
+    private static final long serialVersionUID = 939738358;
 
     /**
      * The reference instance of <code>public.occasion</code>
@@ -117,7 +117,7 @@ public class Occasion extends TableImpl<OccasionRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.OCCASION_NAME_OCCASION_KEY, Indexes.PK_OCCASION);
+        return Arrays.<Index>asList(Indexes.OCCASION_NAME_OCCASION_KEY, Indexes.OCCASION_PKEY);
     }
 
     /**
@@ -133,7 +133,7 @@ public class Occasion extends TableImpl<OccasionRecord> {
      */
     @Override
     public UniqueKey<OccasionRecord> getPrimaryKey() {
-        return Keys.PK_OCCASION;
+        return Keys.OCCASION_PKEY;
     }
 
     /**
@@ -141,7 +141,7 @@ public class Occasion extends TableImpl<OccasionRecord> {
      */
     @Override
     public List<UniqueKey<OccasionRecord>> getKeys() {
-        return Arrays.<UniqueKey<OccasionRecord>>asList(Keys.PK_OCCASION, Keys.OCCASION_NAME_OCCASION_KEY);
+        return Arrays.<UniqueKey<OccasionRecord>>asList(Keys.OCCASION_PKEY, Keys.OCCASION_NAME_OCCASION_KEY);
     }
 
     /**

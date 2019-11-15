@@ -44,7 +44,7 @@ import storysflower.com.storysflower.model.tables.tables.records.CartRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Cart extends TableImpl<CartRecord> {
 
-    private static final long serialVersionUID = -2132068800;
+    private static final long serialVersionUID = -1514336090;
 
     /**
      * The reference instance of <code>public.cart</code>
@@ -95,6 +95,11 @@ public class Cart extends TableImpl<CartRecord> {
     public final TableField<CartRecord, Time> DELIVERY_HOUR = createField("delivery_hour", org.jooq.impl.SQLDataType.TIME.nullable(false).defaultValue(org.jooq.impl.DSL.field("CURRENT_TIME", org.jooq.impl.SQLDataType.TIME)), this, "");
 
     /**
+     * The column <code>public.cart.status</code>.
+     */
+    public final TableField<CartRecord, Integer> STATUS = createField("status", org.jooq.impl.SQLDataType.INTEGER.nullable(false).defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+
+    /**
      * Create a <code>public.cart</code> table reference
      */
     public Cart() {
@@ -140,7 +145,7 @@ public class Cart extends TableImpl<CartRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.PK_CART);
+        return Arrays.<Index>asList(Indexes.CART_PKEY);
     }
 
     /**
@@ -156,7 +161,7 @@ public class Cart extends TableImpl<CartRecord> {
      */
     @Override
     public UniqueKey<CartRecord> getPrimaryKey() {
-        return Keys.PK_CART;
+        return Keys.CART_PKEY;
     }
 
     /**
@@ -164,7 +169,7 @@ public class Cart extends TableImpl<CartRecord> {
      */
     @Override
     public List<UniqueKey<CartRecord>> getKeys() {
-        return Arrays.<UniqueKey<CartRecord>>asList(Keys.PK_CART);
+        return Arrays.<UniqueKey<CartRecord>>asList(Keys.CART_PKEY);
     }
 
     /**
@@ -172,11 +177,7 @@ public class Cart extends TableImpl<CartRecord> {
      */
     @Override
     public List<ForeignKey<CartRecord, ?>> getReferences() {
-        return Arrays.<ForeignKey<CartRecord, ?>>asList(Keys.CART__FK_CART_USER, Keys.CART__FK_CART_CUSTOMER, Keys.CART__FK_CART_RECIPIENT);
-    }
-
-    public User user() {
-        return new User(this, Keys.CART__FK_CART_USER);
+        return Arrays.<ForeignKey<CartRecord, ?>>asList(Keys.CART__FK_CART_CUSTOMER, Keys.CART__FK_CART_RECIPIENT);
     }
 
     public Customer customer() {

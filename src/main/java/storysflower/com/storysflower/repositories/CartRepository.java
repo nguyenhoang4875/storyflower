@@ -6,15 +6,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import storysflower.com.storysflower.dto.*;
 import storysflower.com.storysflower.model.tables.Tables;
-import storysflower.com.storysflower.model.tables.tables.Cart;
-import storysflower.com.storysflower.model.tables.tables.Customer;
-import storysflower.com.storysflower.model.tables.tables.Recipient;
 import storysflower.com.storysflower.utils.DateUtil;
-import storysflower.com.storysflower.utils.TimeUtil;
 
 import java.sql.Date;
-import java.sql.Time;
-import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.List;
 
@@ -106,34 +100,44 @@ public class CartRepository {
     }
     public List<CartAdminDTO> findAll() {
         List<CartAdminDTO> listCart = dslContext
-                //Long id, String full_name, String product_name, int status, Date delivery_date, String message_to_us
-                .select(BUY_PRODUCT.ID, CUSTOMER.FULL_NAME, PRODUCT.PRODUCT_NAME, BUY_PRODUCT.STATUS, CART.DELIVERY_DATE, RECIPIENT.MESSAGE_TO_US )
-                .from(BUY_PRODUCT)
-                .join(Tables.CART).on(Tables.CART.ID.eq(BUY_PRODUCT.CART_ID))
+                .select(CART.ID, CUSTOMER.FULL_NAME, CART.DELIVERY_DATE, RECIPIENT.MESSAGE_TO_US, CART.STATUS )
+                .from(CART)
+                .join(RECIPIENT).on(Tables.CART.RECIPIENT_ID.eq(RECIPIENT.ID))
                 .join(Tables.CUSTOMER).on(Tables.CUSTOMER.ID.eq(Tables.CART.CUSTOMER_ID))
-                .join(PRODUCT).on(PRODUCT.ID.eq(BUY_PRODUCT.PRODUCT_ID))
-                .join(Tables.RECIPIENT).on(Tables.RECIPIENT.ID.eq(Tables.CART.RECIPIENT_ID))
                 .fetchInto(CartAdminDTO.class);
         return  listCart.size()==0? Collections.emptyList() : listCart;
     }
 
+    public List<ProductCartDTO> getAllListProductByIdCart(Long idCart){
+        List<ProductCartDTO> listProduct = dslContext
+                //String productName,  String messageToRecipient, Double price, Integer quantity
+                .select(PRODUCT.PRODUCT_NAME.as("productName"), RECIPIENT.MESSAGE_TO_RECIPIENT.as("messageToRecipient"), PRODUCT.PRICE, BUY_PRODUCT.QUANTITY)
+                .from(PRODUCT)
+                .join(BUY_PRODUCT).on(PRODUCT.ID.eq(BUY_PRODUCT.PRODUCT_ID))
+                .join(CART).on(CART.ID.eq(BUY_PRODUCT.CART_ID))
+                .join(RECIPIENT).on(CART.RECIPIENT_ID.eq(RECIPIENT.ID))
+                .where(BUY_PRODUCT.CART_ID.eq(idCart))
+                .fetchInto(ProductCartDTO.class);
+        return  listProduct.size()==0? Collections.emptyList() : listProduct;
+    }
+
+    public boolean updateStatus(Long id){
+        return dslContext.update(CART)
+                .set(CART.STATUS, 1)
+                .where(CART.ID.eq(id))
+                .execute() > 0;
+    }
     public int countPagination() {
         return dslContext.selectCount()
                 .from(BUY_PRODUCT)
                 .fetchOne(0, Integer.class);
     }
 
-    public CartAdminDTO findCartById() {
-        CartAdminDTO cart = dslContext
-                .select(Tables.CUSTOMER.ID, BUY_PRODUCT.ID, Tables.RECIPIENT.ID, Tables.CART.ID,
-                        Tables.CUSTOMER.FULL_NAME, PRODUCT.PRODUCT_NAME, BUY_PRODUCT.STATUS, Tables.CART.DELIVERY_DATE, Tables.RECIPIENT.MESSAGE_TO_US )
-                .from(BUY_PRODUCT)
-                .join(Tables.CART).on(Tables.CART.ID.eq(BUY_PRODUCT.CART_ID))
-                .join(Tables.CUSTOMER).on(Tables.CUSTOMER.ID.eq(Tables.CART.CUSTOMER_ID))
-                .join(PRODUCT).on(PRODUCT.ID.eq(BUY_PRODUCT.PRODUCT_ID))
-                .join(Tables.RECIPIENT).on(Tables.RECIPIENT.ID.eq(Tables.CART.RECIPIENT_ID))
-                .fetchOneInto(CartAdminDTO.class);
-        return  null;
-    }
 
+    public int getStatus(Long id) {
+        return dslContext.select(CART.STATUS)
+                .from(CART)
+                .where(CART.ID.eq(id))
+                .fetchOne(0, Integer.class);
+    }
 }

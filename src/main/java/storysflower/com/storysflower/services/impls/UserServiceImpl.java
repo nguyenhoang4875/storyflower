@@ -1,5 +1,6 @@
 package storysflower.com.storysflower.services.impls;
 
+import org.jooq.impl.DSL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -102,6 +103,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO findUserByIdUser(Long id) {
         UserDTO u = userRepository.getUserByIdUser(id);
+        u.setRole(u.getRole().replace("ROLE_",""));
+        return u;
+    }
+    @Override
+    public UserDTO findUserByEmail(String email) {
+        UserDTO u = userRepository.getUserByEmail(email);
         u.setRole(u.getRole().replace("ROLE_",""));
         return u;
     }

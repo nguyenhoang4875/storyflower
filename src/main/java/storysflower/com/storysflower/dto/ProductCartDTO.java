@@ -1,6 +1,8 @@
 package storysflower.com.storysflower.dto;
 
 public class ProductCartDTO {
+    private int id;
+    private String picture;
     private String productName;
     private Integer quantity;
     private String messageToRecipient;
@@ -12,6 +14,33 @@ public class ProductCartDTO {
         this.quantity = quantity;
         this.messageToRecipient = messageToRecipient;
         this.price = price;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductCartDTO{" +
+                "productName='" + productName + '\'' +
+                ", quantity=" + quantity +
+                ", messageToRecipient='" + messageToRecipient + '\'' +
+                ", price=" + price +
+                ", totalMoney=" + totalMoney +
+                '}';
     }
 
     public Integer getQuantity() {

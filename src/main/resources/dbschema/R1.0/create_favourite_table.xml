@@ -14,7 +14,7 @@
                 <constraints nullable="false" foreignKeyName="fk_favourite_product" references="product(id)"/>
             </column>
             <column name="user_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="fk_favourite_user" references="public.user(id)"></constraints>
+                <constraints nullable="false"></constraints>
             </column>
             <column name="value" type="boolean" defaultValue="false">
                 <constraints nullable="false"></constraints>
