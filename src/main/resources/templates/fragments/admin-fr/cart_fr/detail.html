@@ -37,19 +37,36 @@
     </div>
     <div>
         <h4>Order information</h4>
-        <div>
-            <strong>Product Name: </strong>
-            <label th:text = "${ productCartDTO.productName}" >Product Name</label><br>
-            <strong>Message to recipient: </strong>
-            <label th:text = "${ productCartDTO.messageToRecipient}" >Message to recipient</label><br>
-            <strong>Quanlity: </strong>
-            <label th:text = "${ productCartDTO.quantity}" >Quanlity</label><br>
-            <strong>Total Money: </strong>
-            <label th:text = "${ #numbers.formatDecimal(productCartDTO.totalMoney, 0, 'COMMA', 0, 'POINT')} +' VND'" >Total Money</label><br>
-        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>STT</th>
+                <th>Product</th>
+                <th>Picture</th>
+                <th>Quatity</th>
+                <th>messageToRecipient</th>
+                <th>Money</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="item : ${productCartDTO}">
+                <td th:text ="${item.id}"/>
+                <td th:text = "${ item.productName }"></td>
+                <td th:text = "${ status }"> status</td>
+                <td th:text = "${ item.quantity}"></td>
+                <td th:text = "${ item.messageToRecipient}"> </td>
+                <td th:text = "${#numbers.formatDecimal(item.quantity * item.price , 0, 'COMMA', 0, 'POINT')+' đ'}"></td>
+            </tr>
+            </tbody>
+        </table>
 
     </div>
+    <strong style="font-size: 25px;">The total amount of all orders:</strong>
+    <label style="font-size: 25px;" th:text = "${#numbers.formatDecimal(totalMoney , 0, 'COMMA', 0, 'POINT')+' đ'}" >Full Name</label><br>
     <div style="margin-top: 25px;">
-        <a class="btn btn-info" th:href="@{/admin/cart/order/{id}(id=${id})}">Order confirmation</a>
+
+        <a th:if="${status == 0}" class="btn btn-info" th:href="@{/admin/cart/order/{id}(id=${id})}" >Order confirmation</a>
+        <span th:if="${status == 1}" class="btn btn-danger"  >Đã xử lý</span>
     </div>
 </div>

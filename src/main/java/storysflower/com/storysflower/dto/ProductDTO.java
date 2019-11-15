@@ -13,6 +13,23 @@ public class ProductDTO {
     public ProductDTO() {
     }
 
+    @Override
+    public String toString() {
+        return "ProductDTO{" +
+                "id=" + id +
+                ", imageId=" + imageId +
+                ", productName='" + productName + '\'' +
+                ", price=" + price +
+                ", rating=" + rating +
+                '}';
+    }
+
+    public ProductDTO(Long id, String productName, Double price) {
+        this.id = id;
+        this.productName = productName;
+        this.price = price;
+    }
+
     public ProductDTO(Long id, Long imageId, String productName, Double price, Integer rating) {
         this.id = id;
         this.imageId = imageId;

@@ -24,6 +24,8 @@ public interface UserService {
 
     UserDTO findUserByIdUser(Long id);
 
+    UserDTO findUserByEmail(String email);
+
     String getFullNameById(Long id);
 
     boolean edit(UserDTO userDTO);

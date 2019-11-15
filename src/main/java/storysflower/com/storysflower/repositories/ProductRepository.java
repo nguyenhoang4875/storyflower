@@ -120,6 +120,13 @@ public class ProductRepository {
         rattingService.setRating(productDTOS);
         return productDTOS.stream().sorted((t1,t2)-> t2.getRating() - t1.getRating()).collect(Collectors.toList()).subList(0,3);
     }
+    public ProductDTO getProductByIdPro(Long id){
+        return dslContext.select()
+                .from(PRODUCT)
+                .where(PRODUCT.ID.eq(id))
+                .fetchOneInto(ProductDTO.class);
+    }
+
 
     public List<ProductDTO> getListBestProductDTOBySellerAndOccasion(Long occasionId) {
         return null;

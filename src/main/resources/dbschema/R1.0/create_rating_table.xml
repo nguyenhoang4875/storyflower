@@ -14,7 +14,7 @@
                 <constraints nullable="false" foreignKeyName="fk_rating_product" references="product(id)"/>
             </column>
             <column name="user_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="fk_rating_user_id" references="public.user(id)"></constraints>
+                <constraints nullable="false"></constraints>
             </column>
             <column name="value" type="int" defaultValue="0">
                 <constraints nullable="false"></constraints>

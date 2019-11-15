@@ -41,7 +41,7 @@ import storysflower.com.storysflower.model.tables.tables.records.DealProductReco
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class DealProduct extends TableImpl<DealProductRecord> {
 
-    private static final long serialVersionUID = 1074323325;
+    private static final long serialVersionUID = -75167409;
 
     /**
      * The reference instance of <code>public.deal_product</code>
@@ -112,7 +112,7 @@ public class DealProduct extends TableImpl<DealProductRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.PK_DEAL_PRODUCT);
+        return Arrays.<Index>asList(Indexes.DEAL_PRODUCT_PKEY);
     }
 
     /**
@@ -128,7 +128,7 @@ public class DealProduct extends TableImpl<DealProductRecord> {
      */
     @Override
     public UniqueKey<DealProductRecord> getPrimaryKey() {
-        return Keys.PK_DEAL_PRODUCT;
+        return Keys.DEAL_PRODUCT_PKEY;
     }
 
     /**
@@ -136,7 +136,7 @@ public class DealProduct extends TableImpl<DealProductRecord> {
      */
     @Override
     public List<UniqueKey<DealProductRecord>> getKeys() {
-        return Arrays.<UniqueKey<DealProductRecord>>asList(Keys.PK_DEAL_PRODUCT);
+        return Arrays.<UniqueKey<DealProductRecord>>asList(Keys.DEAL_PRODUCT_PKEY);
     }
 
     /**

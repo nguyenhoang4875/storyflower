@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import storysflower.com.storysflower.constants.UrlConstants;
 import storysflower.com.storysflower.dto.UserDTO;
+import storysflower.com.storysflower.repositories.RevenueRepository;
+import storysflower.com.storysflower.services.RecipientService;
+import storysflower.com.storysflower.services.RevenueService;
 import storysflower.com.storysflower.services.UserService;
 import storysflower.com.storysflower.utils.ErrorUtil;
 import storysflower.com.storysflower.validator.NameUserValidator;
@@ -19,6 +22,7 @@ import storysflower.com.storysflower.validator.RePassWordValidator;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -30,11 +34,18 @@ public class AdminUserController {
     RePassWordValidator rePassWordValidator;
     @Autowired
     NameUserValidator nameUserValidator;
+    @Autowired
+    RevenueService revenueService;
+
+
 
     @GetMapping({UrlConstants.URL_ADMIN_USER_INDEX})
-    public  String index(Model model, HttpServletRequest request){
+    public  String index(Model model, HttpServletRequest request, Principal principal){
         HttpSession session = request.getSession();
-        UserDTO userLogin = userService.findUserByIdUser((long) 1);
+        UserDTO userLogin = userService.findUserByEmail(principal.getName());
+        System.out.println("aaaas");
+        revenueService.findAllRevenue();
+        System.out.println(userLogin.getFirstName());
         session.setAttribute("userLogin",userLogin);
         List<UserDTO> listUser = userService.findAll();
         model.addAttribute("userLogin", userLogin);
@@ -91,7 +102,7 @@ public class AdminUserController {
         if(!userService.edit(userDTO)){
         /*error*/
         }
-        model.addAttribute("msg", "Thành công");
+        redirec.addFlashAttribute("msg", "Dữ liệu đã được thay đổi");
         return "redirect:"+UrlConstants.URL_ADMIN+UrlConstants.URL_ADMIN_USER_INDEX;
     }
 
@@ -104,8 +115,7 @@ public class AdminUserController {
         if(!userService.del(id)){
             /*error*/
         }
-        redirec.addFlashAttribute("msg", "Xóa thành công");
-        System.out.println("xóa thành công");
+        redirec.addFlashAttribute("msg", "Dữ liệu đã được xóa một dòng");
         return "redirect:"+UrlConstants.URL_ADMIN+UrlConstants.URL_ADMIN_USER_INDEX;
     }
     @GetMapping({UrlConstants.URL_ADMIN_USER_ADD})
@@ -114,24 +124,25 @@ public class AdminUserController {
     }
 
     @PostMapping({UrlConstants.URL_ADMIN_USER_ADD})
-    public  String add(@Valid @ModelAttribute("userDTO") UserDTO userDTO, BindingResult rs, Model modelMap){
+    public  String add(@Valid @ModelAttribute("userDTO") UserDTO userDTO, BindingResult rs, Model model,
+                       RedirectAttributes redirec){
         rePassWordValidator.validate(userDTO,rs);
         nameUserValidator.validate(userDTO, rs);
         if (rs.hasErrors()) {
             List<ObjectError> errorList =rs.getAllErrors();
-            modelMap.addAttribute("userDTO",userDTO);
-            modelMap.addAttribute("msg", "Please correct the errors in form!");
-            modelMap.addAttribute("rs", rs);
-            modelMap.addAttribute("errorList", errorList);
+            model.addAttribute("userDTO",userDTO);
+            model.addAttribute("msg", "Please correct the errors in form!");
+            model.addAttribute("rs", rs);
+            model.addAttribute("errorList", errorList);
             return "admin/user/add"; // chỉ được dùng return , ko dong redic
         }
         userDTO.setRole("ROLE_USER");
         if(!userService.addUser(userDTO)){
-            modelMap.addAttribute("userDTO",userDTO);
-            modelMap.addAttribute("msg","Error!");
+            model.addAttribute("userDTO",userDTO);
+            model.addAttribute("msg","Error!");
             return "admin/user/index";
         }
-        modelMap.addAttribute("msg","Thành công!");
-        return "admin/user/index";
+        redirec.addFlashAttribute("msg", "Dữ liệu đã được thêm một dòng");
+        return "redirect:"+UrlConstants.URL_ADMIN+UrlConstants.URL_ADMIN_USER_INDEX;
     }
 }

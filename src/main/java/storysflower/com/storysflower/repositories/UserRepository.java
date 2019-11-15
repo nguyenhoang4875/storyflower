@@ -120,4 +120,12 @@ public class UserRepository {
                 .where(USER_ROLE.EMAIL.eq(email))
                 .execute() > 0;
     }
+
+    public UserDTO getUserByEmail(String email) {
+        return dslContext.select(USER.ID, USER.LASTNAME.as("lastName"),  USER.FIRSTNAME.as("firstName"), USER.PASSWORD.as("passWord"), USER_ROLE.EMAIL, USER_ROLE.ROLE)
+                .from(USER)
+                .join(USER_ROLE).on(USER.EMAIL.eq(USER_ROLE.EMAIL))
+                .where(USER.EMAIL.eq(email))
+                .fetchOneInto(UserDTO.class);
+    }
 }

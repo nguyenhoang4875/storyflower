@@ -3,7 +3,8 @@
         <h3 class="tile-title">User Management</h3>
         <a th:if="${userLogin.role == 'ADMIN'}" href="/admin/user/add"><button class="btn btn-info" type="button">Add User</button></a>
         <div class="table-responsive" style="margin-top: 10px;">
-            <table class="table">
+            <label th:text = "${msg}" style="color: #0f6674"></label>
+            <table class="table" style="margin-top: 10px;">
                 <thead>
                     <tr>
                         <th>ID</th>

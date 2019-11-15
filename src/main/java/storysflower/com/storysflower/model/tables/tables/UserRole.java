@@ -41,7 +41,7 @@ import storysflower.com.storysflower.model.tables.tables.records.UserRoleRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class UserRole extends TableImpl<UserRoleRecord> {
 
-    private static final long serialVersionUID = -1813452885;
+    private static final long serialVersionUID = 1165166245;
 
     /**
      * The reference instance of <code>public.user_role</code>
@@ -117,7 +117,7 @@ public class UserRole extends TableImpl<UserRoleRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.PK_USER_ROLE);
+        return Arrays.<Index>asList(Indexes.USER_ROLE_PKEY);
     }
 
     /**
@@ -133,7 +133,7 @@ public class UserRole extends TableImpl<UserRoleRecord> {
      */
     @Override
     public UniqueKey<UserRoleRecord> getPrimaryKey() {
-        return Keys.PK_USER_ROLE;
+        return Keys.USER_ROLE_PKEY;
     }
 
     /**
@@ -141,7 +141,7 @@ public class UserRole extends TableImpl<UserRoleRecord> {
      */
     @Override
     public List<UniqueKey<UserRoleRecord>> getKeys() {
-        return Arrays.<UniqueKey<UserRoleRecord>>asList(Keys.PK_USER_ROLE);
+        return Arrays.<UniqueKey<UserRoleRecord>>asList(Keys.USER_ROLE_PKEY);
     }
 
     /**

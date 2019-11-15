@@ -1,9 +1,6 @@
 package storysflower.com.storysflower.services;
 
-import storysflower.com.storysflower.dto.CartAdminDTO;
-import storysflower.com.storysflower.dto.CartDTO;
-import storysflower.com.storysflower.dto.ReceiptDTO;
-import storysflower.com.storysflower.dto.CustomerDTO;
+import storysflower.com.storysflower.dto.*;
 
 import java.util.List;
 
@@ -21,6 +18,9 @@ public interface CartService {
 
     int countPagination();
 
-    CartAdminDTO findCartById(Long id);
+    List<ProductCartDTO> findAllListProductByIdCart(Long idCart);
 
+    boolean updateStatus(Long id);
+
+    int getStatus(Long id);
 }
