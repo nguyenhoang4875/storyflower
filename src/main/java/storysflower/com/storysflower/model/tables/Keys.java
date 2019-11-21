@@ -116,7 +116,6 @@ public class Keys {
     public static final ForeignKey<CartRecord, RecipientRecord> CART__FK_CART_RECIPIENT = ForeignKeys0.CART__FK_CART_RECIPIENT;
     public static final ForeignKey<DealProductRecord, ProductRecord> DEAL_PRODUCT__FK_DEAL_PRODUCT_PRODUCT = ForeignKeys0.DEAL_PRODUCT__FK_DEAL_PRODUCT_PRODUCT;
     public static final ForeignKey<FavouriteRecord, ProductRecord> FAVOURITE__FK_FAVOURITE_PRODUCT = ForeignKeys0.FAVOURITE__FK_FAVOURITE_PRODUCT;
-    public static final ForeignKey<FavouriteRecord, UserRecord> FAVOURITE__FK_FAVOURITE_USER = ForeignKeys0.FAVOURITE__FK_FAVOURITE_USER;
     public static final ForeignKey<ImageProductRecord, ProductRecord> IMAGE_PRODUCT__FK_PRODUCT_IMAGE = ForeignKeys0.IMAGE_PRODUCT__FK_PRODUCT_IMAGE;
     public static final ForeignKey<ImageProductRecord, ImageRecord> IMAGE_PRODUCT__FK_PRODUCT_IMAGE_IMAGE = ForeignKeys0.IMAGE_PRODUCT__FK_PRODUCT_IMAGE_IMAGE;
     public static final ForeignKey<OccasionRecord, ImageRecord> OCCASION__FK_OCCASION_IMAGE = ForeignKeys0.OCCASION__FK_OCCASION_IMAGE;
@@ -125,7 +124,6 @@ public class Keys {
     public static final ForeignKey<ProductCategoryRecord, ProductRecord> PRODUCT_CATEGORY__FK_CATEGORY_PRODUCT_PRODUCT = ForeignKeys0.PRODUCT_CATEGORY__FK_CATEGORY_PRODUCT_PRODUCT;
     public static final ForeignKey<ProductCategoryRecord, CategoryRecord> PRODUCT_CATEGORY__FK_CATEGORY_PRODUCT_CATEGORY = ForeignKeys0.PRODUCT_CATEGORY__FK_CATEGORY_PRODUCT_CATEGORY;
     public static final ForeignKey<RatingRecord, ProductRecord> RATING__FK_RATING_PRODUCT = ForeignKeys0.RATING__FK_RATING_PRODUCT;
-    public static final ForeignKey<RatingRecord, UserRecord> RATING__FK_RATING_USER_ID = ForeignKeys0.RATING__FK_RATING_USER_ID;
     public static final ForeignKey<ReviewRecord, ProductRecord> REVIEW__FK_REVIEW_PRODUCT = ForeignKeys0.REVIEW__FK_REVIEW_PRODUCT;
     public static final ForeignKey<ReviewRecord, UserRecord> REVIEW__FK_REVIEW_USER = ForeignKeys0.REVIEW__FK_REVIEW_USER;
     public static final ForeignKey<UserRoleRecord, UserRecord> USER_ROLE__FK_USER_ROLE_USER = ForeignKeys0.USER_ROLE__FK_USER_ROLE_USER;
@@ -182,7 +180,6 @@ public class Keys {
         public static final ForeignKey<CartRecord, RecipientRecord> CART__FK_CART_RECIPIENT = Internal.createForeignKey(storysflower.com.storysflower.model.tables.Keys.RECIPIENT_PKEY, Cart.CART, "cart__fk_cart_recipient", Cart.CART.RECIPIENT_ID);
         public static final ForeignKey<DealProductRecord, ProductRecord> DEAL_PRODUCT__FK_DEAL_PRODUCT_PRODUCT = Internal.createForeignKey(storysflower.com.storysflower.model.tables.Keys.PRODUCT_PKEY, DealProduct.DEAL_PRODUCT, "deal_product__fk_deal_product_product", DealProduct.DEAL_PRODUCT.PRODUCT_ID);
         public static final ForeignKey<FavouriteRecord, ProductRecord> FAVOURITE__FK_FAVOURITE_PRODUCT = Internal.createForeignKey(storysflower.com.storysflower.model.tables.Keys.PRODUCT_PKEY, Favourite.FAVOURITE, "favourite__fk_favourite_product", Favourite.FAVOURITE.PRODUCT_ID);
-        public static final ForeignKey<FavouriteRecord, UserRecord> FAVOURITE__FK_FAVOURITE_USER = Internal.createForeignKey(storysflower.com.storysflower.model.tables.Keys.USER_PKEY, Favourite.FAVOURITE, "favourite__fk_favourite_user", Favourite.FAVOURITE.USER_ID);
         public static final ForeignKey<ImageProductRecord, ProductRecord> IMAGE_PRODUCT__FK_PRODUCT_IMAGE = Internal.createForeignKey(storysflower.com.storysflower.model.tables.Keys.PRODUCT_PKEY, ImageProduct.IMAGE_PRODUCT, "image_product__fk_product_image", ImageProduct.IMAGE_PRODUCT.PRODUCT_ID);
         public static final ForeignKey<ImageProductRecord, ImageRecord> IMAGE_PRODUCT__FK_PRODUCT_IMAGE_IMAGE = Internal.createForeignKey(storysflower.com.storysflower.model.tables.Keys.IMAGE_PKEY, ImageProduct.IMAGE_PRODUCT, "image_product__fk_product_image_image", ImageProduct.IMAGE_PRODUCT.IMAGE_ID);
         public static final ForeignKey<OccasionRecord, ImageRecord> OCCASION__FK_OCCASION_IMAGE = Internal.createForeignKey(storysflower.com.storysflower.model.tables.Keys.IMAGE_PKEY, Occasion.OCCASION, "occasion__fk_occasion_image", Occasion.OCCASION.IMAGE_ID);
@@ -191,7 +188,6 @@ public class Keys {
         public static final ForeignKey<ProductCategoryRecord, ProductRecord> PRODUCT_CATEGORY__FK_CATEGORY_PRODUCT_PRODUCT = Internal.createForeignKey(storysflower.com.storysflower.model.tables.Keys.PRODUCT_PKEY, ProductCategory.PRODUCT_CATEGORY, "product_category__fk_category_product_product", ProductCategory.PRODUCT_CATEGORY.PRODUCT_ID);
         public static final ForeignKey<ProductCategoryRecord, CategoryRecord> PRODUCT_CATEGORY__FK_CATEGORY_PRODUCT_CATEGORY = Internal.createForeignKey(storysflower.com.storysflower.model.tables.Keys.CATEGORY_PKEY, ProductCategory.PRODUCT_CATEGORY, "product_category__fk_category_product_category", ProductCategory.PRODUCT_CATEGORY.CATEGORY_ID);
         public static final ForeignKey<RatingRecord, ProductRecord> RATING__FK_RATING_PRODUCT = Internal.createForeignKey(storysflower.com.storysflower.model.tables.Keys.PRODUCT_PKEY, Rating.RATING, "rating__fk_rating_product", Rating.RATING.PRODUCT_ID);
-        public static final ForeignKey<RatingRecord, UserRecord> RATING__FK_RATING_USER_ID = Internal.createForeignKey(storysflower.com.storysflower.model.tables.Keys.USER_PKEY, Rating.RATING, "rating__fk_rating_user_id", Rating.RATING.USER_ID);
         public static final ForeignKey<ReviewRecord, ProductRecord> REVIEW__FK_REVIEW_PRODUCT = Internal.createForeignKey(storysflower.com.storysflower.model.tables.Keys.PRODUCT_PKEY, Review.REVIEW, "review__fk_review_product", Review.REVIEW.PRODUCT_ID);
         public static final ForeignKey<ReviewRecord, UserRecord> REVIEW__FK_REVIEW_USER = Internal.createForeignKey(storysflower.com.storysflower.model.tables.Keys.USER_PKEY, Review.REVIEW, "review__fk_review_user", Review.REVIEW.USER_ID);
         public static final ForeignKey<UserRoleRecord, UserRecord> USER_ROLE__FK_USER_ROLE_USER = Internal.createForeignKey(storysflower.com.storysflower.model.tables.Keys.USER_EMAIL_KEY, UserRole.USER_ROLE, "user_role__fk_user_role_user", UserRole.USER_ROLE.EMAIL);

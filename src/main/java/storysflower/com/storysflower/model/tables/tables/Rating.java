@@ -41,7 +41,7 @@ import storysflower.com.storysflower.model.tables.tables.records.RatingRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Rating extends TableImpl<RatingRecord> {
 
-    private static final long serialVersionUID = 2144663292;
+    private static final long serialVersionUID = 1164432349;
 
     /**
      * The reference instance of <code>public.rating</code>
@@ -154,15 +154,11 @@ public class Rating extends TableImpl<RatingRecord> {
      */
     @Override
     public List<ForeignKey<RatingRecord, ?>> getReferences() {
-        return Arrays.<ForeignKey<RatingRecord, ?>>asList(Keys.RATING__FK_RATING_PRODUCT, Keys.RATING__FK_RATING_USER_ID);
+        return Arrays.<ForeignKey<RatingRecord, ?>>asList(Keys.RATING__FK_RATING_PRODUCT);
     }
 
     public Product product() {
         return new Product(this, Keys.RATING__FK_RATING_PRODUCT);
-    }
-
-    public User user() {
-        return new User(this, Keys.RATING__FK_RATING_USER_ID);
     }
 
     /**

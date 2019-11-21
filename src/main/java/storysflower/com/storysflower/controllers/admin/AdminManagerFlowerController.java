@@ -22,7 +22,6 @@ public class AdminManagerFlowerController {
     private static final String LIST_OCCASION = "list_occasion";
 
 
-
     private static final String CATEGORIES = "categories";
     private static final String PRODUCT = "product";
     private static final String REVIEWS = "reviews";
@@ -41,11 +40,10 @@ public class AdminManagerFlowerController {
     @Autowired
     private OccasionService occasionService;
 
-    @GetMapping({UrlConstants.URL_ADMIN_PRODUCT_INDEX,UrlConstants.URL_ADMIN_PRODUCT_INDEX_ID})
+    @GetMapping({UrlConstants.URL_ADMIN_PRODUCT_INDEX, UrlConstants.URL_ADMIN_PRODUCT_INDEX_ID})
     public String getAllProduct(Model model, HttpServletRequest request, RedirectAttributes redirect,
                                 @PathVariable(name = "id", required = false) Long id) {
-        if(id == null)  id= 1L;
-        System.out.println(id);
+        if (id == null) id = 1L;
         model.addAttribute(OCCASIONS, occasionService.findAllOccasion());
         model.addAttribute(OCCASION, occasionService.getOccasionDTOById(id));
         model.addAttribute(LIST_OCCASION, productService.getListProductDTOByOccasionId(id));
@@ -53,7 +51,13 @@ public class AdminManagerFlowerController {
     }
 
     @GetMapping({UrlConstants.URL_ADMIN_PRODUCT_EDIT_ID})
-    public String getProductPage(Model model, @PathVariable("id") Long id)  {
+    public String getProductPage(Model model, @PathVariable("id") Long id) {
+
+        if (id == null) id = 1L;
+        model.addAttribute(OCCASIONS, occasionService.findAllOccasion());
+        model.addAttribute(OCCASION, occasionService.getOccasionDTOById(id));
+        model.addAttribute(LIST_OCCASION, productService.getListProductDTOByOccasionId(id));
+
         model.addAttribute(CATEGORIES, categoryService.getCategories());
         model.addAttribute(PRODUCT, productService.getProductDetailDTOById(id));
         model.addAttribute(REVIEWS, reviewService.getAllReviewsByProductId(id));
@@ -61,8 +65,18 @@ public class AdminManagerFlowerController {
         model.addAttribute(BESTRATINGPRODUCTS, productService.getListBestProductDTOByRatting());
         System.out.println("============================= hello ===================");
         System.out.println(productService.getProductDetailDTOById(id));
-        return  UrlConstants.URL_ADMIN + "/product/edit_pr";
-       // return "product-detail/detail";
+        return UrlConstants.URL_ADMIN + "/product/edit_pr";
+        // return "product-detail/detail";
+    }
+
+    @GetMapping({UrlConstants.URL_ADMIN_PRODUCT_INDEX, UrlConstants.URL_ADMIN_PRODUCT_ADD})
+    public String addProduct(Model model, HttpServletRequest request, RedirectAttributes redirect,
+                                @PathVariable(name = "id", required = false) Long id) {
+        if (id == null) id = 1L;
+        model.addAttribute(OCCASIONS, occasionService.findAllOccasion());
+        model.addAttribute(OCCASION, occasionService.getOccasionDTOById(id));
+        model.addAttribute(LIST_OCCASION, productService.getListProductDTOByOccasionId(id));
+        return UrlConstants.URL_ADMIN + "/product/add_pr";
     }
 
 

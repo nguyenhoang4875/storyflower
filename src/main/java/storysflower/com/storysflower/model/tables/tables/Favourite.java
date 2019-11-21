@@ -41,7 +41,7 @@ import storysflower.com.storysflower.model.tables.tables.records.FavouriteRecord
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Favourite extends TableImpl<FavouriteRecord> {
 
-    private static final long serialVersionUID = 266848349;
+    private static final long serialVersionUID = 622136804;
 
     /**
      * The reference instance of <code>public.favourite</code>
@@ -154,15 +154,11 @@ public class Favourite extends TableImpl<FavouriteRecord> {
      */
     @Override
     public List<ForeignKey<FavouriteRecord, ?>> getReferences() {
-        return Arrays.<ForeignKey<FavouriteRecord, ?>>asList(Keys.FAVOURITE__FK_FAVOURITE_PRODUCT, Keys.FAVOURITE__FK_FAVOURITE_USER);
+        return Arrays.<ForeignKey<FavouriteRecord, ?>>asList(Keys.FAVOURITE__FK_FAVOURITE_PRODUCT);
     }
 
     public Product product() {
         return new Product(this, Keys.FAVOURITE__FK_FAVOURITE_PRODUCT);
-    }
-
-    public User user() {
-        return new User(this, Keys.FAVOURITE__FK_FAVOURITE_USER);
     }
 
     /**
