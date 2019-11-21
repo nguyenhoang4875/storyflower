@@ -49,10 +49,9 @@ public class ProductRepository {
         }
         productDetailDTO.setRating(ratingRepository.getRate(productDetailDTO.getId()));
         List<Long> imageIds = getListImageIdByProductId(id);
-        if(imageIds.size() == 0){
+        if (imageIds.size() == 0) {
             productDetailDTO.setImageIds(Collections.emptyList());
-        }
-        else {
+        } else {
             productDetailDTO.setImageIds(imageIds);
         }
         return productDetailDTO;
@@ -90,14 +89,14 @@ public class ProductRepository {
         return productDTOS.size() == 0 ? Collections.emptyList() : productDTOS;
     }
 
-    public List<ProductDTO> getListBestProductDTOByRatting(){
+    public List<ProductDTO> getListBestProductDTOByRatting() {
         List<ProductDTO> productDTOS = dslContext.select()
                 .from(PRODUCT)
                 .join(IMAGE_PRODUCT).on(IMAGE_PRODUCT.PRODUCT_ID.eq(PRODUCT.ID))
                 .and(IMAGE_PRODUCT.MAIN_IMAGE.eq(true))
                 .fetchInto(ProductDTO.class);
         rattingService.setRating(productDTOS);
-        return productDTOS.stream().sorted((t1,t2)-> t2.getRating() - t1.getRating()).collect(Collectors.toList()).subList(0,3);
+        return productDTOS.stream().sorted((t1, t2) -> t2.getRating() - t1.getRating()).collect(Collectors.toList()).subList(0, 3);
     }
 
     public ProductDTO getProductDTOById(Long productId) {
@@ -118,9 +117,10 @@ public class ProductRepository {
                 .where(PRODUCT.OCCASION_ID.eq(occasionId))
                 .fetchInto(ProductDTO.class);
         rattingService.setRating(productDTOS);
-        return productDTOS.stream().sorted((t1,t2)-> t2.getRating() - t1.getRating()).collect(Collectors.toList()).subList(0,3);
+        return productDTOS.stream().sorted((t1, t2) -> t2.getRating() - t1.getRating()).collect(Collectors.toList()).subList(0, 3);
     }
-    public ProductDTO getProductByIdPro(Long id){
+
+    public ProductDTO getProductByIdPro(Long id) {
         return dslContext.select()
                 .from(PRODUCT)
                 .where(PRODUCT.ID.eq(id))
@@ -140,8 +140,9 @@ public class ProductRepository {
                 .where(PRODUCT.TOPIC_ID.eq(1L))
                 .fetchInto(ProductDTO.class);
     }
+
     public ProductCartDTO getProductCartByIdBuyProduct(Long idByProduct) {
-        return  dslContext.select(PRODUCT.PRODUCT_NAME.as("productName"), RECIPIENT.MESSAGE_TO_RECIPIENT.as("messageToRecipient"), PRODUCT.PRICE, BUY_PRODUCT.QUANTITY)
+        return dslContext.select(PRODUCT.PRODUCT_NAME.as("productName"), RECIPIENT.MESSAGE_TO_RECIPIENT.as("messageToRecipient"), PRODUCT.PRICE, BUY_PRODUCT.QUANTITY)
                 .from(BUY_PRODUCT)
                 .join(CART).on(BUY_PRODUCT.CART_ID.eq(CART.ID))
                 .join(PRODUCT).on(BUY_PRODUCT.PRODUCT_ID.eq(PRODUCT.ID))
@@ -156,6 +157,15 @@ public class ProductRepository {
                 .join(IMAGE_PRODUCT).on(IMAGE_PRODUCT.PRODUCT_ID.eq(PRODUCT.ID))
                 .and(IMAGE_PRODUCT.MAIN_IMAGE.eq(true))
                 .where(PRODUCT.TOPIC_ID.eq(3L))
+                .fetchInto(ProductDTO.class);
+    }
+
+    public List<ProductDTO> getAllPlant() {
+        return dslContext.select()
+                .from(PRODUCT)
+                .join(IMAGE_PRODUCT).on(IMAGE_PRODUCT.PRODUCT_ID.eq(PRODUCT.ID))
+                .and(IMAGE_PRODUCT.MAIN_IMAGE.eq(true))
+                .where(PRODUCT.TOPIC_ID.eq(2L))
                 .fetchInto(ProductDTO.class);
     }
 }

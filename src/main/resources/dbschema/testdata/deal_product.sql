@@ -5,8 +5,8 @@ VALUES (2);
 INSERT INTO deal_product(product_id)
 VALUES (3);
 INSERT INTO deal_product(product_id)
-VALUES (4);
+VALUES (44);
 INSERT INTO deal_product(product_id)
-VALUES (5);
+VALUES (56);
 INSERT INTO deal_product(product_id)
-VALUES (6);
+VALUES (51);

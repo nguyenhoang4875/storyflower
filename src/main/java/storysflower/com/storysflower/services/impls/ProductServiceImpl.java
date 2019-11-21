@@ -61,6 +61,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<ProductDTO> getAllPlants() {
+        return productRepository.getAllPlant();
+    }
+
+    @Override
     public List<ProductDTO> getAllGitfAndSweet() {
         return productRepository.getAllGitfSweet();
     }
