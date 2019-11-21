@@ -35,7 +35,7 @@ public class ProductRepository {
         ProductDetailDTO productDetailDTO = dslContext
                 .select(PRODUCT.ID, IMAGE_PRODUCT.IMAGE_ID, PRODUCT.PRODUCT_NAME, OCCASION.NAME_OCCASION, TOPIC.TOPIC_NAME, PRODUCT.DESCRIPTION, PRODUCT.MEANING, PRODUCT.PRICE)
                 .from(PRODUCT)
-                .join(OCCASION).on(OCCASION.OCCASION_ID.eq(PRODUCT.OCCASION_ID))
+                .leftJoin(OCCASION).on(OCCASION.OCCASION_ID.eq(PRODUCT.OCCASION_ID))
                 .join(IMAGE_PRODUCT).on(IMAGE_PRODUCT.PRODUCT_ID.eq(PRODUCT.ID))
                 .join(TOPIC).on(TOPIC.TOPIC_ID.eq(PRODUCT.TOPIC_ID))
                 .where(PRODUCT.ID.eq(id))
