@@ -30,7 +30,7 @@
                         <td><p th:text="${item.rating}"></p></td>
 
                         <td>
-                            <a >
+                            <a th:href="@{edit/} + ${item.Id}" >
                                 <button class="btn btn-primary">Edit</button>
                             </a>
                             |

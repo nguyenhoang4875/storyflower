@@ -5,8 +5,7 @@
             <span th:utext="${product.topicName}"></span>
             <span> | </span>
             <span th:utext="${product.nameOccasion}"></span>
-        </p>
-    </div>
+        </p></div>
     <div class="row main-contain">
         <div class="main-left col-12 col-lg-8 m-0">
             <div class="product-image-container row d-flex justify-content-start">
@@ -26,6 +25,16 @@
             <hr class="hr mb-5 mt-4"/>
 
             <div class="custom-nav-tab">
+                <ul class="nav nav-tabs d-flex justify-content-center justify-content-lg-start">
+                    <li class="nav-item">
+                        <a class="active custom-nav nav-active px-3 pt-3 pb-2 px-md-5" id="item1" data-toggle="tab"
+                           href="#detail">Detail</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="custom-nav nav-not-active px-3 pt-3 pb-2 px-md-5" id="item2" data-toggle="tab"
+                           href="#meaning">Meaning</a>
+                    </li>
+                </ul>
                 <div class="tab-content">
                     <div id="detail" class="tab-pane active">
                         <h5 class=""><span>Descriptions of </span><span
@@ -54,8 +63,8 @@
                     bouquet</h5>
                 <p class="product-des" th:text="${product.description}">
                 </p>
-                <button class="btn-primary" type="button" >Edit</button>
-           </div>
+                <button class="btn-primary" type="button">Edit</button>
+            </div>
         </div>
     </div>
 </th:block>

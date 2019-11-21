@@ -21,8 +21,22 @@ public class AdminManagerFlowerController {
     private static final String OCCASIONS = "occasions";
     private static final String LIST_OCCASION = "list_occasion";
 
+
+
+    private static final String CATEGORIES = "categories";
+    private static final String PRODUCT = "product";
+    private static final String REVIEWS = "reviews";
+    private static final String REVIEWDTO = "reviewDTO";
+    private static final String BESTRATINGPRODUCTS = "bestRatingProducts";
+
     @Autowired
-    private ProductService productService;
+    CategoryService categoryService;
+
+    @Autowired
+    ProductService productService;
+
+    @Autowired
+    ReviewService reviewService;
 
     @Autowired
     private OccasionService occasionService;
@@ -36,6 +50,19 @@ public class AdminManagerFlowerController {
         model.addAttribute(OCCASION, occasionService.getOccasionDTOById(id));
         model.addAttribute(LIST_OCCASION, productService.getListProductDTOByOccasionId(id));
         return UrlConstants.URL_ADMIN + "/product/index_pr";
+    }
+
+    @GetMapping({UrlConstants.URL_ADMIN_PRODUCT_EDIT_ID})
+    public String getProductPage(Model model, @PathVariable("id") Long id)  {
+        model.addAttribute(CATEGORIES, categoryService.getCategories());
+        model.addAttribute(PRODUCT, productService.getProductDetailDTOById(id));
+        model.addAttribute(REVIEWS, reviewService.getAllReviewsByProductId(id));
+        model.addAttribute(REVIEWDTO, new ReviewDTO());
+        model.addAttribute(BESTRATINGPRODUCTS, productService.getListBestProductDTOByRatting());
+        System.out.println("============================= hello ===================");
+        System.out.println(productService.getProductDetailDTOById(id));
+        return  UrlConstants.URL_ADMIN + "/product/edit_pr";
+       // return "product-detail/detail";
     }
 
 
