@@ -23,7 +23,7 @@
     </div>
 
     <div class="product-title">
-        <h1><span> Flowers</span></h1>
+        <h1><span th:text = "${topic}"> Flowers</span></h1>
         <p>
             <span th:text="${#lists.size(flowers)}"></span>
             <span th:text="${#lists.size(flowers) <2 } ? 'Result' : 'Results'">Results</span>

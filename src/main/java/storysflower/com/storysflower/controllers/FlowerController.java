@@ -21,11 +21,13 @@ public class FlowerController {
 
     private static final String FLOWERS = "flowers";
     private static final String OCCASION = "occasions";
+    private static final String TOPIC = "topic";
 
     @GetMapping()
     public String getOccasionPage(Model model) {
         model.addAttribute(FLOWERS, productService.getAllFlower());
         model.addAttribute(OCCASION, occasionService.findAllOccasion());
+        model.addAttribute(TOPIC, "Flowers");
         return "flower";
     }
 }

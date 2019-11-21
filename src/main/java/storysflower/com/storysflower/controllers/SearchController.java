@@ -21,12 +21,14 @@ public class SearchController {
     private OccasionService occasionService;
     private static final String FLOWERS = "flowers";
     private static final String OCCASION = "occasions";
+    private static final String TOPIC = "topic";
 
     @GetMapping
     public String getSearchPage(@RequestParam("searchKey") String searchKey, Model model) {
 
         model.addAttribute(FLOWERS, searchService.getListFlowerByKey(searchKey));
         model.addAttribute(OCCASION, occasionService.findAllOccasion());
+        model.addAttribute(TOPIC, "Search: " + searchKey );
         return "flower";
     }
 }
