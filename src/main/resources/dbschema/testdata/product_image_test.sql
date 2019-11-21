@@ -438,11 +438,88 @@ VALUES (46, 200, true);
 INSERT INTO image_product(product_id, image_id, main_image)
 VALUES (46, 201, false);
 
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (47, 202, true);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (47, 203, false);
+
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (48, 204, true);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (48, 205, false);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (48, 206, false);
+
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (49, 207, true);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (49, 208, false);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (49, 209, false);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (49, 210, false);
+
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (50, 211, false);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (50, 212, true);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (50, 213, false);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (50, 214, false);
+
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (51, 215, true);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (51, 216, false);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (51, 217, false);
 
 
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (52, 218, true);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (52, 219, false);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (52, 220, false);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (52, 221, false);
 
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (53, 222, true);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (53, 223, false);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (53, 224, false);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (53, 225, false);
 
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (54, 226, true);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (54, 227, false);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (54, 228, false);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (54, 219, false);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (54, 230, false);
 
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (55, 231, true);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (55, 232, false);
+
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (56, 233, true);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (56, 234, false);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (56, 235, false);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (56, 236, false);
+INSERT INTO image_product(product_id, image_id, main_image)
+VALUES (56, 237, false);
 
 
 

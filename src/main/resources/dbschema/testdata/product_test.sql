@@ -101,3 +101,25 @@ INSERT INTO product(product_name, topic_id, price)
 VALUES ('Teddy bear', 3, 300000);
 INSERT INTO product(product_name, topic_id, price)
 VALUES ('Teddy bear', 3, 300000);
+
+
+INSERT INTO product(product_name, topic_id, price)
+VALUES ('Cactus', 2, 200000);
+INSERT INTO product(product_name, topic_id, price)
+VALUES ('Cactus', 2, 200000);
+INSERT INTO product(product_name, topic_id, price)
+VALUES ('Mini land', 2, 200000);
+INSERT INTO product(product_name, topic_id, price)
+VALUES ('Dragon tree', 2, 200000);
+INSERT INTO product(product_name, topic_id, price)
+VALUES ('Mix cactus', 2, 200000);
+INSERT INTO product(product_name, topic_id, price)
+VALUES ('Mix cactus in land', 2, 200000);
+INSERT INTO product(product_name, topic_id, price)
+VALUES ('Mini plant', 2, 200000);
+INSERT INTO product(product_name, topic_id, price)
+VALUES ('Mini flower', 2, 200000);
+INSERT INTO product(product_name, topic_id, price)
+VALUES ('Mini flower', 2, 200000);
+INSERT INTO product(product_name, topic_id, price)
+VALUES ('Mini flower', 2, 200000);
