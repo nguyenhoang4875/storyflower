@@ -234,6 +234,7 @@
                             <addClasspath>true</addClasspath>
                         <!--    <classpathPrefix>lib/</classpathPrefix>-->
                             <mainClass>storysflower.com.storysflower.StorysflowerApplication</mainClass>
+                            <classpathPrefix>dependency-jars/</classpathPrefix>
                         </manifest>
                     </archive>
                 </configuration>
