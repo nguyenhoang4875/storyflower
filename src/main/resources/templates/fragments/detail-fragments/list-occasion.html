@@ -1,12 +1,12 @@
-<th:block xmlns:th="www.thymeLeaf.org" th:fragment="list-occasion">
+<th:block th:fragment="list-occasion" xmlns:th="www.thymeLeaf.org">
     <div id="image-container mx-auto">
         <div class="row d-flex justify-content-center">
-            <div class="image-link mx-2 my-2 p-2" th:if="${not #lists.isEmpty(occasions)}"
-                 th:each="item: ${occasions}">
+            <div class="image-link mx-2 my-2 p-2" th:each="item: ${occasions}"
+                 th:if="${not #lists.isEmpty(occasions)}">
                 <a th:href="@{/product/{id}(id=${item.id})}">
                     <div><img
-                            th:src="${item.imageId!=null}?@{/api/image/}+${item.imageId}:@{/img/no-img.png}"
-                            class="image">
+                            class="image"
+                            th:src="${item.imageId!=null}?@{/api/image/}+${item.imageId}:@{/img/no-img.png}">
                     </div>
                     <p class="name-product mt-2" th:text="${item.productName}">Love's flower</p>
                     <div class="d-flex justify-content-center">

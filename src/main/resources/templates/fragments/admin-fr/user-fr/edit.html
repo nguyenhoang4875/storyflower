@@ -1,37 +1,42 @@
-<div xmlns:th="http://www.springframework.org/tags/form" >
+<div xmlns:th="http://www.springframework.org/tags/form">
     <h4>Edit User</h4>
     <div th:if="${userDTO != null}">
         <!--@{/product/{id}(id=${item.id})}-->
-        <form th:action="@{/admin/user/edit/{id}(id=${userDTO.id})}" method="post">
-                <div class="form-group">
-                    <label for="firstName">Fist Name</label>
+        <form method="post" th:action="@{/admin/user/edit/{id}(id=${userDTO.id})}">
+            <div class="form-group">
+                <label for="firstName">Fist Name</label>
 
-                    <input  class="form-control" name="firstName" id="firstName" type="text" placeholder="Enter Fist Name" th:value="${userDTO.firstName}">
+                <input class="form-control" id="firstName" name="firstName" placeholder="Enter Fist Name" th:value="${userDTO.firstName}"
+                       type="text">
 
-                </div>
-                <div class="form-group">
-                    <label for="lastName">Last Name</label>
-                    <input class="form-control" name="lastName" id="lastName" type="text"  placeholder="Enter Last Name" th:value="${userDTO.lastName}">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email address</label>
-                    <input class="form-control" name="email" id="email" type="email"  aria-describedby="emailHelp" placeholder="Enter email" th:value="${userDTO.email}">
-                    <small class="form-text text-muted" id="emailHelp">We'll never share your email with anyone else.</small>
-                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input class="form-control" id="lastName" name="lastName" placeholder="Enter Last Name" th:value="${userDTO.lastName}"
+                       type="text">
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input aria-describedby="emailHelp" class="form-control" id="email" name="email" placeholder="Enter email"
+                       th:value="${userDTO.email}" type="email">
+                <small class="form-text text-muted" id="emailHelp">We'll never share your email with anyone
+                    else.</small>
+            </div>
 
-                <div class="form-group">
-                    <label for="passWord">Password</label>
-                    <input class="form-control" name="passWord" id="passWord" type="password" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <label for="rePassWord">Re Password</label>
-                    <input class="form-control" name="rePassWord" id="rePassWord"  type="password" placeholder="Enter the password again">
-                </div>
-                <input type="submit" value="Edit" class="btn btn-success">
+            <div class="form-group">
+                <label for="passWord">Password</label>
+                <input class="form-control" id="passWord" name="passWord" placeholder="Password" type="password">
+            </div>
+            <div class="form-group">
+                <label for="rePassWord">Re Password</label>
+                <input class="form-control" id="rePassWord" name="rePassWord" placeholder="Enter the password again"
+                       type="password">
+            </div>
+            <input class="btn btn-success" type="submit" value="Edit">
         </form>
 
         <div style="margin-top: 10px;" th:if="${rs!= null}">
-            <span  th:text = "${msg}"></span>
+            <span th:text="${msg}"></span>
             <ul th:each="data : ${errorList}">
                 <li style="color: red;" th:text="${data.getDefaultMessage()}"></li>
             </ul>

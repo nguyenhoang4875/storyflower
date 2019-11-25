@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      lang="en" xmlns:th="www.thymeLeaf.org"
+<html lang="en"
+      layout:decorate="~{layout/default-layout}" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/default-layout}">
+      xmlns:th="www.thymeLeaf.org">
 <head>
     <title>Story's Flower</title>
-    <link rel="stylesheet" href="/css/home.css">
+    <link href="/css/home.css" rel="stylesheet">
 </head>
 <body>
 
 <div layout:fragment="main-content">
-   <div>
-        <img class="main-banner" src="/img/main-banner.jpg" alt="main-banner">
+    <div>
+        <img alt="main-banner" class="main-banner" src="/img/main-banner.jpg">
     </div>
     <div class="row mx-3 mx-md-5 d-flex justify-content-center">
-        <div th:if="${not #lists.isEmpty(occasions)}" th:each="item: ${occasions}">
+        <div th:each="item: ${occasions}" th:if="${not #lists.isEmpty(occasions)}">
             <a class="occasion-image d-inline-block" th:href="@{/occasion/} + ${item.occasionId}">
                 <img
-                        th:src="${item.imageId!=null}?@{/api/image/}+${item.imageId}:@{/img/no-img.png}"
-                        class="rounded-circle" alt="${item.nameOccasion}">
+                        alt="${item.nameOccasion}"
+                        class="rounded-circle" th:src="${item.imageId!=null}?@{/api/image/}+${item.imageId}:@{/img/no-img.png}">
                 <p th:text="${item.nameOccasion}"></p>
             </a>
         </div>

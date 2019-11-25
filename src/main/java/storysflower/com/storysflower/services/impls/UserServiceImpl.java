@@ -1,6 +1,5 @@
 package storysflower.com.storysflower.services.impls;
 
-import org.jooq.impl.DSL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,9 +22,9 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
 
     @Override
-    public  CustomUserDetail getUser(){
+    public CustomUserDetail getUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (!(authentication.getPrincipal()  instanceof CustomUserDetail)) {
+        if (!(authentication.getPrincipal() instanceof CustomUserDetail)) {
             return null;
         }
         Object principal = authentication.getPrincipal();
@@ -45,12 +44,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDTO> findAll() {
         List<UserDTO> listUser = userRepository.findAll();
-        for (UserDTO u: listUser) {
-            u.setRole(u.getRole().replace("ROLE_",""));
+        for (UserDTO u : listUser) {
+            u.setRole(u.getRole().replace("ROLE_", ""));
             String f = Character.toString(u.getFirstName().charAt(0)).toUpperCase();
-            u.setFirstName(f+u.getFirstName().substring(1));
+            u.setFirstName(f + u.getFirstName().substring(1));
             String l = Character.toString(u.getLastName().charAt(0)).toUpperCase();
-            u.setLastName(l+u.getLastName().substring(1));
+            u.setLastName(l + u.getLastName().substring(1));
         }
         return listUser;
     }
@@ -62,9 +61,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean addUser(UserDTO userDTO) {
-        if(userRepository.addUser(userDTO)== true){
+        if (userRepository.addUser(userDTO) == true) {
             return userRepository.addUser_ROLE(userDTO);
-        }else {
+        } else {
             System.out.println("false");
             return false;
         }
@@ -74,17 +73,17 @@ public class UserServiceImpl implements UserService {
     public String getFullNameById(Long id) {
         UserProfileDTO userProfileDTO = findCustomerByIdUser(id);
         String f = Character.toString(userProfileDTO.getFisrtName().charAt(0)).toUpperCase();
-        userProfileDTO.setFisrtName(f+userProfileDTO.getFisrtName().substring(1));
+        userProfileDTO.setFisrtName(f + userProfileDTO.getFisrtName().substring(1));
         String l = Character.toString(userProfileDTO.getLastName().charAt(0)).toUpperCase();
-        userProfileDTO.setLastName(l+userProfileDTO.getLastName().substring(1));
-        return userProfileDTO.getFisrtName()+" "+userProfileDTO.getLastName();
+        userProfileDTO.setLastName(l + userProfileDTO.getLastName().substring(1));
+        return userProfileDTO.getFisrtName() + " " + userProfileDTO.getLastName();
     }
 
     @Override
     public boolean edit(UserDTO userDTO) {
-        if(userRepository.edit(userDTO)== true){
+        if (userRepository.edit(userDTO) == true) {
             return userRepository.edit_ROLE(userDTO);
-        }else {
+        } else {
             System.out.println("false");
             return false;
         }
@@ -92,9 +91,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean del(Long id) {
-        if(userRepository.del_ROLE(userRepository.getUserByIdUser(id).getEmail())){
+        if (userRepository.del_ROLE(userRepository.getUserByIdUser(id).getEmail())) {
             return userRepository.del(id);
-        }else {
+        } else {
             System.out.println("false");
             return false;
         }
@@ -103,13 +102,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO findUserByIdUser(Long id) {
         UserDTO u = userRepository.getUserByIdUser(id);
-        u.setRole(u.getRole().replace("ROLE_",""));
+        u.setRole(u.getRole().replace("ROLE_", ""));
         return u;
     }
+
     @Override
     public UserDTO findUserByEmail(String email) {
         UserDTO u = userRepository.getUserByEmail(email);
-        u.setRole(u.getRole().replace("ROLE_",""));
+        u.setRole(u.getRole().replace("ROLE_", ""));
         return u;
     }
 }

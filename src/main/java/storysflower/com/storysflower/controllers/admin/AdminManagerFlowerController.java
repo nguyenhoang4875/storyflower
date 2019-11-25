@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import storysflower.com.storysflower.constants.UrlConstants;
 import storysflower.com.storysflower.dto.ReviewDTO;
-import storysflower.com.storysflower.services.*;
+import storysflower.com.storysflower.services.CategoryService;
+import storysflower.com.storysflower.services.OccasionService;
+import storysflower.com.storysflower.services.ProductService;
+import storysflower.com.storysflower.services.ReviewService;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -71,7 +74,7 @@ public class AdminManagerFlowerController {
 
     @GetMapping({UrlConstants.URL_ADMIN_PRODUCT_INDEX, UrlConstants.URL_ADMIN_PRODUCT_ADD})
     public String addProduct(Model model, HttpServletRequest request, RedirectAttributes redirect,
-                                @PathVariable(name = "id", required = false) Long id) {
+                             @PathVariable(name = "id", required = false) Long id) {
         if (id == null) id = 1L;
         model.addAttribute(OCCASIONS, occasionService.findAllOccasion());
         model.addAttribute(OCCASION, occasionService.getOccasionDTOById(id));

@@ -12,7 +12,7 @@ public class UserDTO {
     @NotEmpty(message = "Vui lòng nhập FirstName")
     private String firstName;
     @NotEmpty(message = "Vui lòng nhập mật khẩu")
-    @Size(min = 5, max = 100 , message ="Độ dài dài mật khẩu không tốt!" )
+    @Size(min = 5, max = 100, message = "Độ dài dài mật khẩu không tốt!")
     private String passWord;
     private String rePassWord;
     @NotEmpty(message = "Email không được trống!")
@@ -28,13 +28,15 @@ public class UserDTO {
         this.email = email;
         this.role = role;
     }
-    public UserDTO( String lastName, String firstName, String passWord, String rePassWord, String email) {
+
+    public UserDTO(String lastName, String firstName, String passWord, String rePassWord, String email) {
         this.rePassWord = rePassWord;
         this.lastName = lastName;
         this.firstName = firstName;
         this.passWord = passWord;
         this.email = email;
     }
+
     public UserDTO() {
     }
 

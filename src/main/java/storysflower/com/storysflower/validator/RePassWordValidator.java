@@ -11,6 +11,7 @@ public class RePassWordValidator implements Validator {
     public boolean supports(Class<?> aClass) {
         return aClass.isAssignableFrom(UserDTO.class);
     }
+
     @Override
     public void validate(Object object, Errors errors) {
         UserDTO userDTO = (UserDTO) object;

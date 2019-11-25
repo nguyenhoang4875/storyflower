@@ -33,7 +33,7 @@ public class ProductDetailController {
     ReviewService reviewService;
 
     @GetMapping("/{id}")
-    public String getProductPage(Model model, @PathVariable("id") Long id)  {
+    public String getProductPage(Model model, @PathVariable("id") Long id) {
         model.addAttribute(CATEGORIES, categoryService.getCategories());
         model.addAttribute(PRODUCT, productService.getProductDetailDTOById(id));
         model.addAttribute(REVIEWS, reviewService.getAllReviewsByProductId(id));

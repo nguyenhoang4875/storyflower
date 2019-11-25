@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <databaseChangeLog
-        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
@@ -11,7 +11,8 @@
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
             <column name="email" type="varchar(20)">
-                <constraints foreignKeyName="fk_user_role_user" references="public.user(email)" nullable="false" deleteCascade="true"/>
+                <constraints foreignKeyName="fk_user_role_user" references="public.user(email)" nullable="false"
+                             deleteCascade="true"/>
             </column>
             <column name="role" type="varchar(30)">
                 <constraints nullable="false"/>

@@ -6,7 +6,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 import storysflower.com.storysflower.dto.UserDTO;
 import storysflower.com.storysflower.dto.UserProfileDTO;
-import storysflower.com.storysflower.model.tables.tables.User;
 import storysflower.com.storysflower.model.tables.tables.records.UserRecord;
 
 import java.util.Collections;
@@ -23,12 +22,12 @@ public class UserRepository {
     @Autowired
     private DSLContext dslContext;
 
-    public UserRecord findByEmail(String email){
+    public UserRecord findByEmail(String email) {
         System.out.println(USER.EMAIL);
         return dslContext.fetchOne(USER, USER.EMAIL.eq(email));
     }
 
-    public List<SimpleGrantedAuthority> getAuthority(String email){
+    public List<SimpleGrantedAuthority> getAuthority(String email) {
         return dslContext.select(USER_ROLE.ROLE)
                 .from(USER_ROLE)
                 .join(USER).on(USER.EMAIL.eq(USER_ROLE.EMAIL))
@@ -40,11 +39,12 @@ public class UserRepository {
         return dslContext.insertInto(USER)
                 .set(USER.FIRSTNAME, userProfileDTO.getFisrtName())
                 .set(USER.LASTNAME, userProfileDTO.getLastName())
-                .set(USER.EMAIL,userProfileDTO.getEmail())
+                .set(USER.EMAIL, userProfileDTO.getEmail())
                 .set(USER.PASSWORD, userProfileDTO.getPassword())
-                .execute()>0;
+                .execute() > 0;
     }
-    public int countPagination(){
+
+    public int countPagination() {
         return dslContext.selectCount()
                 .from(USER)
                 .fetchOne(0, Integer.class);
@@ -52,12 +52,12 @@ public class UserRepository {
 
     public List<UserDTO> findAll() {
         List<UserDTO> listUser = dslContext
-                .select(USER.ID, USER.LASTNAME.as("lastName"),  USER.FIRSTNAME.as("firstName"), USER.PASSWORD.as("passWord"), USER_ROLE.EMAIL, USER_ROLE.ROLE)
+                .select(USER.ID, USER.LASTNAME.as("lastName"), USER.FIRSTNAME.as("firstName"), USER.PASSWORD.as("passWord"), USER_ROLE.EMAIL, USER_ROLE.ROLE)
                 .from(USER)
                 .join(USER_ROLE).on(USER.EMAIL.eq(USER_ROLE.EMAIL))
                 .orderBy(USER.ID)
                 .fetchInto(UserDTO.class);
-        return  listUser.size()==0? Collections.emptyList() : listUser;
+        return listUser.size() == 0 ? Collections.emptyList() : listUser;
     }
 
     public UserProfileDTO findCustomerByIdUser(Long id) {
@@ -66,7 +66,7 @@ public class UserRepository {
                 .from(USER)
                 .where(USER.ID.eq(id))
                 .fetchOneInto(UserProfileDTO.class);
-        return  userProfileDTO;
+        return userProfileDTO;
     }
 
     public boolean addUser(UserDTO userDTO) {
@@ -77,6 +77,7 @@ public class UserRepository {
                 .set(USER.PASSWORD, userDTO.getPassWord())
                 .execute() > 0;
     }
+
     public boolean addUser_ROLE(UserDTO userDTO) {
         return dslContext.insertInto(USER_ROLE)
                 .set(USER_ROLE.ROLE, userDTO.getRole())
@@ -85,7 +86,7 @@ public class UserRepository {
     }
 
     public UserDTO getUserByIdUser(Long id) {
-        return dslContext.select(USER.ID, USER.LASTNAME.as("lastName"),  USER.FIRSTNAME.as("firstName"), USER.PASSWORD.as("passWord"), USER_ROLE.EMAIL, USER_ROLE.ROLE)
+        return dslContext.select(USER.ID, USER.LASTNAME.as("lastName"), USER.FIRSTNAME.as("firstName"), USER.PASSWORD.as("passWord"), USER_ROLE.EMAIL, USER_ROLE.ROLE)
                 .from(USER)
                 .join(USER_ROLE).on(USER.EMAIL.eq(USER_ROLE.EMAIL))
                 .where(USER.ID.eq(id))
@@ -110,7 +111,7 @@ public class UserRepository {
     }
 
     public boolean del(Long id) {
-        return  dslContext.delete(USER)
+        return dslContext.delete(USER)
                 .where(USER.ID.eq(id))
                 .execute() > 0;
     }
@@ -122,7 +123,7 @@ public class UserRepository {
     }
 
     public UserDTO getUserByEmail(String email) {
-        return dslContext.select(USER.ID, USER.LASTNAME.as("lastName"),  USER.FIRSTNAME.as("firstName"), USER.PASSWORD.as("passWord"), USER_ROLE.EMAIL, USER_ROLE.ROLE)
+        return dslContext.select(USER.ID, USER.LASTNAME.as("lastName"), USER.FIRSTNAME.as("firstName"), USER.PASSWORD.as("passWord"), USER_ROLE.EMAIL, USER_ROLE.ROLE)
                 .from(USER)
                 .join(USER_ROLE).on(USER.EMAIL.eq(USER_ROLE.EMAIL))
                 .where(USER.EMAIL.eq(email))

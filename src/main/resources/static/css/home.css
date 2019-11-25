@@ -23,48 +23,54 @@
     font-size: 17px;
 }
 
-.occasion-image:hover > p{
+.occasion-image:hover > p {
     text-decoration: #007CAD;
 }
 
-@media only screen and (max-width: 750px){
-    .occasion-image >img{
-        width:130px;
-        height:130px;
+@media only screen and (max-width: 750px) {
+    .occasion-image > img {
+        width: 130px;
+        height: 130px;
     }
+
     .occasion-image > p {
         font-size: 15px;
     }
+
     .occasion-image {
         margin: 0 7px 0;
     }
 
 }
 
-@media only screen and (max-width: 600px){
-    .occasion-image >img{
-        width:100px;
-        height:100px;
+@media only screen and (max-width: 600px) {
+    .occasion-image > img {
+        width: 100px;
+        height: 100px;
     }
+
     .occasion-image > p {
         font-size: 14px;
     }
+
     .occasion-image {
         margin: 0 5px 0;
     }
 }
 
-.deals-of-day > h1{
+.deals-of-day > h1 {
     font-style: italic;
     margin: 20px 0px 20px;
-    font-family: New Century Schoolbook, TeX Gyre Schola, serif;    color: #211f1f;
+    font-family: New Century Schoolbook, TeX Gyre Schola, serif;
+    color: #211f1f;
 }
 
 .image-link:hover {
     outline: 1px solid #eee;
-    box-shadow: 0 2px 4.7px .4px rgba(0,0,0,.1);}
+    box-shadow: 0 2px 4.7px .4px rgba(0, 0, 0, .1);
+}
 
-.image-link:hover .view-detail-button{
+.image-link:hover .view-detail-button {
     visibility: visible;
 }
 

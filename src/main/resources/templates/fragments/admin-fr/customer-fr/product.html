@@ -1,35 +1,36 @@
 <div class="col-md-12" xmlns:th="http://www.w3.org/1999/xhtml">
     <div class="tile">
         <h3 class="tile-title">Order history</h3>
-        <div class="table-responsive" >
+        <div class="table-responsive">
 
-                <div>
-                    <label style="color: #0f6674" th:text = "${customername}"></label>
-                </div>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Product Name</th>
-                        <th>Order Date</th>
-                        <th>Status</th>
-                        <th>Quantity</th>
-                        <th>Total Money</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="item : ${listProduct}">
-                            <td th:text = "${item.id}"t></td>
-                            <td th:text = "${item.product_name}">AAA</td>
-                            <td th:text = "${item.buy_date}"></td>
-                            <td >C</td>
-                            <td th:text = "${item.quantity}"></td>
-                            <td th:text = "${#numbers.formatDecimal(item.total_Money, 0, 'COMMA', 0, 'POINT')+' VND'}"></td>
-                        </tr>
-                    </tbody>
-                </table>
             <div>
-                <label style="color: #0f6674" th:text = "${'The total amount of all orders: '+#numbers.formatDecimal(totalAmountAll, 0, 'COMMA', 0, 'POINT')} +' VND'"/>
+                <label style="color: #0f6674" th:text="${customername}"></label>
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Product Name</th>
+                    <th>Order Date</th>
+                    <th>Status</th>
+                    <th>Quantity</th>
+                    <th>Total Money</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${listProduct}">
+                    <td t th:text="${item.id}"></td>
+                    <td th:text="${item.product_name}">AAA</td>
+                    <td th:text="${item.buy_date}"></td>
+                    <td>C</td>
+                    <td th:text="${item.quantity}"></td>
+                    <td th:text="${#numbers.formatDecimal(item.total_Money, 0, 'COMMA', 0, 'POINT')+' VND'}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <div>
+                <label style="color: #0f6674"
+                       th:text="${'The total amount of all orders: '+#numbers.formatDecimal(totalAmountAll, 0, 'COMMA', 0, 'POINT')} +' VND'"/>
             </div>
         </div>
     </div>

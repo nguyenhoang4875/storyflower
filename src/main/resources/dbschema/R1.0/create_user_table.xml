@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <databaseChangeLog
-        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
@@ -25,9 +25,9 @@
             <column name="image_id" type="bigint">
                 <constraints nullable="true"/>
             </column>
-           <!-- <column name="enable" type="int" defaultValue="0">
-                <constraints nullable="false"></constraints>
-            </column>-->
+            <!-- <column name="enable" type="int" defaultValue="0">
+                 <constraints nullable="false"></constraints>
+             </column>-->
         </createTable>
     </changeSet>
 

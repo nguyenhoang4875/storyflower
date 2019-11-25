@@ -1,8 +1,6 @@
 package storysflower.com.storysflower.controllers;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import storysflower.com.storysflower.dto.NotFoundException;
 
 /**
  * @author ntynguyen

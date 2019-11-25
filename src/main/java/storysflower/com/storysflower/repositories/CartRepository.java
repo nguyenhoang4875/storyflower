@@ -35,7 +35,7 @@ public class CartRepository {
         return true;
     }
 
-    public int insertCartData(CustomerDTO customerDTO, RecipientDTO recipientDTO, Date deliveryDate){
+    public int insertCartData(CustomerDTO customerDTO, RecipientDTO recipientDTO, Date deliveryDate) {
         return (dslContext.insertInto(CART)
                 .set(CART.CUSTOMER_ID, getCustomerId(customerDTO.getEmail()))
                 .set(CART.RECIPIENT_ID, getRecipientId(recipientDTO))
@@ -43,8 +43,8 @@ public class CartRepository {
                 .execute());
     }
 
-    public int insertBuyData(List<CartDTO> cartDTOList, Long cartId){
-        for(CartDTO cartDTO: cartDTOList){
+    public int insertBuyData(List<CartDTO> cartDTOList, Long cartId) {
+        for (CartDTO cartDTO : cartDTOList) {
             dslContext.insertInto(BUY_PRODUCT)
                     .set(BUY_PRODUCT.CART_ID, cartId)
                     .set(BUY_PRODUCT.PRODUCT_ID, cartDTO.getProductDTO().getId())
@@ -56,7 +56,7 @@ public class CartRepository {
 
 
     @Transactional
-    public int insertCustomerData(CustomerDTO customerDTO){
+    public int insertCustomerData(CustomerDTO customerDTO) {
         return dslContext.insertInto(CUSTOMER)
                 .set(CUSTOMER.FULL_NAME, customerDTO.getFullName())
                 .set(CUSTOMER.ADDRESS, customerDTO.getAddress())
@@ -66,7 +66,7 @@ public class CartRepository {
     }
 
     @Transactional
-    public int insertRecipientData(RecipientDTO recipientDTO){
+    public int insertRecipientData(RecipientDTO recipientDTO) {
         return dslContext.insertInto(RECIPIENT)
                 .set(RECIPIENT.FULL_NAME, recipientDTO.getFullName())
                 .set(RECIPIENT.ADDRESS, recipientDTO.getAddress())
@@ -76,13 +76,14 @@ public class CartRepository {
                 .execute();
     }
 
-    public Long getCustomerId(String email){
+    public Long getCustomerId(String email) {
         return dslContext.select(CUSTOMER.ID)
                 .from(CUSTOMER)
                 .where(CUSTOMER.EMAIL.eq(email))
                 .fetchOneInto(Long.class);
     }
-    public Long getRecipientId(RecipientDTO recipientDTO){
+
+    public Long getRecipientId(RecipientDTO recipientDTO) {
         return dslContext.select(RECIPIENT.ID)
                 .from(RECIPIENT)
                 .where(RECIPIENT.FULL_NAME.eq(recipientDTO.getFullName()))
@@ -91,24 +92,25 @@ public class CartRepository {
                 .fetchOneInto(Long.class);
     }
 
-    public Long getCartId(Long customerId, Long recipientId){
+    public Long getCartId(Long customerId, Long recipientId) {
         return dslContext.select(CART.ID)
                 .from(CART)
                 .where(CART.CUSTOMER_ID.eq(customerId))
                 .and(CART.RECIPIENT_ID.eq(recipientId))
                 .fetchOneInto(Long.class);
     }
+
     public List<CartAdminDTO> findAll() {
         List<CartAdminDTO> listCart = dslContext
-                .select(CART.ID, CUSTOMER.FULL_NAME, CART.DELIVERY_DATE, RECIPIENT.MESSAGE_TO_US, CART.STATUS )
+                .select(CART.ID, CUSTOMER.FULL_NAME, CART.DELIVERY_DATE, RECIPIENT.MESSAGE_TO_US, CART.STATUS)
                 .from(CART)
                 .join(RECIPIENT).on(Tables.CART.RECIPIENT_ID.eq(RECIPIENT.ID))
                 .join(Tables.CUSTOMER).on(Tables.CUSTOMER.ID.eq(Tables.CART.CUSTOMER_ID))
                 .fetchInto(CartAdminDTO.class);
-        return  listCart.size()==0? Collections.emptyList() : listCart;
+        return listCart.size() == 0 ? Collections.emptyList() : listCart;
     }
 
-    public List<ProductCartDTO> getAllListProductByIdCart(Long idCart){
+    public List<ProductCartDTO> getAllListProductByIdCart(Long idCart) {
         List<ProductCartDTO> listProduct = dslContext
                 //String productName,  String messageToRecipient, Double price, Integer quantity
                 .select(PRODUCT.PRODUCT_NAME.as("productName"), RECIPIENT.MESSAGE_TO_RECIPIENT.as("messageToRecipient"), PRODUCT.PRICE, BUY_PRODUCT.QUANTITY)
@@ -118,15 +120,16 @@ public class CartRepository {
                 .join(RECIPIENT).on(CART.RECIPIENT_ID.eq(RECIPIENT.ID))
                 .where(BUY_PRODUCT.CART_ID.eq(idCart))
                 .fetchInto(ProductCartDTO.class);
-        return  listProduct.size()==0? Collections.emptyList() : listProduct;
+        return listProduct.size() == 0 ? Collections.emptyList() : listProduct;
     }
 
-    public boolean updateStatus(Long id){
+    public boolean updateStatus(Long id) {
         return dslContext.update(CART)
                 .set(CART.STATUS, 1)
                 .where(CART.ID.eq(id))
                 .execute() > 0;
     }
+
     public int countPagination() {
         return dslContext.selectCount()
                 .from(BUY_PRODUCT)

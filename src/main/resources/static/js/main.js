@@ -7,15 +7,14 @@ $(window).resize(function () {
 })
 
 function changeLogo() {
-    if(getWidthWindow()) {
+    if (getWidthWindow()) {
         $('.logo-image').attr('src', '/img/logo-mobile.png');
-    }else{
+    } else {
         $('.logo-image').attr('src', '/img/logo.png');
     }
 }
 
-function getWidthWindow()
-{
+function getWidthWindow() {
     return $(window).width();
 }
 

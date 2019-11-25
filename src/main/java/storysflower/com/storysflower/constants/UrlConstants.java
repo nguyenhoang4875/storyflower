@@ -1,8 +1,6 @@
 package storysflower.com.storysflower.constants;
 
 
-
-
 public class UrlConstants {
     public static final String URL_ADMIN = "/admin";
     public static final String URL_LOGIN = "/login";
@@ -20,20 +18,19 @@ public class UrlConstants {
     public static final String URL_ADMIN_REVENUE_SEARCH = "/revenue/search";
 
     public static final String URL_ADMIN_CUSTOMER_INDEX = "/customer/index";
-    public static final String URL_ADMIN_CUSTOMER_INDEX_PAGINATION="/customer/index/{page}";
+    public static final String URL_ADMIN_CUSTOMER_INDEX_PAGINATION = "/customer/index/{page}";
     public static final String URL_ADMIN_CUSTOMER_DETAIL = "/customer/detail/{id}";
 
     public static final String URL_ADMIN_CART_INDEX = "/cart/index";
-    public static final String URL_ADMIN_CART_INDEX_PAGINATION="/cart/index/{page}";
+    public static final String URL_ADMIN_CART_INDEX_PAGINATION = "/cart/index/{page}";
     public static final String URL_ADMIN_CART_DETAIL = "/cart/detail/{id}";
     public static final String URL_ADMIN_CART_ORDER = "/cart/order/{id}";
 
 
-
-    public static final String URL_ADMIN_PRODUCT_INDEX_ID= "product/index/{id}";
+    public static final String URL_ADMIN_PRODUCT_INDEX_ID = "product/index/{id}";
     public static final String URL_ADMIN_PRODUCT_INDEX = "product/index";
 
-    public static final String URL_ADMIN_PRODUCT_EDIT_ID= "product/edit/{id}";
-    public static final String URL_ADMIN_PRODUCT_ADD= "product/add";
+    public static final String URL_ADMIN_PRODUCT_EDIT_ID = "product/edit/{id}";
+    public static final String URL_ADMIN_PRODUCT_ADD = "product/add";
 
 }

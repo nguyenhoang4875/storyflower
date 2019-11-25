@@ -17,10 +17,10 @@ public class NameUserValidator implements Validator {
     public void validate(Object object, Errors errors) {
         UserDTO userDTO = (UserDTO) object;
         if (CharacterUtil.isValidCharacterSpecial(userDTO.getFirstName())) {
-            errors.rejectValue("firstName", null, "Vui lòng không nhập các kí tự đặt biệt."+ CharacterUtil.show());
+            errors.rejectValue("firstName", null, "Vui lòng không nhập các kí tự đặt biệt." + CharacterUtil.show());
         }
         if (CharacterUtil.isValidCharacterSpecial(userDTO.getLastName())) {
-            errors.rejectValue("firstName", null, "Vui lòng không nhập các kí tự đặt biệt."+ CharacterUtil.show());
+            errors.rejectValue("firstName", null, "Vui lòng không nhập các kí tự đặt biệt." + CharacterUtil.show());
         }
     }
 }

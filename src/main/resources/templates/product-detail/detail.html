@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      lang="en" xmlns:th="www.thymeLeaf.org"
+<html lang="en"
+      layout:decorate="~{layout/default-layout}" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/default-layout}">
+      xmlns:th="www.thymeLeaf.org">
 <head>
     <title>Story's Flower</title>
-    <link rel="stylesheet" href="/css/detail.css">
+    <link href="/css/detail.css" rel="stylesheet">
 </head>
 <body>
 <div layout:fragment="main-content">
     <div class="product-title">
-        <h1 th:text="${product.productName}" id="product-title">Colorful flower bouquet</h1>
+        <h1 id="product-title" th:text="${product.productName}">Colorful flower bouquet</h1>
         <p>
             <span th:utext="${product.topicName}"></span>
             <span> | </span>
@@ -22,14 +22,14 @@
             <div class="product-image-container row d-flex justify-content-start">
                 <div class=" col-12 col-lg-9 d-flex align-items-center mb-3">
                     <div class="css">
-                        <img th:src="${product.imageId!=null}? @{/api/image/} + ${product.imageId} : @{/img/no-img/png}"
-                             class="main-image-detail " alt="main-image"/>
+                        <img alt="main-image"
+                             class="main-image-detail " th:src="${product.imageId!=null}? @{/api/image/} + ${product.imageId} : @{/img/no-img/png}"/>
                     </div>
                 </div>
                 <div class="all-product-image col-12 col-lg-2 d-flex flex-lg-column align-content-lg-center my-lg-auto justify-content-center">
-                    <div th:if="${not #lists.isEmpty(product.imageIds)}" th:each="item : ${product.imageIds}">
-                        <img th:src="${item!=null}?@{/api/image/}+${item}:@{/img/no-img.png}"
-                             class="image-detail" alt="main-image" th:id="'image'+${item}"/>
+                    <div th:each="item : ${product.imageIds}" th:if="${not #lists.isEmpty(product.imageIds)}">
+                        <img alt="main-image"
+                             class="image-detail" th:id="'image'+${item}" th:src="${item!=null}?@{/api/image/}+${item}:@{/img/no-img.png}"/>
                     </div>
                 </div>
             </div>
@@ -39,29 +39,29 @@
             <div class="custom-nav-tab">
                 <ul class="nav nav-tabs d-flex justify-content-center justify-content-lg-start">
                     <li class="nav-item">
-                        <a class="active custom-nav nav-active px-3 pt-3 pb-2 px-md-5" id="item1" data-toggle="tab"
-                           href="#detail">Detail</a>
+                        <a class="active custom-nav nav-active px-3 pt-3 pb-2 px-md-5" data-toggle="tab" href="#detail"
+                           id="item1">Detail</a>
                     </li>
                     <li class="nav-item">
-                        <a class="custom-nav nav-not-active px-3 pt-3 pb-2 px-md-5" id="item2" data-toggle="tab"
-                           href="#meaning">Meaning</a>
+                        <a class="custom-nav nav-not-active px-3 pt-3 pb-2 px-md-5" data-toggle="tab" href="#meaning"
+                           id="item2">Meaning</a>
                     </li>
                     <li class="nav-item">
-                        <a class=" custom-nav nav-not-active px-md-5 px-3 pt-3 pb-2" id="item3" data-toggle="tab"
-                           href="#review">Review</a>
+                        <a class=" custom-nav nav-not-active px-md-5 px-3 pt-3 pb-2" data-toggle="tab" href="#review"
+                           id="item3">Review</a>
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div id="detail" class="tab-pane active">
+                    <div class="tab-pane active" id="detail">
                         <h5 class=""><span>Descriptions of </span><span
                                 th:text="${product.productName}"></span></span></h5>
                         <p th:text="${product.description}"></p>
                     </div>
-                    <div id="meaning" class="tab-pane">
+                    <div class="tab-pane" id="meaning">
                         <h5 class=""><span>Meaning of </span><span
                                 th:text="${product.productName}"></span></span></h5>
-                        <div class="mean-categorise" th:if="${not #lists.isEmpty(product.categories)}"
-                             th:each="item : ${product.categories}">
+                        <div class="mean-categorise" th:each="item : ${product.categories}"
+                             th:if="${not #lists.isEmpty(product.categories)}">
                             <p th:if="${item.categoryMeaning != null}">
                                 <span class="category-name" th:text="${item.categoryName}"></span>
                                 <span>: </span>
@@ -69,7 +69,7 @@
                             </p>
                         </div>
                     </div>
-                    <div id="review" class="tab-pane mr-lg-5">
+                    <div class="tab-pane mr-lg-5" id="review">
                         <th:block th:replace="fragments/detail-fragments/review"></th:block>
                     </div>
                 </div>
@@ -85,9 +85,9 @@
                     <span> d</span>
                 </p>
                 <div class="rating-heart d-flex justify-content-between pb-1">
-                    <button id="favourite-button" class="fa fa-heart"></button>
-                    <button class="rating-button" type="button" data-toggle="modal" id="rate-button"
-                            data-target="#rateModal">
+                    <button class="fa fa-heart" id="favourite-button"></button>
+                    <button class="rating-button" data-target="#rateModal" data-toggle="modal" id="rate-button"
+                            type="button">
                         <div class="row" id="div-rate-1">
                             <div th:each="i : ${#numbers.sequence( 1,5,1)}">
                                 <i th:class="${i <= product.rating ? 'fa fa-star yellow' : 'fa fa-star'}"></i>
@@ -105,17 +105,17 @@
                 <p class="product-des" th:text="${product.description}">
                 </p>
                 <div class="d-flex">
-                    <div th:if="${not #lists.isEmpty(product.categories)}" th:each="item : ${product.categories}">
-                        <a th:text="${item.categoryName}" class="d-inline-block m-2" th:href="@{/}"></a>
+                    <div th:each="item : ${product.categories}" th:if="${not #lists.isEmpty(product.categories)}">
+                        <a class="d-inline-block m-2" th:href="@{/}" th:text="${item.categoryName}"></a>
                     </div>
                 </div>
                 <form>
                     <div class="d-flex">
-                        <input id="quantity" class="d-inline-block" type="number" name="quatity" min="1" value="1"
-                               step="1"
-                               max="10"/>
-                        <button type="button" class="button ml-4 d-inline-block" id="add-card-button">ADD CARD</button>
-                        <button type="button" class="button ml-4 d-inline-block" id="buy-now-button">BUY NOW</button>
+                        <input class="d-inline-block" id="quantity" max="10" min="1" name="quatity" step="1"
+                               type="number"
+                               value="1"/>
+                        <button class="button ml-4 d-inline-block" id="add-card-button" type="button">ADD CARD</button>
+                        <button class="button ml-4 d-inline-block" id="buy-now-button" type="button">BUY NOW</button>
                     </div>
                 </form>
             </div>
@@ -137,9 +137,9 @@
                 <div th:if="${not #lists.isEmpty(session.carts)}">
                     <div th:each="item : ${session.carts}">
                         <a class="mt-3 p-2 d-flex" th:href="@{/product/} +${item.productDTO.id}">
-                            <img class="small-circle-image rounded-circle mr-3 align-items-center"
-                                 th:src="${item.productDTO.imageId!=null}? @{/api/image/} + ${item.productDTO.imageId} : @{/img/no-img/png}"
-                                 alt="popular-product"/>
+                            <img alt="popular-product"
+                                 class="small-circle-image rounded-circle mr-3 align-items-center"
+                                 th:src="${item.productDTO.imageId!=null}? @{/api/image/} + ${item.productDTO.imageId} : @{/img/no-img/png}"/>
                             <div class="d-inline-block align-items-center">
                                 <p class="name-product text-left font-weight-normal mb-1 text-break"
                                    th:text="${item.productDTO.productName}">Colorful bouquet</p>
@@ -159,12 +159,12 @@
                 <!-- Modal Header -->
                 <div class="modal-header">
                     <h4 class="modal-title">Product Ratting</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button class="close" data-dismiss="modal" type="button">&times;</button>
                 </div>
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <input id="activityId" th:value="${product.id}" type="text" hidden/>
+                    <input hidden id="activityId" th:value="${product.id}" type="text"/>
                     <div class="row d-flex justify-content-center">
                         <i class="fa fa-star fa-2x rating-star ml-1" id="star-1"></i>
                         <i class="fa fa-star fa-2x rating-star ml-1" id="star-2"></i>
@@ -176,7 +176,7 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" id="button-save-rating" class="btn btn-success" data-dismiss="modal">Save
+                    <button class="btn btn-success" data-dismiss="modal" id="button-save-rating" type="button">Save
                     </button>
                 </div>
 

@@ -7,8 +7,8 @@ public class ProductRevenueDTO {
     private String name;
     private Date date;
     private String DateStr;
-    private  int quatity;
-    private  Double price;
+    private int quatity;
+    private Double price;
 
     public ProductRevenueDTO(int id, String name, Date date, int quatity, Double price) {
         this.id = id;

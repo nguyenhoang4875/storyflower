@@ -28,7 +28,7 @@ public class RatingRepository {
     }
 
     public int getRateProductByUserId(Long productId, Long userId) {
-         Integer rate = dslContext.select(RATING.VALUE)
+        Integer rate = dslContext.select(RATING.VALUE)
                 .from(RATING)
                 .where(RATING.PRODUCT_ID.eq(productId))
                 .and(RATING.USER_ID.eq(userId))
@@ -38,7 +38,7 @@ public class RatingRepository {
     }
 
     public boolean updateRatingOfActivityByUserId(Long productId, Long userId, int value) {
-        if(checkUserHaveRating(productId,userId)){
+        if (checkUserHaveRating(productId, userId)) {
             insertRatingOfAcivityByUserId(productId, userId, value);
         }
         return dslContext.update(RATING)
@@ -48,18 +48,18 @@ public class RatingRepository {
                 .execute() > 0;
     }
 
-    public boolean insertRatingOfAcivityByUserId(Long productId, Long userId, int value){
+    public boolean insertRatingOfAcivityByUserId(Long productId, Long userId, int value) {
         return dslContext.insertInto(RATING)
                 .set(RATING.VALUE, value)
                 .set(RATING.PRODUCT_ID, productId)
                 .set(RATING.USER_ID, userId)
-                .execute()>0;
+                .execute() > 0;
     }
 
-    public boolean checkUserHaveRating(Long productId, Long userId){
+    public boolean checkUserHaveRating(Long productId, Long userId) {
         return dslContext.selectFrom(RATING)
                 .where(RATING.PRODUCT_ID.eq(productId))
                 .and(RATING.USER_ID.eq(userId))
-                .fetchCount()==0;
+                .fetchCount() == 0;
     }
 }

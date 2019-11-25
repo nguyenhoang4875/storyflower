@@ -13,11 +13,8 @@ import storysflower.com.storysflower.constants.CommonConstants;
 import storysflower.com.storysflower.constants.UrlConstants;
 import storysflower.com.storysflower.dto.CustomerDTO;
 import storysflower.com.storysflower.dto.ProductCustomerDTO;
-import storysflower.com.storysflower.dto.ProductDTO;
-import storysflower.com.storysflower.dto.UserProfileDTO;
 import storysflower.com.storysflower.services.CustomerService;
 import storysflower.com.storysflower.services.ProductService;
-import storysflower.com.storysflower.services.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,18 +33,19 @@ public class AdminCustomerController {
     ProductService productService;
 
     @GetMapping({UrlConstants.URL_ADMIN_CUSTOMER_INDEX})
-    public String index(Model model, HttpServletRequest request , RedirectAttributes redirect) {
-            request.getSession().setAttribute("customer", null);
-            if(model.asMap().get("success") != null)
-                redirect.addFlashAttribute("success",model.asMap().get("success").toString());
-            return "redirect:"+UrlConstants.URL_ADMIN+UrlConstants.URL_ADMIN_CUSTOMER_INDEX +"/1";
+    public String index(Model model, HttpServletRequest request, RedirectAttributes redirect) {
+        request.getSession().setAttribute("customer", null);
+        if (model.asMap().get("success") != null)
+            redirect.addFlashAttribute("success", model.asMap().get("success").toString());
+        return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_ADMIN_CUSTOMER_INDEX + "/1";
 
     }
+
     @GetMapping({UrlConstants.URL_ADMIN_CUSTOMER_INDEX_PAGINATION})
-    public String shoListCustomerPage(HttpServletRequest request,@PathVariable int page, Model model) {
+    public String shoListCustomerPage(HttpServletRequest request, @PathVariable int page, Model model) {
 
         PagedListHolder<?> pages = (PagedListHolder<?>) request.getSession().getAttribute("customer");
-        List<CustomerDTO> list = (List<CustomerDTO>)customerService.findAll();
+        List<CustomerDTO> list = (List<CustomerDTO>) customerService.findAll();
         if (pages == null) {
             pages = new PagedListHolder<>(list);
             pages.setPageSize(CommonConstants.DEFAULT_PAGING_CUSTOMER_SIZE);
@@ -62,7 +60,7 @@ public class AdminCustomerController {
         int begin = Math.max(1, current - list.size());
         int end = Math.min(begin + 5, pages.getPageCount());
         int totalPageCount = pages.getPageCount();
-        String baseUrl = UrlConstants.URL_ADMIN+UrlConstants.URL_ADMIN_CUSTOMER_INDEX+"/";
+        String baseUrl = UrlConstants.URL_ADMIN + UrlConstants.URL_ADMIN_CUSTOMER_INDEX + "/";
 
         model.addAttribute("beginIndex", begin);
         model.addAttribute("endIndex", end);
@@ -75,16 +73,16 @@ public class AdminCustomerController {
     }
 
     @GetMapping({UrlConstants.URL_ADMIN_CUSTOMER_DETAIL})
-    public String showListProductByCustomer(HttpServletRequest request,@PathVariable Long id, Model model) {
+    public String showListProductByCustomer(HttpServletRequest request, @PathVariable Long id, Model model) {
         CustomerDTO customerDTO = customerService.findCustomerById(id);
         List<ProductCustomerDTO> listProduct = customerService.findAllProductByIdCustomer(id);
         int totalAmountAll = 0;
-        if(listProduct.size()>0) {
+        if (listProduct.size() > 0) {
             for (ProductCustomerDTO productCustomerDTO : listProduct) {
                 totalAmountAll += productCustomerDTO.getTotal_Money();
             }
         }
-        model.addAttribute("customername", "Orderer: "+customerDTO.getFullName());
+        model.addAttribute("customername", "Orderer: " + customerDTO.getFullName());
         model.addAttribute("listProduct", listProduct);
         model.addAttribute("totalAmountAll", totalAmountAll);
         return "admin/customer/product";

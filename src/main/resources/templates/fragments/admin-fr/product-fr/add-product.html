@@ -1,4 +1,4 @@
-<th:block xmlns:th="www.thymeLeaf.org" xmlns:layout="http://www.w3.org/1999/xhtml" th:fragment="list-ad-product">
+<th:block th:fragment="list-ad-product" xmlns:th="www.thymeLeaf.org">
     <div class="col-md">
         <div class="tile">
             <h3 class="tile-title">List Flowers Table</h3>
@@ -15,13 +15,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <div th:if="${not #lists.isEmpty(list_occasion)}"
-                     th:each="item: ${list_occasion}">
+                <div th:each="item: ${list_occasion}"
+                     th:if="${not #lists.isEmpty(list_occasion)}">
                     <tr>
                         <td><span th:text="${item.Id}"></span></td>
                         <td>
-                            <img th:src="${item.imageId!=null}? @{/api/image/} + ${item.imageId} : @{/img/no-img/png}"
-                                 class="image-detail" alt="main-image"/>
+                            <img alt="main-image"
+                                 class="image-detail" th:src="${item.imageId!=null}? @{/api/image/} + ${item.imageId} : @{/img/no-img/png}"/>
                         </td>
                         <td><span th:text="${occasion.nameOccasion}"> </span></td>
                         <td><span th:text="${item.productName}"></span></td>
@@ -30,7 +30,7 @@
                         <td><p th:text="${item.rating}"></p></td>
 
                         <td>
-                            <a th:href="@{edit/} + ${item.Id}" >
+                            <a th:href="@{edit/} + ${item.Id}">
                                 <button class="btn btn-primary">Edit</button>
                             </a>
                             |

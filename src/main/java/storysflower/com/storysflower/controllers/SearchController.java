@@ -13,22 +13,22 @@ import storysflower.com.storysflower.services.SearchService;
 @Controller
 @RequestMapping("/search")
 public class SearchController {
+    private static final String FLOWERS = "flowers";
+    private static final String OCCASION = "occasions";
+    private static final String TOPIC = "topic";
     @Autowired
     private SearchService searchService;
     @Autowired
     private ProductService productService;
     @Autowired
     private OccasionService occasionService;
-    private static final String FLOWERS = "flowers";
-    private static final String OCCASION = "occasions";
-    private static final String TOPIC = "topic";
 
     @GetMapping
     public String getSearchPage(@RequestParam("searchKey") String searchKey, Model model) {
 
         model.addAttribute(FLOWERS, searchService.getListFlowerByKey(searchKey));
         model.addAttribute(OCCASION, occasionService.findAllOccasion());
-        model.addAttribute(TOPIC, "Search: " + searchKey );
+        model.addAttribute(TOPIC, "Search: " + searchKey);
         return "flower";
     }
 }

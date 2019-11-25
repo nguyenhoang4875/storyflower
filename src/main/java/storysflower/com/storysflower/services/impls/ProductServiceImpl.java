@@ -56,7 +56,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductCartDTO findProductCartByIdBuyProduct(Long idProduct) {
         ProductCartDTO productCartDTO = productRepository.getProductCartByIdBuyProduct(idProduct);
-        productCartDTO.setTotalMoney(productCartDTO.getPrice()*productCartDTO.getQuantity());
+        productCartDTO.setTotalMoney(productCartDTO.getPrice() * productCartDTO.getQuantity());
         return productCartDTO;
     }
 

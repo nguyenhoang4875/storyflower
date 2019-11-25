@@ -12,6 +12,7 @@ import java.util.List;
 public class SearchServiceImpl implements SearchService {
     @Autowired
     private SearchRepository searchRepository;
+
     @Override
     public List<ProductDTO> getListFlowerByKey(String searchKey) {
         return searchRepository.getListFlowerByKey(searchKey);

@@ -4,7 +4,7 @@ package storysflower.com.storysflower.dto;
  * @author ntynguyen
  */
 public class UserProfileDTO {
-    private   Long id;
+    private Long id;
     private String firstname;
     private String lastname;
     private String email;
@@ -14,16 +14,14 @@ public class UserProfileDTO {
     public UserProfileDTO() {
     }
 
-    public static UserProfileDTO create(){
-        return new UserProfileDTO();
-    };
-
     public UserProfileDTO(String fisrtName, String lastName, String email, String password) {
         this.firstname = fisrtName;
         this.lastname = lastName;
         this.email = email;
         this.password = password;
     }
+
+    ;
 
     public UserProfileDTO(String fisrtName, String lastName, String email, String password, Long imageID) {
         this.firstname = fisrtName;
@@ -33,14 +31,19 @@ public class UserProfileDTO {
         this.imageID = imageID;
     }
 
-    public UserProfileDTO(Long id,String fisrtName, String lastName, String email, String password, Long imageID) {
-        this.id= id;
+    public UserProfileDTO(Long id, String fisrtName, String lastName, String email, String password, Long imageID) {
+        this.id = id;
         this.firstname = fisrtName;
         this.lastname = lastName;
         this.email = email;
         this.password = password;
         this.imageID = imageID;
     }
+
+    public static UserProfileDTO create() {
+        return new UserProfileDTO();
+    }
+
     public String getFisrtName() {
         return firstname;
     }
