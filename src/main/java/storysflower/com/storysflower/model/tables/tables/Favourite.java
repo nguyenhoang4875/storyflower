@@ -41,7 +41,7 @@ import storysflower.com.storysflower.model.tables.tables.records.FavouriteRecord
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Favourite extends TableImpl<FavouriteRecord> {
 
-    private static final long serialVersionUID = 622136804;
+    private static final long serialVersionUID = -857555900;
 
     /**
      * The reference instance of <code>public.favourite</code>
@@ -122,7 +122,7 @@ public class Favourite extends TableImpl<FavouriteRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.FAVOURITE_PKEY);
+        return Arrays.<Index>asList(Indexes.PK_FAVOURITE);
     }
 
     /**
@@ -138,7 +138,7 @@ public class Favourite extends TableImpl<FavouriteRecord> {
      */
     @Override
     public UniqueKey<FavouriteRecord> getPrimaryKey() {
-        return Keys.FAVOURITE_PKEY;
+        return Keys.PK_FAVOURITE;
     }
 
     /**
@@ -146,7 +146,7 @@ public class Favourite extends TableImpl<FavouriteRecord> {
      */
     @Override
     public List<UniqueKey<FavouriteRecord>> getKeys() {
-        return Arrays.<UniqueKey<FavouriteRecord>>asList(Keys.FAVOURITE_PKEY);
+        return Arrays.<UniqueKey<FavouriteRecord>>asList(Keys.PK_FAVOURITE);
     }
 
     /**

@@ -42,7 +42,7 @@ import storysflower.com.storysflower.model.tables.tables.records.ProductRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Product extends TableImpl<ProductRecord> {
 
-    private static final long serialVersionUID = -549028433;
+    private static final long serialVersionUID = 621006003;
 
     /**
      * The reference instance of <code>public.product</code>
@@ -138,7 +138,7 @@ public class Product extends TableImpl<ProductRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.PRODUCT_PKEY);
+        return Arrays.<Index>asList(Indexes.PK_PRODUCT);
     }
 
     /**
@@ -154,7 +154,7 @@ public class Product extends TableImpl<ProductRecord> {
      */
     @Override
     public UniqueKey<ProductRecord> getPrimaryKey() {
-        return Keys.PRODUCT_PKEY;
+        return Keys.PK_PRODUCT;
     }
 
     /**
@@ -162,7 +162,7 @@ public class Product extends TableImpl<ProductRecord> {
      */
     @Override
     public List<UniqueKey<ProductRecord>> getKeys() {
-        return Arrays.<UniqueKey<ProductRecord>>asList(Keys.PRODUCT_PKEY);
+        return Arrays.<UniqueKey<ProductRecord>>asList(Keys.PK_PRODUCT);
     }
 
     /**
