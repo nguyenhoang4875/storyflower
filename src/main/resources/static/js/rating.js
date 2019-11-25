@@ -100,7 +100,7 @@ function setCheckedStar(rating) {
 function setCheckedRate(rating) {
     $('#div-rate-2').removeClass('d-none')
     for (i = 1; i <= 5; i++) {
-        let button = $("#rate-" + i);
+        var button = $("#rate-" + i);
         if (i <= rating) {
             button.addClass("yellow");
         } else button.removeClass("yellow");

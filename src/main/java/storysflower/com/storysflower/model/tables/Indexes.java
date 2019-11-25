@@ -44,51 +44,51 @@ public class Indexes {
     // INDEX definitions
     // -------------------------------------------------------------------------
 
-    public static final Index BUY_PRODUCT_PKEY = Indexes0.BUY_PRODUCT_PKEY;
-    public static final Index CART_PKEY = Indexes0.CART_PKEY;
+    public static final Index PK_BUY_PRODUCT = Indexes0.PK_BUY_PRODUCT;
+    public static final Index PK_CART = Indexes0.PK_CART;
     public static final Index CATEGORY_CATEGORY_NAME_KEY = Indexes0.CATEGORY_CATEGORY_NAME_KEY;
-    public static final Index CATEGORY_PKEY = Indexes0.CATEGORY_PKEY;
+    public static final Index PK_CATEGORY = Indexes0.PK_CATEGORY;
     public static final Index CUSTOMER_EMAIL_KEY = Indexes0.CUSTOMER_EMAIL_KEY;
-    public static final Index CUSTOMER_PKEY = Indexes0.CUSTOMER_PKEY;
-    public static final Index DEAL_PRODUCT_PKEY = Indexes0.DEAL_PRODUCT_PKEY;
-    public static final Index FAVOURITE_PKEY = Indexes0.FAVOURITE_PKEY;
-    public static final Index IMAGE_PKEY = Indexes0.IMAGE_PKEY;
+    public static final Index PK_CUSTOMER = Indexes0.PK_CUSTOMER;
+    public static final Index PK_DEAL_PRODUCT = Indexes0.PK_DEAL_PRODUCT;
+    public static final Index PK_FAVOURITE = Indexes0.PK_FAVOURITE;
+    public static final Index PK_IMAGE = Indexes0.PK_IMAGE;
     public static final Index OCCASION_NAME_OCCASION_KEY = Indexes0.OCCASION_NAME_OCCASION_KEY;
-    public static final Index OCCASION_PKEY = Indexes0.OCCASION_PKEY;
-    public static final Index PRODUCT_PKEY = Indexes0.PRODUCT_PKEY;
-    public static final Index RATING_PKEY = Indexes0.RATING_PKEY;
-    public static final Index RECIPIENT_PKEY = Indexes0.RECIPIENT_PKEY;
-    public static final Index REVIEW_PKEY = Indexes0.REVIEW_PKEY;
-    public static final Index TOPIC_PKEY = Indexes0.TOPIC_PKEY;
+    public static final Index PK_OCCASION = Indexes0.PK_OCCASION;
+    public static final Index PK_PRODUCT = Indexes0.PK_PRODUCT;
+    public static final Index PK_RATING = Indexes0.PK_RATING;
+    public static final Index PK_RECIPIENT = Indexes0.PK_RECIPIENT;
+    public static final Index PK_REVIEW = Indexes0.PK_REVIEW;
+    public static final Index PK_TOPIC = Indexes0.PK_TOPIC;
     public static final Index TOPIC_TOPIC_NAME_KEY = Indexes0.TOPIC_TOPIC_NAME_KEY;
+    public static final Index PK_USER = Indexes0.PK_USER;
     public static final Index USER_EMAIL_KEY = Indexes0.USER_EMAIL_KEY;
-    public static final Index USER_PKEY = Indexes0.USER_PKEY;
-    public static final Index USER_ROLE_PKEY = Indexes0.USER_ROLE_PKEY;
+    public static final Index PK_USER_ROLE = Indexes0.PK_USER_ROLE;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
     // -------------------------------------------------------------------------
 
     private static class Indexes0 {
-        public static Index BUY_PRODUCT_PKEY = Internal.createIndex("buy_product_pkey", BuyProduct.BUY_PRODUCT, new OrderField[] { BuyProduct.BUY_PRODUCT.ID }, true);
-        public static Index CART_PKEY = Internal.createIndex("cart_pkey", Cart.CART, new OrderField[] { Cart.CART.ID }, true);
+        public static Index PK_BUY_PRODUCT = Internal.createIndex("pk_buy_product", BuyProduct.BUY_PRODUCT, new OrderField[] { BuyProduct.BUY_PRODUCT.ID }, true);
+        public static Index PK_CART = Internal.createIndex("pk_cart", Cart.CART, new OrderField[] { Cart.CART.ID }, true);
         public static Index CATEGORY_CATEGORY_NAME_KEY = Internal.createIndex("category_category_name_key", Category.CATEGORY, new OrderField[] { Category.CATEGORY.CATEGORY_NAME }, true);
-        public static Index CATEGORY_PKEY = Internal.createIndex("category_pkey", Category.CATEGORY, new OrderField[] { Category.CATEGORY.ID }, true);
+        public static Index PK_CATEGORY = Internal.createIndex("pk_category", Category.CATEGORY, new OrderField[] { Category.CATEGORY.ID }, true);
         public static Index CUSTOMER_EMAIL_KEY = Internal.createIndex("customer_email_key", Customer.CUSTOMER, new OrderField[] { Customer.CUSTOMER.EMAIL }, true);
-        public static Index CUSTOMER_PKEY = Internal.createIndex("customer_pkey", Customer.CUSTOMER, new OrderField[] { Customer.CUSTOMER.ID }, true);
-        public static Index DEAL_PRODUCT_PKEY = Internal.createIndex("deal_product_pkey", DealProduct.DEAL_PRODUCT, new OrderField[] { DealProduct.DEAL_PRODUCT.ID }, true);
-        public static Index FAVOURITE_PKEY = Internal.createIndex("favourite_pkey", Favourite.FAVOURITE, new OrderField[] { Favourite.FAVOURITE.ID }, true);
-        public static Index IMAGE_PKEY = Internal.createIndex("image_pkey", Image.IMAGE, new OrderField[] { Image.IMAGE.IMAGE_ID }, true);
+        public static Index PK_CUSTOMER = Internal.createIndex("pk_customer", Customer.CUSTOMER, new OrderField[] { Customer.CUSTOMER.ID }, true);
+        public static Index PK_DEAL_PRODUCT = Internal.createIndex("pk_deal_product", DealProduct.DEAL_PRODUCT, new OrderField[] { DealProduct.DEAL_PRODUCT.ID }, true);
+        public static Index PK_FAVOURITE = Internal.createIndex("pk_favourite", Favourite.FAVOURITE, new OrderField[] { Favourite.FAVOURITE.ID }, true);
+        public static Index PK_IMAGE = Internal.createIndex("pk_image", Image.IMAGE, new OrderField[] { Image.IMAGE.IMAGE_ID }, true);
         public static Index OCCASION_NAME_OCCASION_KEY = Internal.createIndex("occasion_name_occasion_key", Occasion.OCCASION, new OrderField[] { Occasion.OCCASION.NAME_OCCASION }, true);
-        public static Index OCCASION_PKEY = Internal.createIndex("occasion_pkey", Occasion.OCCASION, new OrderField[] { Occasion.OCCASION.OCCASION_ID }, true);
-        public static Index PRODUCT_PKEY = Internal.createIndex("product_pkey", Product.PRODUCT, new OrderField[] { Product.PRODUCT.ID }, true);
-        public static Index RATING_PKEY = Internal.createIndex("rating_pkey", Rating.RATING, new OrderField[] { Rating.RATING.ID }, true);
-        public static Index RECIPIENT_PKEY = Internal.createIndex("recipient_pkey", Recipient.RECIPIENT, new OrderField[] { Recipient.RECIPIENT.ID }, true);
-        public static Index REVIEW_PKEY = Internal.createIndex("review_pkey", Review.REVIEW, new OrderField[] { Review.REVIEW.ID }, true);
-        public static Index TOPIC_PKEY = Internal.createIndex("topic_pkey", Topic.TOPIC, new OrderField[] { Topic.TOPIC.TOPIC_ID }, true);
+        public static Index PK_OCCASION = Internal.createIndex("pk_occasion", Occasion.OCCASION, new OrderField[] { Occasion.OCCASION.OCCASION_ID }, true);
+        public static Index PK_PRODUCT = Internal.createIndex("pk_product", Product.PRODUCT, new OrderField[] { Product.PRODUCT.ID }, true);
+        public static Index PK_RATING = Internal.createIndex("pk_rating", Rating.RATING, new OrderField[] { Rating.RATING.ID }, true);
+        public static Index PK_RECIPIENT = Internal.createIndex("pk_recipient", Recipient.RECIPIENT, new OrderField[] { Recipient.RECIPIENT.ID }, true);
+        public static Index PK_REVIEW = Internal.createIndex("pk_review", Review.REVIEW, new OrderField[] { Review.REVIEW.ID }, true);
+        public static Index PK_TOPIC = Internal.createIndex("pk_topic", Topic.TOPIC, new OrderField[] { Topic.TOPIC.TOPIC_ID }, true);
         public static Index TOPIC_TOPIC_NAME_KEY = Internal.createIndex("topic_topic_name_key", Topic.TOPIC, new OrderField[] { Topic.TOPIC.TOPIC_NAME }, true);
+        public static Index PK_USER = Internal.createIndex("pk_user", User.USER, new OrderField[] { User.USER.ID }, true);
         public static Index USER_EMAIL_KEY = Internal.createIndex("user_email_key", User.USER, new OrderField[] { User.USER.EMAIL }, true);
-        public static Index USER_PKEY = Internal.createIndex("user_pkey", User.USER, new OrderField[] { User.USER.ID }, true);
-        public static Index USER_ROLE_PKEY = Internal.createIndex("user_role_pkey", UserRole.USER_ROLE, new OrderField[] { UserRole.USER_ROLE.ID }, true);
+        public static Index PK_USER_ROLE = Internal.createIndex("pk_user_role", UserRole.USER_ROLE, new OrderField[] { UserRole.USER_ROLE.ID }, true);
     }
 }

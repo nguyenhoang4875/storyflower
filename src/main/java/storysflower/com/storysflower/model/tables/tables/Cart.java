@@ -44,7 +44,7 @@ import storysflower.com.storysflower.model.tables.tables.records.CartRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Cart extends TableImpl<CartRecord> {
 
-    private static final long serialVersionUID = -1514336090;
+    private static final long serialVersionUID = -2002777936;
 
     /**
      * The reference instance of <code>public.cart</code>
@@ -145,7 +145,7 @@ public class Cart extends TableImpl<CartRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.CART_PKEY);
+        return Arrays.<Index>asList(Indexes.PK_CART);
     }
 
     /**
@@ -161,7 +161,7 @@ public class Cart extends TableImpl<CartRecord> {
      */
     @Override
     public UniqueKey<CartRecord> getPrimaryKey() {
-        return Keys.CART_PKEY;
+        return Keys.PK_CART;
     }
 
     /**
@@ -169,7 +169,7 @@ public class Cart extends TableImpl<CartRecord> {
      */
     @Override
     public List<UniqueKey<CartRecord>> getKeys() {
-        return Arrays.<UniqueKey<CartRecord>>asList(Keys.CART_PKEY);
+        return Arrays.<UniqueKey<CartRecord>>asList(Keys.PK_CART);
     }
 
     /**

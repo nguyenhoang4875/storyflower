@@ -41,7 +41,7 @@ import storysflower.com.storysflower.model.tables.tables.records.CategoryRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Category extends TableImpl<CategoryRecord> {
 
-    private static final long serialVersionUID = -2107328638;
+    private static final long serialVersionUID = -749812528;
 
     /**
      * The reference instance of <code>public.category</code>
@@ -117,7 +117,7 @@ public class Category extends TableImpl<CategoryRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.CATEGORY_CATEGORY_NAME_KEY, Indexes.CATEGORY_PKEY);
+        return Arrays.<Index>asList(Indexes.CATEGORY_CATEGORY_NAME_KEY, Indexes.PK_CATEGORY);
     }
 
     /**
@@ -133,7 +133,7 @@ public class Category extends TableImpl<CategoryRecord> {
      */
     @Override
     public UniqueKey<CategoryRecord> getPrimaryKey() {
-        return Keys.CATEGORY_PKEY;
+        return Keys.PK_CATEGORY;
     }
 
     /**
@@ -141,7 +141,7 @@ public class Category extends TableImpl<CategoryRecord> {
      */
     @Override
     public List<UniqueKey<CategoryRecord>> getKeys() {
-        return Arrays.<UniqueKey<CategoryRecord>>asList(Keys.CATEGORY_PKEY, Keys.CATEGORY_CATEGORY_NAME_KEY);
+        return Arrays.<UniqueKey<CategoryRecord>>asList(Keys.PK_CATEGORY, Keys.CATEGORY_CATEGORY_NAME_KEY);
     }
 
     /**

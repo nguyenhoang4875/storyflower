@@ -19,4 +19,11 @@ public class ImageServiceImpl implements ImageService {
     public ImageDTO findImageById(Long id) {
         return imageRepository.findImageById(id);
     }
+
+    @Override
+    public Long addProductImage(long productId, Long imageId, byte[] imageData) {
+        return imageRepository.addProductImage(productId, imageId, imageData);
+    }
+
+
 }
