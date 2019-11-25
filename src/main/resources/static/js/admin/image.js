@@ -85,7 +85,6 @@ function btnUploadClickHandler() {
 }
 
 function iconUpdateClickHandler(id) {
-    alert(id)
     updateAttribute($image, "image" + id.substring(5));
     $image.attr("id", "newImage" + id.substring(5));
     reset();
