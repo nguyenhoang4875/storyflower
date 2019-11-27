@@ -53,5 +53,21 @@ public class AdminRevenueController {
         model.addAttribute("revenueDTO", revenueDTO);
         return "admin/revenue/detail";
     }
+    @PostMapping({UrlConstants.URL_ADMIN_REVENUE_DOWNLOAD})
+    public String exportExcel(Model model, @RequestParam(value = "bdaymonth") String bdaymonth) {
+        if ("".equals(bdaymonth)) return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_ADMIN_REVENUE_INDEX;
+        String month = bdaymonth.split("-")[1];
+        String year = bdaymonth.split("-")[0];
+        RevenueDTO revenueDTO = revenueService.findRevenueDTOByDate(month + "-" + year);
+
+        if (revenueDTO == null) {
+            revenueDTO = new RevenueDTO();
+            revenueDTO.setDate(month + "-" + year);
+            revenueDTO.setTotalMoney(0.0);
+        }
+        model.addAttribute("revenueDTO", revenueDTO);
+        return "";
+    }
+
 
 }
