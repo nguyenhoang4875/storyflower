@@ -41,7 +41,7 @@ import storysflower.com.storysflower.model.tables.tables.records.RatingRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Rating extends TableImpl<RatingRecord> {
 
-    private static final long serialVersionUID = -286040915;
+    private static final long serialVersionUID = 1164432349;
 
     /**
      * The reference instance of <code>public.rating</code>
@@ -122,7 +122,7 @@ public class Rating extends TableImpl<RatingRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.PK_RATING);
+        return Arrays.<Index>asList(Indexes.RATING_PKEY);
     }
 
     /**
@@ -138,7 +138,7 @@ public class Rating extends TableImpl<RatingRecord> {
      */
     @Override
     public UniqueKey<RatingRecord> getPrimaryKey() {
-        return Keys.PK_RATING;
+        return Keys.RATING_PKEY;
     }
 
     /**
@@ -146,7 +146,7 @@ public class Rating extends TableImpl<RatingRecord> {
      */
     @Override
     public List<UniqueKey<RatingRecord>> getKeys() {
-        return Arrays.<UniqueKey<RatingRecord>>asList(Keys.PK_RATING);
+        return Arrays.<UniqueKey<RatingRecord>>asList(Keys.RATING_PKEY);
     }
 
     /**

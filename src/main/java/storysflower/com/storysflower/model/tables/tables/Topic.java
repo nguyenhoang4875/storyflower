@@ -41,7 +41,7 @@ import storysflower.com.storysflower.model.tables.tables.records.TopicRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Topic extends TableImpl<TopicRecord> {
 
-    private static final long serialVersionUID = -2083891014;
+    private static final long serialVersionUID = 2093157174;
 
     /**
      * The reference instance of <code>public.topic</code>
@@ -112,7 +112,7 @@ public class Topic extends TableImpl<TopicRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.PK_TOPIC, Indexes.TOPIC_TOPIC_NAME_KEY);
+        return Arrays.<Index>asList(Indexes.TOPIC_PKEY, Indexes.TOPIC_TOPIC_NAME_KEY);
     }
 
     /**
@@ -128,7 +128,7 @@ public class Topic extends TableImpl<TopicRecord> {
      */
     @Override
     public UniqueKey<TopicRecord> getPrimaryKey() {
-        return Keys.PK_TOPIC;
+        return Keys.TOPIC_PKEY;
     }
 
     /**
@@ -136,7 +136,7 @@ public class Topic extends TableImpl<TopicRecord> {
      */
     @Override
     public List<UniqueKey<TopicRecord>> getKeys() {
-        return Arrays.<UniqueKey<TopicRecord>>asList(Keys.PK_TOPIC, Keys.TOPIC_TOPIC_NAME_KEY);
+        return Arrays.<UniqueKey<TopicRecord>>asList(Keys.TOPIC_PKEY, Keys.TOPIC_TOPIC_NAME_KEY);
     }
 
     /**
