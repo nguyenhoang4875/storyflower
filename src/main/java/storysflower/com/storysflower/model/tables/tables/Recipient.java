@@ -41,7 +41,7 @@ import storysflower.com.storysflower.model.tables.tables.records.RecipientRecord
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Recipient extends TableImpl<RecipientRecord> {
 
-    private static final long serialVersionUID = -449929112;
+    private static final long serialVersionUID = 781107752;
 
     /**
      * The reference instance of <code>public.recipient</code>
@@ -132,7 +132,7 @@ public class Recipient extends TableImpl<RecipientRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.PK_RECIPIENT);
+        return Arrays.<Index>asList(Indexes.RECIPIENT_PKEY);
     }
 
     /**
@@ -148,7 +148,7 @@ public class Recipient extends TableImpl<RecipientRecord> {
      */
     @Override
     public UniqueKey<RecipientRecord> getPrimaryKey() {
-        return Keys.PK_RECIPIENT;
+        return Keys.RECIPIENT_PKEY;
     }
 
     /**
@@ -156,7 +156,7 @@ public class Recipient extends TableImpl<RecipientRecord> {
      */
     @Override
     public List<UniqueKey<RecipientRecord>> getKeys() {
-        return Arrays.<UniqueKey<RecipientRecord>>asList(Keys.PK_RECIPIENT);
+        return Arrays.<UniqueKey<RecipientRecord>>asList(Keys.RECIPIENT_PKEY);
     }
 
     /**
