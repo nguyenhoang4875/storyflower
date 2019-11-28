@@ -2,6 +2,7 @@
     <div class="col-md">
         <div class="tile">
             <h3 class="tile-title">List Flowers Table</h3>
+
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -30,7 +31,7 @@
                         <td><p th:text="${item.rating}"></p></td>
 
                         <td>
-                            <a th:href="@{edit/} + ${item.Id}" >
+                            <a th:href="@{/admin/product/edit/{id}(id=${item.Id})}" >
                                 <button class="btn btn-primary">Edit</button>
                             </a>
                             |

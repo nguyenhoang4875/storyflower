@@ -1,5 +1,6 @@
 package storysflower.com.storysflower.dto;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -11,42 +12,49 @@ public class ProductDetailDTO {
     private List<Long> imageIds;
     private String productName;
     private String nameOccasion;
+    private Long idOccasion;
+    private Long idTopic;
     private String topicName;
     private String description;
     private String mean;
-    private Double price;
+    private BigDecimal price;
     private Integer rating;
     private List<CategoryDTO> categories;
 
     public ProductDetailDTO() {
     }
 
-    public ProductDetailDTO(Long id, Long imageId, String productName, String nameOccasion, String topicName, String description, String mean, Double price, Integer rating) {
+    public ProductDetailDTO(Long id, String productName, Long idOccasion, Long idTopic,
+                            String description, BigDecimal price) {
         this.id = id;
-        this.imageId = imageId;
         this.productName = productName;
-        this.nameOccasion = nameOccasion;
-        this.topicName = topicName;
+        this.idOccasion = idOccasion;
+        this.idTopic = idTopic;
         this.description = description;
-        this.mean = mean;
         this.price = price;
-        this.rating = rating;
     }
 
-    public ProductDetailDTO(Long id, Long imageId, List<Long> imageIds, String productName, String nameOccasion, String topicName, String description, String mean, Double price, Integer rating) {
+    public ProductDetailDTO(Long id, Long imageId, List<Long> imageIds,
+                            String productName, String nameOccasion, Long idOccasion,
+                            Long idTopic, String topicName, String description, String mean, BigDecimal price, Integer rating, List<CategoryDTO> categories) {
         this.id = id;
         this.imageId = imageId;
         this.imageIds = imageIds;
         this.productName = productName;
         this.nameOccasion = nameOccasion;
+        this.idOccasion = idOccasion;
+        this.idTopic = idTopic;
         this.topicName = topicName;
         this.description = description;
         this.mean = mean;
         this.price = price;
         this.rating = rating;
+        this.categories = categories;
     }
 
-    public ProductDetailDTO(Long id, Long imageId, List<Long> imageIds, String productName, String nameOccasion, String topicName, String description, String mean, Double price, Integer rating, List<CategoryDTO> categories) {
+    public ProductDetailDTO(Long id, Long imageId, List<Long> imageIds,
+                            String productName, String nameOccasion, String topicName,
+                            String description, String mean, BigDecimal price, Integer rating, List<CategoryDTO> categories) {
         this.id = id;
         this.imageId = imageId;
         this.imageIds = imageIds;
@@ -76,6 +84,14 @@ public class ProductDetailDTO {
         this.imageId = imageId;
     }
 
+    public List<Long> getImageIds() {
+        return imageIds;
+    }
+
+    public void setImageIds(List<Long> imageIds) {
+        this.imageIds = imageIds;
+    }
+
     public String getProductName() {
         return productName;
     }
@@ -90,6 +106,22 @@ public class ProductDetailDTO {
 
     public void setNameOccasion(String nameOccasion) {
         this.nameOccasion = nameOccasion;
+    }
+
+    public Long getIdOccasion() {
+        return idOccasion;
+    }
+
+    public void setIdOccasion(Long idOccasion) {
+        this.idOccasion = idOccasion;
+    }
+
+    public Long getIdTopic() {
+        return idTopic;
+    }
+
+    public void setIdTopic(Long idTopic) {
+        this.idTopic = idTopic;
     }
 
     public String getTopicName() {
@@ -116,11 +148,11 @@ public class ProductDetailDTO {
         this.mean = mean;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -130,14 +162,6 @@ public class ProductDetailDTO {
 
     public void setRating(Integer rating) {
         this.rating = rating;
-    }
-
-    public List<Long> getImageIds() {
-        return imageIds;
-    }
-
-    public void setImageIds(List<Long> imageIds) {
-        this.imageIds = imageIds;
     }
 
     public List<CategoryDTO> getCategories() {
@@ -156,6 +180,8 @@ public class ProductDetailDTO {
                 ", imageIds=" + imageIds +
                 ", productName='" + productName + '\'' +
                 ", nameOccasion='" + nameOccasion + '\'' +
+                ", idOccasion=" + idOccasion +
+                ", idTopic=" + idTopic +
                 ", topicName='" + topicName + '\'' +
                 ", description='" + description + '\'' +
                 ", mean='" + mean + '\'' +

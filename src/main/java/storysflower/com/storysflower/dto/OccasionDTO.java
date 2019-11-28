@@ -43,4 +43,13 @@ public class OccasionDTO{
     public void setImageId(Long imageId) {
         this.imageId = imageId;
     }
+
+    @Override
+    public String toString() {
+        return "OccasionDTO{" +
+                "occasionId=" + occasionId +
+                ", nameOccasion='" + nameOccasion + '\'' +
+                ", imageId=" + imageId +
+                '}';
+    }
 }

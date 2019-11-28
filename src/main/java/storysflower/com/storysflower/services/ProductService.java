@@ -25,7 +25,10 @@ public interface ProductService {
     List<ProductDTO> getAllFlower();
 
     List<ProductDTO> getAllGitfAndSweet();
+
     ProductCartDTO findProductCartByIdBuyProduct(Long idProduct);
 
     List<ProductDTO> getAllPlants();
+
+    boolean editProduct(ProductDetailDTO productDetailDTO);
 }

@@ -66,6 +66,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public boolean editProduct(ProductDetailDTO productDetailDTO) {
+        return productRepository.editProduct(productDetailDTO);
+    }
+
+    @Override
     public List<ProductDTO> getAllGitfAndSweet() {
         return productRepository.getAllGitfSweet();
     }

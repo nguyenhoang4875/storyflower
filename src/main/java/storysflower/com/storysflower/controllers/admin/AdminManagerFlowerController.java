@@ -3,15 +3,18 @@ package storysflower.com.storysflower.controllers.admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import storysflower.com.storysflower.constants.UrlConstants;
+import storysflower.com.storysflower.dto.OccasionDTO;
+import storysflower.com.storysflower.dto.ProductDetailDTO;
 import storysflower.com.storysflower.dto.ReviewDTO;
+import storysflower.com.storysflower.dto.TopicDTO;
 import storysflower.com.storysflower.services.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping(UrlConstants.URL_ADMIN)
@@ -38,8 +41,10 @@ public class AdminManagerFlowerController {
     ReviewService reviewService;
 
     @Autowired
-    private OccasionService occasionService;
+    TopicService topicService;
 
+    @Autowired
+    private OccasionService occasionService;
     @GetMapping({UrlConstants.URL_ADMIN_PRODUCT_INDEX, UrlConstants.URL_ADMIN_PRODUCT_INDEX_ID})
     public String getAllProduct(Model model, HttpServletRequest request, RedirectAttributes redirect,
                                 @PathVariable(name = "id", required = false) Long id) {
@@ -52,24 +57,33 @@ public class AdminManagerFlowerController {
 
     @GetMapping({UrlConstants.URL_ADMIN_PRODUCT_EDIT_ID})
     public String getProductPage(Model model, @PathVariable("id") Long id) {
-
         if (id == null) id = 1L;
-        model.addAttribute(OCCASIONS, occasionService.findAllOccasion());
+        List<TopicDTO> listTopic= topicService.findAllTopic();
+        ProductDetailDTO productDetailDTO = productService.getProductDetailDTOById(id);
+        List<OccasionDTO> listOc = occasionService.findAllOccasion();
+
+
+        if(productDetailDTO.getIdOccasion()>0)model.addAttribute(OCCASIONS, listOc);
         model.addAttribute(OCCASION, occasionService.getOccasionDTOById(id));
         model.addAttribute(LIST_OCCASION, productService.getListProductDTOByOccasionId(id));
-
         model.addAttribute(CATEGORIES, categoryService.getCategories());
-        model.addAttribute(PRODUCT, productService.getProductDetailDTOById(id));
+        model.addAttribute(PRODUCT, productDetailDTO);
         model.addAttribute(REVIEWS, reviewService.getAllReviewsByProductId(id));
         model.addAttribute(REVIEWDTO, new ReviewDTO());
         model.addAttribute(BESTRATINGPRODUCTS, productService.getListBestProductDTOByRatting());
-        System.out.println("============================= hello ===================");
-        System.out.println(productService.getProductDetailDTOById(id));
+        model.addAttribute("listTopic",listTopic);
+
         return UrlConstants.URL_ADMIN + "/product/edit_pr";
-        // return "product-detail/detail";
+    }
+    @PostMapping({UrlConstants.URL_ADMIN_PRODUCT_EDIT_ID})
+    public String editProduct(Model model, @PathVariable("id") Long id ,
+                              @ModelAttribute("productDetailDTO") ProductDetailDTO productDetailDTO,
+                              RedirectAttributes redirect) {
+        productService.editProduct(productDetailDTO);
+        return "redirect:"+UrlConstants.URL_ADMIN+UrlConstants.URL_ADMIN_PRODUCT_INDEX+"/"+productDetailDTO.getIdOccasion();
     }
 
-    @GetMapping({UrlConstants.URL_ADMIN_PRODUCT_INDEX, UrlConstants.URL_ADMIN_PRODUCT_ADD})
+    @GetMapping({UrlConstants.URL_ADMIN_PRODUCT_ADD})
     public String addProduct(Model model, HttpServletRequest request, RedirectAttributes redirect,
                                 @PathVariable(name = "id", required = false) Long id) {
         if (id == null) id = 1L;
@@ -78,6 +92,9 @@ public class AdminManagerFlowerController {
         model.addAttribute(LIST_OCCASION, productService.getListProductDTOByOccasionId(id));
         return UrlConstants.URL_ADMIN + "/product/add_pr";
     }
+
+
+
 
 
 }

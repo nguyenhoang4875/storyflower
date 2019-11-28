@@ -13,8 +13,7 @@
                 <div th:if="${not #lists.isEmpty(occasions)}" th:each="item: ${occasions}">
 
                     <ul class="treeview-menu">
-
-                        <a class="treeview-item" th:href="${item.occasionId}">
+                            <a class="treeview-item" th:href="@{/admin/product/index/{id}(id=${item.occasionId})}">
                             <li>
                                 <span th:text="${item.nameOccasion}"></span>
                             </li>
