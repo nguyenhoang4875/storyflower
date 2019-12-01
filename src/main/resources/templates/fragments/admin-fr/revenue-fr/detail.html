@@ -2,8 +2,9 @@
     <h3 class="tile-title" th:text="${'Thống kê tháng:'+ revenueDTO.date}"></h3>
     <strong th:text="${'Tổng tiền: '+ #numbers.formatDecimal(revenueDTO.totalMoney , 0, 'COMMA', 0, 'POINT')+' đ'}"></strong>
 
-    <form method="POST" th:action="@{/admin/revenue/export_excel}">
-      <input type="hidden" name="bdaymonth" value="${revenueDTO.date}" >
+    <form method="POST" th:action="@{/admin/revenue/download}">
+        <input type="hidden" name="bdaymonth" th:value=${revenueDTO.date}>
+        <input type="hidden" name="revenueDTO" th:value=${revenueDTO}>
         <input class="btn btn-success" type="submit" value="Xuất Excel">
     </form>
 

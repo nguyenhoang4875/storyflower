@@ -1,19 +1,28 @@
 package storysflower.com.storysflower.controllers.admin;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import storysflower.com.storysflower.constants.UrlConstants;
+import storysflower.com.storysflower.dto.ProductRevenueDTO;
 import storysflower.com.storysflower.dto.RevenueDTO;
 import storysflower.com.storysflower.services.RevenueService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @RequestMapping(UrlConstants.URL_ADMIN)
 public class AdminRevenueController {
+
+    public static List<Integer> list = null;
     @Autowired
     RevenueService revenueService;
 
@@ -39,7 +48,7 @@ public class AdminRevenueController {
     }
 
     @PostMapping({UrlConstants.URL_ADMIN_REVENUE_SEARCH})
-    public String edit(Model model, @RequestParam(value = "bdaymonth") String bdaymonth) {
+    public String edit(HttpServletResponse resp, Model model, @RequestParam(value = "bdaymonth") String bdaymonth) throws IOException {
         if ("".equals(bdaymonth)) return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_ADMIN_REVENUE_INDEX;
         String month = bdaymonth.split("-")[1];
         String year = bdaymonth.split("-")[0];
@@ -50,24 +59,92 @@ public class AdminRevenueController {
             revenueDTO.setDate(month + "-" + year);
             revenueDTO.setTotalMoney(0.0);
         }
+        String test = "test send attribute";
+        model.addAttribute("temp", test);
         model.addAttribute("revenueDTO", revenueDTO);
+        if (revenueDTO != null) {
+            System.out.println("revenueDTO in search not null");
+        }
         return "admin/revenue/detail";
+
     }
+
     @PostMapping({UrlConstants.URL_ADMIN_REVENUE_DOWNLOAD})
-    public String exportExcel(Model model, @RequestParam(value = "bdaymonth") String bdaymonth) {
-        if ("".equals(bdaymonth)) return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_ADMIN_REVENUE_INDEX;
-        String month = bdaymonth.split("-")[1];
-        String year = bdaymonth.split("-")[0];
-        RevenueDTO revenueDTO = revenueService.findRevenueDTOByDate(month + "-" + year);
+    public void exportExcel(HttpServletResponse resp,
+                            @ModelAttribute("temp") String test,
+            /*  @ModelAttribute("revenueDTO") RevenueDTO revenueDTO,*/
 
-        if (revenueDTO == null) {
-            revenueDTO = new RevenueDTO();
-            revenueDTO.setDate(month + "-" + year);
-            revenueDTO.setTotalMoney(0.0);
+                            @RequestParam(value = "bdaymonth") String bdaymonth)
+            throws IOException {
+
+        RevenueDTO revenueDTO = null;
+        if (bdaymonth != null) {
+            String month = bdaymonth.split("-")[0];
+            String year = bdaymonth.split("-")[1];
+            revenueDTO = revenueService.findRevenueDTOByDate(month + "-" + year);
         }
-        model.addAttribute("revenueDTO", revenueDTO);
-        return "";
+        List<ProductRevenueDTO> productRevenueDTOList = revenueDTO.getListCart();
+
+        if (productRevenueDTOList != null) {
+            Workbook workbook = new HSSFWorkbook();
+
+            // create excel xls sheet
+            Sheet sheet = workbook.createSheet("revenue for month");
+            sheet.setDefaultColumnWidth(30);
+
+            // create style for header cells
+            CellStyle style = workbook.createCellStyle();
+            Font font = workbook.createFont();
+            font.setFontName("Arial");
+            style.setFillForegroundColor(HSSFColor.BLUE.index);
+            style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+            font.setBold(true);
+            font.setColor(HSSFColor.WHITE.index);
+            style.setFont(font);
+
+            // create header row
+            Row header = sheet.createRow(0);
+            header.createCell(0).setCellValue("STT");
+            header.getCell(0).setCellStyle(style);
+            header.createCell(1).setCellValue("Name Product");
+            header.getCell(1).setCellStyle(style);
+            header.createCell(2).setCellValue("Quantity");
+            header.getCell(2).setCellStyle(style);
+            header.createCell(3).setCellValue("Total Money");
+            header.getCell(3).setCellStyle(style);
+            int rowCount = 1;
+            for (ProductRevenueDTO productRevenueDTO : productRevenueDTOList) {
+                Row userRow = sheet.createRow(rowCount++);
+                userRow.createCell(0).setCellValue(productRevenueDTO.getId());
+                userRow.createCell(1).setCellValue(productRevenueDTO.getName());
+                userRow.createCell(2).setCellValue(productRevenueDTO.getQuatity());
+                userRow.createCell(3).setCellValue(productRevenueDTO.getPrice());
+            }
+            FileOutputStream fileOut = new FileOutputStream("revenue.xlsx");
+            workbook.write(fileOut);
+            fileOut.close();
+            workbook.close();
+            resp.setContentType("application/vnd.ms-excel");
+
+            OutputStream outputStream = resp.getOutputStream();
+            if (list == null) {
+                File file = new File("revenue.xlsx");
+                BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(file));
+                int i = 0;
+                if (list == null) {
+                    list = new ArrayList<>();
+                    while ((i = bufferedInputStream.read()) != -1) {
+                        list.add(i);
+                    }
+                    bufferedInputStream.close();
+                }
+            }
+            for (int i = 0; i < list.size(); i++) {
+                outputStream.write(list.get(i));
+            }
+            outputStream.close();
+        }
+
+
     }
-
-
 }
