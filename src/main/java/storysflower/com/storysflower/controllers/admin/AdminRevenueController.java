@@ -59,32 +59,24 @@ public class AdminRevenueController {
             revenueDTO.setDate(month + "-" + year);
             revenueDTO.setTotalMoney(0.0);
         }
-        String test = "test send attribute";
-        model.addAttribute("temp", test);
         model.addAttribute("revenueDTO", revenueDTO);
-        if (revenueDTO != null) {
-            System.out.println("revenueDTO in search not null");
-        }
         return "admin/revenue/detail";
-
     }
 
     @PostMapping({UrlConstants.URL_ADMIN_REVENUE_DOWNLOAD})
     public void exportExcel(HttpServletResponse resp,
-                            @ModelAttribute("temp") String test,
-            /*  @ModelAttribute("revenueDTO") RevenueDTO revenueDTO,*/
-
                             @RequestParam(value = "bdaymonth") String bdaymonth)
             throws IOException {
-
         RevenueDTO revenueDTO = null;
+        List<ProductRevenueDTO> productRevenueDTOList = null;
         if (bdaymonth != null) {
             String month = bdaymonth.split("-")[0];
             String year = bdaymonth.split("-")[1];
             revenueDTO = revenueService.findRevenueDTOByDate(month + "-" + year);
         }
-        List<ProductRevenueDTO> productRevenueDTOList = revenueDTO.getListCart();
-
+        if (revenueDTO != null) {
+            productRevenueDTOList = revenueDTO.getListCart();
+        }
         if (productRevenueDTOList != null) {
             Workbook workbook = new HSSFWorkbook();
 
@@ -144,7 +136,5 @@ public class AdminRevenueController {
             }
             outputStream.close();
         }
-
-
     }
 }
