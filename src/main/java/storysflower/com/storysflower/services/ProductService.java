@@ -31,4 +31,6 @@ public interface ProductService {
     List<ProductDTO> getAllPlants();
 
     boolean editProduct(ProductDetailDTO productDetailDTO);
+
+    boolean addProduct(ProductDetailDTO productDetailDTO);
 }

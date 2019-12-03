@@ -11,10 +11,10 @@
                 <constraints nullable="false" foreignKeyName="fk_product_image" references="product(id)"/>
             </column>
             <column name="image_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="fk_product_image_image" references="image(image_id)"/>
+                <constraints nullable="true" foreignKeyName="fk_product_image_image" references="image(image_id)"/>
             </column>
             <column name="main_image" type="boolean" defaultValue="false">
-                <constraints nullable="false"></constraints>
+                <constraints nullable="true"></constraints>
             </column>
         </createTable>
     </changeSet>

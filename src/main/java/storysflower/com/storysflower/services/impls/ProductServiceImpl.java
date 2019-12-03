@@ -71,6 +71,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public boolean addProduct(ProductDetailDTO productDetailDTO) {
+        Long idProductLast = productRepository.addProduct(productDetailDTO);
+        if(idProductLast>0) return  true;
+        return  false;
+    }
+
+    @Override
     public List<ProductDTO> getAllGitfAndSweet() {
         return productRepository.getAllGitfSweet();
     }

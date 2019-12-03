@@ -848,7 +848,8 @@
         <insert tableName="image">
             <column name="image_data" valueBlobFile="images/PlantImage/plant10e.jpg"></column>
         </insert>
-
-
+        <insert tableName="image">
+            <column name="image_data" valueBlobFile="images/noimg.png"></column>
+        </insert>
     </changeSet>
 </databaseChangeLog>

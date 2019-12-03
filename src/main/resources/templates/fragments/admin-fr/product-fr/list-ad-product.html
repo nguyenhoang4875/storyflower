@@ -2,7 +2,7 @@
     <div class="col-md">
         <div class="tile">
             <h3 class="tile-title">List Flowers Table</h3>
-
+            <a href="/admin/product/add/1"><button class="btn btn-success">Add Product</button></a>
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -32,11 +32,11 @@
 
                         <td>
                             <a th:href="@{/admin/product/edit/{id}(id=${item.Id})}" >
-                                <button class="btn btn-primary">Edit</button>
+                                <button class="btn btn-success">Edit</button>
                             </a>
                             |
 
-                            <button class="btn btn-danger">Delete</button>
+                            <button class="btn btn-secondary">Delete</button>
                         </td>
                     </tr>
                 </div>

@@ -33,7 +33,7 @@ public class ProductRepository {
 
     public ProductDetailDTO getProductDetailByProductId(Long id) {
         ProductDetailDTO productDetailDTO = dslContext
-                .select(PRODUCT.ID, IMAGE_PRODUCT.IMAGE_ID, PRODUCT.PRODUCT_NAME, OCCASION.NAME_OCCASION, OCCASION.OCCASION_ID.as("idOccasion"), TOPIC.TOPIC_ID.as("idTopic"),TOPIC.TOPIC_NAME, PRODUCT.DESCRIPTION, PRODUCT.MEANING, PRODUCT.PRICE)
+                .select(PRODUCT.ID, IMAGE_PRODUCT.IMAGE_ID, PRODUCT.PRODUCT_NAME, OCCASION.NAME_OCCASION, OCCASION.OCCASION_ID.as("idOccasion"), TOPIC.TOPIC_ID.as("idTopic"), TOPIC.TOPIC_NAME, PRODUCT.DESCRIPTION, PRODUCT.MEANING, PRODUCT.PRICE)
                 .from(PRODUCT)
                 .leftJoin(OCCASION).on(OCCASION.OCCASION_ID.eq(PRODUCT.OCCASION_ID))
                 .join(IMAGE_PRODUCT).on(IMAGE_PRODUCT.PRODUCT_ID.eq(PRODUCT.ID))
@@ -88,6 +88,15 @@ public class ProductRepository {
         rattingService.setRating(productDTOS);
         return productDTOS.size() == 0 ? Collections.emptyList() : productDTOS;
     }
+
+   /* public ProductDTO getLastProductDTO() {
+        return dslContext.select()
+                .from(PRODUCT)
+                .
+                .fetchInto(ProductDTO.class);
+
+
+    }*/
 
     public List<ProductDTO> getListBestProductDTOByRatting() {
         List<ProductDTO> productDTOS = dslContext.select()
@@ -169,7 +178,7 @@ public class ProductRepository {
                 .fetchInto(ProductDTO.class);
     }
 
-    public boolean editProduct(ProductDetailDTO productDetailDTO){
+    public boolean editProduct(ProductDetailDTO productDetailDTO) {
         return dslContext.update(PRODUCT)
                 .set(PRODUCT.PRODUCT_NAME, productDetailDTO.getProductName())
                 .set(PRODUCT.PRICE, productDetailDTO.getPrice())
@@ -177,5 +186,22 @@ public class ProductRepository {
                 .set(PRODUCT.OCCASION_ID, productDetailDTO.getIdOccasion())
                 .where(PRODUCT.ID.eq(productDetailDTO.getId()))
                 .execute() > 0;
+    }
+
+    public Long addProduct(ProductDetailDTO productDetailDTO) {
+        Long id = dslContext.insertInto(PRODUCT)
+                .set(PRODUCT.TOPIC_ID, productDetailDTO.getIdTopic())
+                .set(PRODUCT.OCCASION_ID, productDetailDTO.getIdOccasion())
+                .set(PRODUCT.PRICE, productDetailDTO.getPrice())
+                .set(PRODUCT.PRODUCT_NAME, productDetailDTO.getProductName())
+                .set(PRODUCT.DESCRIPTION, productDetailDTO.getDescription())
+                .returning(PRODUCT.ID)
+                .fetchOne().getId();
+        dslContext.insertInto(IMAGE_PRODUCT)
+                .set(IMAGE_PRODUCT.PRODUCT_ID, id)
+                .set(IMAGE_PRODUCT.IMAGE_ID, 238l)
+                .set(IMAGE_PRODUCT.MAIN_IMAGE, true)
+                .execute();
+        return id;
     }
 }

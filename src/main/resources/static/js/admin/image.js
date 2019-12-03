@@ -14,7 +14,7 @@ var orderImageAttr = 'order-image';
 
 // default values
 var attrDefault = {
-    srcAttr: '/img/no-img.png',
+    srcAttr: '/img/noimg.png',
     imageIdAttr: -1,
     orderImageAttr: -1
 }
