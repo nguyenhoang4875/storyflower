@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      lang="en" xmlns:th="www.thymeLeaf.org"
+<html lang="en"
+      layout:decorate="~{layout/default-layout}" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/default-layout}">
+      xmlns:th="www.thymeLeaf.org">
 <head>
     <title>Story's Flower</title>
-    <link rel="stylesheet" href="/css/home.css">
-    <link rel="stylesheet" href="/css/product.css">
-    <link rel="stylesheet" href="/css/detail.css">
+    <link href="/css/home.css" rel="stylesheet">
+    <link href="/css/product.css" rel="stylesheet">
+    <link href="/css/detail.css" rel="stylesheet">
 </head>
 <body>
 <div layout:fragment="main-content">
     <div class="row mx-3 mx-md-5 d-flex justify-content-center mt-5">
-        <div th:if="${not #lists.isEmpty(occasions)}" th:each="item: ${occasions}">
+        <div th:each="item: ${occasions}" th:if="${not #lists.isEmpty(occasions)}">
             <a class="occasion-image d-inline-block" th:href="@{/occasion/} + ${item.occasionId}">
                 <img
-                        th:src="${item.imageId!=null}?@{/api/image/}+${item.imageId}:@{/img/no-img.png}"
-                        class="rounded-circle" alt="${item.nameOccasion}">
+                        alt="${item.nameOccasion}"
+                        class="rounded-circle" th:src="${item.imageId!=null}?@{/api/image/}+${item.imageId}:@{/img/no-img.png}">
                 <p th:text="${item.nameOccasion}"></p>
             </a>
         </div>
     </div>
 
     <div class="product-title">
-        <h1><span th:text = "${topic}"> Flowers</span></h1>
+        <h1><span th:text="${topic}"> Flowers</span></h1>
         <p>
             <span th:text="${#lists.size(flowers)}"></span>
             <span th:text="${#lists.size(flowers) <2 } ? 'Result' : 'Results'">Results</span>
@@ -32,12 +32,12 @@
     <div class="row main-contain">
         <div id="image-container mx-auto">
             <div class="row d-flex  justify-content-center">
-                <div class="image-link mx-2 my-2 p-2" th:if="${not #lists.isEmpty(flowers)}"
-                     th:each="item: ${flowers}">
+                <div class="image-link mx-2 my-2 p-2" th:each="item: ${flowers}"
+                     th:if="${not #lists.isEmpty(flowers)}">
                     <a th:href="@{/product/{id}(id=${item.id})}">
                         <div><img
-                                th:src="${item.imageId!=null}?@{/api/image/}+${item.imageId}:@{/img/no-img.png}"
-                                class="image">
+                                class="image"
+                                th:src="${item.imageId!=null}?@{/api/image/}+${item.imageId}:@{/img/no-img.png}">
                         </div>
                         <p class="name-product mt-2" th:text="${item.productName}">Love's flower</p>
                         <div class="d-flex justify-content-center">

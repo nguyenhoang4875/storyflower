@@ -9,7 +9,7 @@ public class ProductCartDTO {
     private Double price;
     private double totalMoney;
 
-    public ProductCartDTO(String productName,  String messageToRecipient, Double price, Integer quantity) {
+    public ProductCartDTO(String productName, String messageToRecipient, Double price, Integer quantity) {
         this.productName = productName;
         this.quantity = quantity;
         this.messageToRecipient = messageToRecipient;

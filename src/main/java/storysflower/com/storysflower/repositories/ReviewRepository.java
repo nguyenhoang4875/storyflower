@@ -7,7 +7,6 @@ import storysflower.com.storysflower.dto.ReviewDTO;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.zip.CheckedOutputStream;
 
 import static storysflower.com.storysflower.model.tables.tables.Review.REVIEW;
 import static storysflower.com.storysflower.model.tables.tables.User.USER;
@@ -42,5 +41,5 @@ public class ReviewRepository {
     public List<ReviewDTO> getAllNewReview(int reviewListSize, Long productId) {
         List<ReviewDTO> reviewDTOS = getAllReviewsByProductId(productId);
         return reviewDTOS.subList(0, reviewDTOS.size() - reviewListSize);
-     }
+    }
 }

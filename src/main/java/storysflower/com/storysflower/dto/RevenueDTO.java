@@ -3,10 +3,10 @@ package storysflower.com.storysflower.dto;
 import java.util.List;
 
 public class RevenueDTO {
-    private int  id;
+    private int id;
     private String date;
     private List<ProductRevenueDTO> listCart;
-    private  Double totalMoney;
+    private Double totalMoney;
 
     public RevenueDTO() {
     }

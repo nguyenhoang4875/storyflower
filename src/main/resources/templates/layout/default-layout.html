@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
 
     <head>
         <th:block th:replace="fragments/head"></th:block>
@@ -15,11 +15,11 @@
         <!-- main content -->
         <div layout:fragment="main-content">
         </div>
-        <div id="main-message" class="d-flex position-fixed rounded">
-            <p class="main-message m-auto"> hihidhdnkdkjg</p>
+        <div class="d-flex position-fixed rounded" id="main-message">
+            <p class="main-message m-auto">hihidhdnkdkjg</p>
         </div>
         <!-- footer -->
-        <footer th:replace="fragments/footer :: footer" class="footer"></footer>
+        <footer class="footer" th:replace="fragments/footer :: footer"></footer>
 
         <!-- default script (bootstrap, jquery) -->
         <th:block th:replace="fragments/script">

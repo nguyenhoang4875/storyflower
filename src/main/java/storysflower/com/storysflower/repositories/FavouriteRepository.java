@@ -23,7 +23,7 @@ public class FavouriteRepository {
     }
 
     public boolean updateFavourite(Long productId, Long userId, Boolean isFavourite) {
-        if(checkHaveFavourite(productId, userId)){
+        if (checkHaveFavourite(productId, userId)) {
             return insertFavourite(productId, userId, isFavourite);
         }
         return dslContext.update(FAVOURITE)
@@ -32,18 +32,19 @@ public class FavouriteRepository {
                 .and(FAVOURITE.USER_ID.eq(userId))
                 .execute() > 0;
     }
-    public boolean checkHaveFavourite(Long productId, Long userId){
+
+    public boolean checkHaveFavourite(Long productId, Long userId) {
         return dslContext.select().from(FAVOURITE)
                 .where(FAVOURITE.USER_ID.eq(userId))
                 .and(FAVOURITE.PRODUCT_ID.eq(productId))
                 .fetchCount() == 0;
     }
 
-    public boolean insertFavourite(Long productId, Long userId, Boolean isFavourite){
+    public boolean insertFavourite(Long productId, Long userId, Boolean isFavourite) {
         return dslContext.insertInto(FAVOURITE)
                 .set(FAVOURITE.PRODUCT_ID, productId)
                 .set(FAVOURITE.USER_ID, userId)
                 .set(FAVOURITE.VALUE, isFavourite)
-                .execute()>0;
+                .execute() > 0;
     }
 }

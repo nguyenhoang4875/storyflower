@@ -11,11 +11,10 @@ import storysflower.com.storysflower.services.ProductService;
 @Controller
 @RequestMapping("/giftandsweet")
 public class GiftSweetController {
+    private static final String TOPIC = "topic";
+    private static final String FLOWERS = "flowers";
     @Autowired
     private ProductService productService;
-    private static final String TOPIC = "topic";
-
-    private static final String FLOWERS = "flowers";
 
     @GetMapping()
     public String getOccasionPage(Model model) {

@@ -24,29 +24,30 @@ public class CartRestController {
     private UserService userService;
 
     @GetMapping("/{productId}")
-    public Object addCart(HttpSession httpSession, @PathVariable("productId") Long productId, @RequestParam("quantity") String quantity){
+    public Object addCart(HttpSession httpSession, @PathVariable("productId") Long productId, @RequestParam("quantity") String quantity) {
         List<CartDTO> cartDTOList;
-        if(httpSession.getAttribute(CARTS)== null){
+        if (httpSession.getAttribute(CARTS) == null) {
             cartDTOList = new ArrayList<>();
-        }else{
+        } else {
             cartDTOList = (List<CartDTO>) httpSession.getAttribute(CARTS);
         }
-        if(cartService.addCard(cartDTOList, productId, quantity) == false){
+        if (cartService.addCard(cartDTOList, productId, quantity) == false) {
             return ApiResponse.failed("The product has been added");
-        };
+        }
+        ;
         httpSession.setAttribute(CARTS, cartDTOList);
         return ApiResponse.success("Successfull add to cart");
     }
 
     @GetMapping("delete/{productId}")
-    public Object deleteCart(HttpSession httpSession, @PathVariable("productId") Long productId){
+    public Object deleteCart(HttpSession httpSession, @PathVariable("productId") Long productId) {
         List<CartDTO> cartDTOList;
-        if(httpSession.getAttribute(CARTS)== null){
+        if (httpSession.getAttribute(CARTS) == null) {
             return ApiResponse.failed("Don't have any product");
-        }else{
+        } else {
             cartDTOList = (List<CartDTO>) httpSession.getAttribute(CARTS);
         }
-        if(cartDTOList.removeIf(t -> t.getProductDTO().getId().equals(productId)));
+        if (cartDTOList.removeIf(t -> t.getProductDTO().getId().equals(productId))) ;
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("totalCart", cartService.calculateTotal(cartDTOList));
         return jsonObject;

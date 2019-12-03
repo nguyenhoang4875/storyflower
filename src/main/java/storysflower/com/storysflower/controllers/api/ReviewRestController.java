@@ -32,7 +32,7 @@ public class ReviewRestController {
             return new ResponseEntity<ApiException>(apiException, HttpStatus.UNAUTHORIZED);
         }
         reviewService.insertReview(productId, userService.getUser().getId(), content);
-        if(listSize ==""){
+        if (listSize == "") {
             listSize = "0";
         }
         System.out.println(reviewService.getAllNewReiview(Integer.parseInt(listSize), productId) + "================");

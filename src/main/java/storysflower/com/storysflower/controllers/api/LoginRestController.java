@@ -1,9 +1,9 @@
 package storysflower.com.storysflower.controllers.api;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import storysflower.com.storysflower.dto.NotFoundException;
-import storysflower.com.storysflower.exceptions.ApiException;
 
 /**
  * @author ntynguyen
@@ -12,8 +12,8 @@ import storysflower.com.storysflower.exceptions.ApiException;
 @RequestMapping("api/login")
 public class LoginRestController {
     @GetMapping()
-    public String getLoginPage(){
-       throw new NotFoundException();
+    public String getLoginPage() {
+        throw new NotFoundException();
     }
 
 }

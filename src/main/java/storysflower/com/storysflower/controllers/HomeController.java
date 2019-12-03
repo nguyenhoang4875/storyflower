@@ -21,8 +21,9 @@ public class HomeController {
 
     @Autowired
     private DealService dealService;
+
     @GetMapping("/")
-    public String getHomePage(Model model){
+    public String getHomePage(Model model) {
         model.addAttribute(OCCASION, occasionService.findAllOccasion());
         model.addAttribute(DEAL_PRODUCT, dealService.findAllDealProducts());
         return "home";

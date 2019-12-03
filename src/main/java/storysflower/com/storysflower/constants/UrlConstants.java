@@ -18,6 +18,7 @@ public class UrlConstants {
     public static final String URL_ADMIN_REVENUE_INDEX = "/revenue/index";
     public static final String URL_ADMIN_REVENUE_DETAIL = "/revenue/detail-{date}";
     public static final String URL_ADMIN_REVENUE_SEARCH = "/revenue/search";
+    public static final String URL_ADMIN_REVENUE_DOWNLOAD ="/revenue/download" ;
 
     public static final String URL_ADMIN_CUSTOMER_INDEX = "/customer/index";
     public static final String URL_ADMIN_CUSTOMER_INDEX_PAGINATION="/customer/index/{page}";
@@ -30,10 +31,10 @@ public class UrlConstants {
 
 
 
-    public static final String URL_ADMIN_PRODUCT_INDEX_ID= "/product/index/{id}";
-    public static final String URL_ADMIN_PRODUCT_INDEX = "/product/index";
-    public static final String URL_ADMIN_PRODUCT_POST_EDIT= "/product/{oc}/edit/{id}";
+    public static final String URL_ADMIN_PRODUCT_INDEX_ID= "product/index/{id}";
+    public static final String URL_ADMIN_PRODUCT_INDEX = "product/index";
+
     public static final String URL_ADMIN_PRODUCT_EDIT_ID= "product/edit/{id}";
-    public static final String URL_ADMIN_PRODUCT_ADD= "product/add/{occ}";
+    public static final String URL_ADMIN_PRODUCT_ADD= "product/add";
 
 }

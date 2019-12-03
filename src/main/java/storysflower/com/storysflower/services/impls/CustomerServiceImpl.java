@@ -33,12 +33,12 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<ProductCustomerDTO> findAllProductByIdCustomer(Long id) {
         List<ProductCustomerDTO> listProductByIdCustomer = customerRepository.findAllProductByIdCustomer(id);
-        System.out.println("s: "+listProductByIdCustomer.size());
-        if(listProductByIdCustomer.size()>0){
-            int i=1;
-            for (ProductCustomerDTO product:listProductByIdCustomer) {
+        System.out.println("s: " + listProductByIdCustomer.size());
+        if (listProductByIdCustomer.size() > 0) {
+            int i = 1;
+            for (ProductCustomerDTO product : listProductByIdCustomer) {
                 product.setId(i++);
-                product.setTotal_Money(product.getPrice()*product.getQuantity());
+                product.setTotal_Money(product.getPrice() * product.getQuantity());
             }
         }
         return listProductByIdCustomer;

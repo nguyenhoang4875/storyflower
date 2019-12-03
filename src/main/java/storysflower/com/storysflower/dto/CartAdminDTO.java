@@ -1,7 +1,5 @@
 package storysflower.com.storysflower.dto;
 
-import java.time.DateTimeException;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -11,19 +9,7 @@ public class CartAdminDTO {
     private List<CartDTO> listCart;
     private int status;
     private Date delivery_date;
-    private  String message_to_us;
-
-    @Override
-    public String toString() {
-        return "CartAdminDTO{" +
-                "id=" + id +
-                ", full_name='" + full_name + '\'' +
-                ", listCart=" + listCart +
-                ", status=" + status +
-                ", delivery_date=" + delivery_date +
-                ", message_to_us='" + message_to_us + '\'' +
-                '}';
-    }
+    private String message_to_us;
 
     public CartAdminDTO() {
     }
@@ -39,6 +25,18 @@ public class CartAdminDTO {
         this.delivery_date = delivery_date;
         this.message_to_us = message_to_us;
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "CartAdminDTO{" +
+                "id=" + id +
+                ", full_name='" + full_name + '\'' +
+                ", listCart=" + listCart +
+                ", status=" + status +
+                ", delivery_date=" + delivery_date +
+                ", message_to_us='" + message_to_us + '\'' +
+                '}';
     }
 
     public Long getId() {

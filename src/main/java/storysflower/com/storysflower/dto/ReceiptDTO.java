@@ -1,7 +1,5 @@
 package storysflower.com.storysflower.dto;
 
-import java.util.Date;
-
 public class ReceiptDTO {
     private String id;
     private CustomerDTO customerDTO;

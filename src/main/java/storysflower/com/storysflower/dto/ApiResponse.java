@@ -4,11 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ApiResponse {
 
-    public enum ApiResponseStatus {SUCCESS, FAILED}
-
     @JsonProperty("status")
     private final ApiResponseStatus responseStatus;
-
     @JsonProperty("message")
     private final String message;
 
@@ -32,4 +29,6 @@ public class ApiResponse {
     public String getMessage() {
         return message;
     }
+
+    public enum ApiResponseStatus {SUCCESS, FAILED}
 }

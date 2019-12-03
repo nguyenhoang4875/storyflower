@@ -17,7 +17,7 @@ public class OccasionRepository {
     @Autowired
     private DSLContext dslContext;
 
-    public List<OccasionDTO> findAllOccasion(){
+    public List<OccasionDTO> findAllOccasion() {
         return dslContext.selectFrom(OCCASION)
                 .fetchInto(OccasionDTO.class);
     }

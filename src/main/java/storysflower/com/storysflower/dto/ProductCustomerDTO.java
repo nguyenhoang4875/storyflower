@@ -3,12 +3,22 @@ package storysflower.com.storysflower.dto;
 import java.util.Date;
 
 public class ProductCustomerDTO {
-    private  int id;
-    private String  product_name;
-    private  Double price;
-    private  Integer quantity;
+    private int id;
+    private String product_name;
+    private Double price;
+    private Integer quantity;
     private Date buy_date;
-    private  Double total_Money;
+    private Double total_Money;
+
+    public ProductCustomerDTO() {
+    }
+
+    public ProductCustomerDTO(String product_name, Double price, Integer quantily, Date buy_date) {
+        this.product_name = product_name;
+        this.price = price;
+        this.quantity = quantily;
+        this.buy_date = buy_date;
+    }
 
     public Integer getQuantity() {
         return quantity;
@@ -32,16 +42,6 @@ public class ProductCustomerDTO {
 
     public void setTotal_Money(Double total_Money) {
         this.total_Money = total_Money;
-    }
-
-    public ProductCustomerDTO() {
-    }
-
-    public ProductCustomerDTO(String product_name, Double price, Integer quantily, Date buy_date) {
-        this.product_name = product_name;
-        this.price = price;
-        this.quantity = quantily;
-        this.buy_date = buy_date;
     }
 
     public String getProduct_name() {

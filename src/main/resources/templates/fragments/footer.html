@@ -1,4 +1,4 @@
-<footer xmlns:th="http://www.thymeleaf.org" th:fragment="footer" class="page-footer pt-3 pt-sm-4 bg-primary ">
+<footer class="page-footer pt-3 pt-sm-4 bg-primary " th:fragment="footer" xmlns:th="http://www.thymeleaf.org">
     <!-- Footer -->
     <!-- Footer Links -->
     <!-- Load Facebook SDK for JavaScript -->
@@ -21,14 +21,14 @@
         }(document, 'script', 'facebook-jssdk'));</script>
 
     <!-- Your customer chat code -->
-    <div class="fb-customerchat"
-         attribution=setup_tool
+    <div attribution=setup_tool
+         class="fb-customerchat"
          page_id="114496696651471"
          theme_color="#13cf13">
     </div>
     <div class="container">
-        <a th:href="@{/}" class="d-flex justify-content-center mt-20 mb-20">
-            <img src="/img/logo.png" alt="logo">
+        <a class="d-flex justify-content-center mt-20 mb-20" th:href="@{/}">
+            <img alt="logo" src="/img/logo.png">
         </a>
         <div class="footer-quote">
             <p class="quote">Flowers always make people better, happier, they</p>

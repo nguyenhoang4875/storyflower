@@ -35,14 +35,14 @@ public class FavouriteRestController {
     }
 
     @PostMapping("/{productId}")
-    public Object updateFavourite(@PathVariable("productId") Long productId, @RequestParam("isFavourite") Boolean isFavourite){
-        if(userService.getUser() == null){
+    public Object updateFavourite(@PathVariable("productId") Long productId, @RequestParam("isFavourite") Boolean isFavourite) {
+        if (userService.getUser() == null) {
             return new ApiException(HttpStatus.UNAUTHORIZED, "Please login to favourite");
         }
         CustomUserDetail customUserDetail = userService.getUser();
-        if(favouriteService.updateFavourite(productId, customUserDetail.getId(), !isFavourite)){
+        if (favouriteService.updateFavourite(productId, customUserDetail.getId(), !isFavourite)) {
             return ApiResponse.success("Favourite is successfull");
         }
-        return new ApiException(HttpStatus.BAD_REQUEST,"Some thing went wrong");
+        return new ApiException(HttpStatus.BAD_REQUEST, "Some thing went wrong");
     }
 }

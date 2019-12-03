@@ -6,6 +6,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 /**
  * @author ntynguyen
  */
-@ResponseStatus(value = HttpStatus.NOT_FOUND,reason = "Not Found")
-public class NotFoundException extends RuntimeException{
+@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Not Found")
+public class NotFoundException extends RuntimeException {
 }

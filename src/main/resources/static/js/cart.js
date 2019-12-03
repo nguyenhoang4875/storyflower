@@ -1,5 +1,3 @@
-
-
 $(window).ready(
     function () {
         $('#add-card-button').click(function () {

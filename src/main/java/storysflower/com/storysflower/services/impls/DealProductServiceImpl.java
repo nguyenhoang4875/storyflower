@@ -15,6 +15,7 @@ import java.util.List;
 public class DealProductServiceImpl implements DealService {
     @Autowired
     DealRepository dealRepository;
+
     @Override
     public List<ProductDTO> findAllDealProducts() {
         return dealRepository.findAllDealProducts();

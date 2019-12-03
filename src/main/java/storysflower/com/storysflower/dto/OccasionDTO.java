@@ -6,7 +6,7 @@ package storysflower.com.storysflower.dto;
  * @author ntynguyen
  */
 
-public class OccasionDTO{
+public class OccasionDTO {
     private Long occasionId;
     private String nameOccasion;
     private Long imageId;
