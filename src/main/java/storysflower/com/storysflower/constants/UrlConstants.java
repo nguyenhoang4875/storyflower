@@ -31,10 +31,10 @@ public class UrlConstants {
 
 
 
-    public static final String URL_ADMIN_PRODUCT_INDEX_ID= "product/index/{id}";
-    public static final String URL_ADMIN_PRODUCT_INDEX = "product/index";
-
+    public static final String URL_ADMIN_PRODUCT_INDEX_ID= "/product/index/{id}";
+    public static final String URL_ADMIN_PRODUCT_INDEX = "/product/index";
+    public static final String URL_ADMIN_PRODUCT_POST_EDIT= "/product/{oc}/edit/{id}";
     public static final String URL_ADMIN_PRODUCT_EDIT_ID= "product/edit/{id}";
-    public static final String URL_ADMIN_PRODUCT_ADD= "product/add";
+    public static final String URL_ADMIN_PRODUCT_ADD= "product/add/{occ}";
 
 }
