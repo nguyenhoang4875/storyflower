@@ -4,16 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import storysflower.com.storysflower.constants.CommonConstants;
 import storysflower.com.storysflower.constants.UrlConstants;
 import storysflower.com.storysflower.dto.CustomerDTO;
 import storysflower.com.storysflower.dto.ProductCustomerDTO;
 import storysflower.com.storysflower.services.CustomerService;
+import storysflower.com.storysflower.services.OccasionService;
 import storysflower.com.storysflower.services.ProductService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +29,15 @@ public class AdminCustomerController {
 
     @Autowired
     ProductService productService;
+
+    private static final String OCCASIONS = "occasions";
+
+    @Autowired
+    private OccasionService occasionService;
+    @ModelAttribute
+    public void leftbar(Model model){
+        model.addAttribute(OCCASIONS, occasionService.findAllOccasion());
+    }
 
     @GetMapping({UrlConstants.URL_ADMIN_CUSTOMER_INDEX})
     public String index(Model model, HttpServletRequest request, RedirectAttributes redirect) {

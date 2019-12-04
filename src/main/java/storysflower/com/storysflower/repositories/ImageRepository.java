@@ -63,4 +63,10 @@ public class ImageRepository {
                 .where(IMAGE_PRODUCT.PRODUCT_ID.eq(productId))
                 .fetchCount() > 0;
     }
+
+    public boolean delImg(Long id) {
+        return dslContext.delete(IMAGE_PRODUCT)
+                .where(IMAGE_PRODUCT.PRODUCT_ID.eq(id))
+                .execute() > 0;
+    }
 }

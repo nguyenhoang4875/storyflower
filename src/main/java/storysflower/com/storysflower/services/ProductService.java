@@ -33,4 +33,6 @@ public interface ProductService {
     boolean editProduct(ProductDetailDTO productDetailDTO);
 
     boolean addProduct(ProductDetailDTO productDetailDTO);
+
+    boolean delProduct(Long id);
 }

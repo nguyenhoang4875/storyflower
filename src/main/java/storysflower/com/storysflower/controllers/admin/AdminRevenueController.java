@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import storysflower.com.storysflower.constants.UrlConstants;
 import storysflower.com.storysflower.dto.ProductRevenueDTO;
 import storysflower.com.storysflower.dto.RevenueDTO;
+import storysflower.com.storysflower.services.OccasionService;
 import storysflower.com.storysflower.services.RevenueService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +26,15 @@ public class AdminRevenueController {
     public static List<Integer> list = null;
     @Autowired
     RevenueService revenueService;
+
+    private static final String OCCASIONS = "occasions";
+
+    @Autowired
+    private OccasionService occasionService;
+    @ModelAttribute
+    public void leftbar(Model model){
+        model.addAttribute(OCCASIONS, occasionService.findAllOccasion());
+    }
 
     @GetMapping({UrlConstants.URL_ADMIN_REVENUE_INDEX})
     public String edit(Model model, @PathVariable(value = "id", required = false) Long id, HttpServletRequest request) {

@@ -8,7 +8,8 @@
                 <strong>Full Name: </strong>
                 <label th:text="${customerCartDTO.fullName}">Full Name</label><br>
                 <strong>Buy Date: </strong>
-                <label th:text="${ customerCartDTO.buyDate}">Buy Date</label><br>
+                <label th:text="${#dates.format(customerCartDTO.buyDate, 'HH:mm dd-MM-yyyy')}">Buy Date</label><br>
+
                 <strong>Full Name: </strong>
                 <label th:text="${ customerCartDTO.address}">Address</label><br>
                 <strong>Phone Number: </strong>
@@ -53,7 +54,10 @@
             <tr th:each="item : ${productCartDTO}">
                 <td th:text="${item.id}"/>
                 <td th:text="${ item.productName }"></td>
-                <td th:text="${ status }"> status</td>
+                <td>
+                    <img th:src="${item.imageId!=null}? @{/api/image/} + ${item.imageId} : @{/img/no-img/png}"
+                         class="image-detail" alt="main-image"/>
+                </td>
                 <td th:text="${ item.quantity}"></td>
                 <td th:text="${ item.messageToRecipient}"></td>
                 <td th:text="${#numbers.formatDecimal(item.quantity * item.price , 0, 'COMMA', 0, 'POINT')+' đ'}"></td>

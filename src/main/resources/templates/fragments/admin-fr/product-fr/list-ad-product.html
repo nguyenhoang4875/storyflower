@@ -35,8 +35,9 @@
                                 <button class="btn btn-success">Edit</button>
                             </a>
                             |
-
-                            <button class="btn btn-secondary">Delete</button>
+                            <a th:href="@{/admin/product/del/occ1/{id}(id=${item.Id})}" >
+                                <button class="btn btn-secondary">Delete</button>
+                            </a>
                         </td>
                     </tr>
                 </div>

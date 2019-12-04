@@ -5,6 +5,7 @@ import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -16,6 +17,7 @@ import storysflower.com.storysflower.dto.ProductCartDTO;
 import storysflower.com.storysflower.dto.RecipientCartDTO;
 import storysflower.com.storysflower.services.CartService;
 import storysflower.com.storysflower.services.CustomerService;
+import storysflower.com.storysflower.services.OccasionService;
 import storysflower.com.storysflower.services.RecipientService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +32,15 @@ public class AdminCartController {
     private CustomerService customerService;
     @Autowired
     private RecipientService recipientService;
+
+    private static final String OCCASIONS = "occasions";
+
+    @Autowired
+    private OccasionService occasionService;
+    @ModelAttribute
+    public void leftbar(Model model){
+        model.addAttribute(OCCASIONS, occasionService.findAllOccasion());
+    }
 
     @GetMapping({UrlConstants.URL_ADMIN_CART_INDEX})
     public String index(Model model, HttpServletRequest request, RedirectAttributes redirect) {
@@ -79,6 +90,7 @@ public class AdminCartController {
         int status = cartService.getStatus(id);
         Double totalMoney = 0.0;
         for (ProductCartDTO p : listProduct) {
+            System.out.println(p);
             totalMoney += p.getTotalMoney();
         }
         model.addAttribute("recipientCartDTO", recipientCartDTO);
