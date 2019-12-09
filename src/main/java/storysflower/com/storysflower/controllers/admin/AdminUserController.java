@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import storysflower.com.storysflower.constants.UrlConstants;
 import storysflower.com.storysflower.dto.UserDTO;
+import storysflower.com.storysflower.services.OccasionService;
 import storysflower.com.storysflower.services.RevenueService;
 import storysflower.com.storysflower.services.UserService;
 import storysflower.com.storysflower.utils.ErrorUtil;
@@ -33,7 +34,14 @@ public class AdminUserController {
     @Autowired
     RevenueService revenueService;
 
+    private static final String OCCASIONS = "occasions";
 
+    @Autowired
+    private OccasionService occasionService;
+    @ModelAttribute
+    public void leftbar(Model model){
+        model.addAttribute(OCCASIONS, occasionService.findAllOccasion());
+    }
     @GetMapping({UrlConstants.URL_ADMIN_USER_INDEX})
     public String index(Model model, HttpServletRequest request, Principal principal) {
         HttpSession session = request.getSession();
@@ -69,7 +77,6 @@ public class AdminUserController {
         userDTO.setId(id);
         boolean check = true;
         if ("".equals(userDTO.getPassWord())) {
-            System.out.println("done");
             String pw = userService.findUserByIdUser(id).getPassWord();
             userDTO.setPassWord(pw);
             userDTO.setRePassWord(pw);
@@ -83,7 +90,6 @@ public class AdminUserController {
                 errorList = ErrorUtil.delError(errorList);
             }
             if (errorList.size() != 0) {
-                System.out.println("AAA");
                 model.addAttribute("userDTO", userService.findUserByIdUser(id));
                 model.addAttribute("msg", "Please correct the errors in form!");
                 model.addAttribute("rs", rs);
@@ -108,17 +114,24 @@ public class AdminUserController {
                       @PathVariable(value = "id", required = false) Long id) {
         HttpSession session = request.getSession();
         UserDTO userLogin = (UserDTO) session.getAttribute("userLogin");
-        if (userLogin.getId() == id) return "admin/error404";
-        if (!userService.del(id)) {
-            /*error*/
+        if("ADMIN".equals(userLogin.getRole())){
+            if (userLogin.getId() == id) return "admin/error404";
+            if (!userService.del(id)) {
+
+            }
+            redirec.addFlashAttribute("msg", "Dữ liệu đã được xóa một dòng");
+            return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_ADMIN_USER_INDEX;
         }
-        redirec.addFlashAttribute("msg", "Dữ liệu đã được xóa một dòng");
-        return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_ADMIN_USER_INDEX;
+        return "admin/error404";
     }
 
     @GetMapping({UrlConstants.URL_ADMIN_USER_ADD})
     public String add(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        UserDTO userLogin = (UserDTO) session.getAttribute("userLogin");
+        if(userLogin.getRole().equals("ADMIN"))
         return "admin/user/add";
+        return "admin/error404";
     }
 
     @PostMapping({UrlConstants.URL_ADMIN_USER_ADD})

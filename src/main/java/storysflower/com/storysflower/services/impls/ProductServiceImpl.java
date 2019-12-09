@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import storysflower.com.storysflower.dto.ProductCartDTO;
 import storysflower.com.storysflower.dto.ProductDTO;
 import storysflower.com.storysflower.dto.ProductDetailDTO;
+import storysflower.com.storysflower.repositories.ImageRepository;
 import storysflower.com.storysflower.repositories.ProductRepository;
 import storysflower.com.storysflower.services.ProductService;
 
@@ -17,6 +18,9 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
     @Autowired
     ProductRepository productRepository;
+
+    @Autowired
+    ImageRepository imageRepository;
 
     @Override
     public ProductDetailDTO getProductDetailDTOById(Long id) {
@@ -75,6 +79,13 @@ public class ProductServiceImpl implements ProductService {
         Long idProductLast = productRepository.addProduct(productDetailDTO);
         if(idProductLast>0) return  true;
         return  false;
+    }
+
+    @Override
+    public boolean delProduct(Long id) {
+        if(productRepository.delProductByID(id))
+            return imageRepository.delImg(id);
+        else return false;
     }
 
     @Override

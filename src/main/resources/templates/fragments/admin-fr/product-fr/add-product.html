@@ -39,7 +39,8 @@
                 </div>
                 <div class="form-group">
                     <label for="price">Price</label>
-                    <input type="text" class="form-control" id="price" name="price" style="width: 200px;" placeholder="Enter activity's price">
+                    <input type="text" class="form-control" id="price" name="price" style="width: 200px;"
+                           onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="Enter activity's price">
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>

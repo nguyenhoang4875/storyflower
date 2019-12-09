@@ -14,10 +14,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Timer;
 
-import static storysflower.com.storysflower.model.tables.Tables.BUY_PRODUCT;
-import static storysflower.com.storysflower.model.tables.Tables.PRODUCT;
+import static storysflower.com.storysflower.model.tables.Tables.*;
+import static storysflower.com.storysflower.model.tables.Tables.IMAGE_PRODUCT;
 import static storysflower.com.storysflower.model.tables.tables.Cart.CART;
 import static storysflower.com.storysflower.model.tables.tables.Customer.CUSTOMER;
+import static storysflower.com.storysflower.model.tables.tables.Product.PRODUCT;
 import static storysflower.com.storysflower.model.tables.tables.Recipient.RECIPIENT;
 
 @Repository
@@ -116,11 +117,13 @@ public class CartRepository {
     public List<ProductCartDTO> getAllListProductByIdCart(Long idCart) {
         List<ProductCartDTO> listProduct = dslContext
                 //String productName,  String messageToRecipient, Double price, Integer quantity
-                .select(PRODUCT.PRODUCT_NAME.as("productName"), RECIPIENT.MESSAGE_TO_RECIPIENT.as("messageToRecipient"), PRODUCT.PRICE, BUY_PRODUCT.QUANTITY)
+                .select(IMAGE_PRODUCT.IMAGE_ID,PRODUCT.PRODUCT_NAME.as("productName"), RECIPIENT.MESSAGE_TO_RECIPIENT.as("messageToRecipient"), PRODUCT.PRICE, BUY_PRODUCT.QUANTITY)
                 .from(PRODUCT)
                 .join(BUY_PRODUCT).on(PRODUCT.ID.eq(BUY_PRODUCT.PRODUCT_ID))
+                .join(IMAGE_PRODUCT).on(IMAGE_PRODUCT.PRODUCT_ID.eq(PRODUCT.ID))
                 .join(CART).on(CART.ID.eq(BUY_PRODUCT.CART_ID))
                 .join(RECIPIENT).on(CART.RECIPIENT_ID.eq(RECIPIENT.ID))
+                .and(IMAGE_PRODUCT.MAIN_IMAGE.eq(true))
                 .where(BUY_PRODUCT.CART_ID.eq(idCart))
                 .fetchInto(ProductCartDTO.class);
         return listProduct.size() == 0 ? Collections.emptyList() : listProduct;

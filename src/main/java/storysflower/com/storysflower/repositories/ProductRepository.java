@@ -31,6 +31,7 @@ public class ProductRepository {
     @Autowired
     RattingService rattingService;
 
+
     public ProductDetailDTO getProductDetailByProductId(Long id) {
         ProductDetailDTO productDetailDTO = dslContext
                 .select(PRODUCT.ID, IMAGE_PRODUCT.IMAGE_ID, PRODUCT.PRODUCT_NAME, OCCASION.NAME_OCCASION, OCCASION.OCCASION_ID.as("idOccasion"), TOPIC.TOPIC_ID.as("idTopic"), TOPIC.TOPIC_NAME, PRODUCT.DESCRIPTION, PRODUCT.MEANING, PRODUCT.PRICE)
@@ -203,5 +204,10 @@ public class ProductRepository {
                 .set(IMAGE_PRODUCT.MAIN_IMAGE, true)
                 .execute();
         return id;
+    }
+    public boolean delProductByID(Long id){
+        return dslContext.delete(PRODUCT)
+                .where(PRODUCT.ID.eq(id))
+                .execute() > 0;
     }
 }

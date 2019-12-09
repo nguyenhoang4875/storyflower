@@ -36,5 +36,6 @@ public class UrlConstants {
     public static final String URL_ADMIN_PRODUCT_POST_EDIT= "/product/{oc}/edit/{id}";
     public static final String URL_ADMIN_PRODUCT_EDIT_ID= "product/edit/{id}";
     public static final String URL_ADMIN_PRODUCT_ADD= "product/add/{occ}";
+    public static final String URL_ADMIN_PRODUCT_DEL_OCC_ID= "product/del/occ{occ}/{id}";
 
 }
