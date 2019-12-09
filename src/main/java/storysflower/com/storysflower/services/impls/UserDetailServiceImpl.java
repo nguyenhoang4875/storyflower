@@ -24,6 +24,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
         if (userRecord == null) {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
-        return new CustomUserDetail(userRecord.getId(), email, (new BCryptPasswordEncoder()).encode(userRecord.getPassword()), userRecord.getFirstname(), userRecord.getLastname(), userRecord.getImageId(), userRepository.getAuthority(email));
+        return new CustomUserDetail(userRecord.getId(), email, userRecord.getPassword(), userRecord.getFirstname(), userRecord.getLastname(), userRecord.getImageId(), userRepository.getAuthority(email));
     }
 }
