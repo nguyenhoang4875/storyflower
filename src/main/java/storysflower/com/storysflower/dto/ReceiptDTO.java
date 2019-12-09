@@ -56,7 +56,7 @@ public class ReceiptDTO {
         return deliveryHour;
     }
 
-    public void setDeliveryHour(String deliverHour) {
+    public void setDeliveryHour(String deliveryHour) {
         this.deliveryHour = deliveryHour;
     }
 

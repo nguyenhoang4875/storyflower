@@ -9,8 +9,10 @@ import storysflower.com.storysflower.model.tables.Tables;
 import storysflower.com.storysflower.utils.DateUtil;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.util.Collections;
 import java.util.List;
+import java.util.Timer;
 
 import static storysflower.com.storysflower.model.tables.Tables.BUY_PRODUCT;
 import static storysflower.com.storysflower.model.tables.Tables.PRODUCT;
@@ -30,16 +32,17 @@ public class CartRepository {
         RecipientDTO recipientDTO = receiptDTO.getRecipientDTO();
         insertCustomerData(customerDTO);
         insertRecipientData(recipientDTO);
-        insertCartData(customerDTO, recipientDTO, DateUtil.convertFromStringToDaTe(receiptDTO.getDeliveryDate()));
+        insertCartData(customerDTO, recipientDTO, DateUtil.convertFromStringToDaTe(receiptDTO.getDeliveryDate()),DateUtil.convertFromStringToTimeStamp(receiptDTO.getDeliveryHour()));
         insertBuyData(cartDTOList, getCartId(getCustomerId(customerDTO.getEmail()), getRecipientId(recipientDTO)));
         return true;
     }
 
-    public int insertCartData(CustomerDTO customerDTO, RecipientDTO recipientDTO, Date deliveryDate) {
+    public int insertCartData(CustomerDTO customerDTO, RecipientDTO recipientDTO, Date deliveryDate, Time deliveryHour) {
         return (dslContext.insertInto(CART)
                 .set(CART.CUSTOMER_ID, getCustomerId(customerDTO.getEmail()))
                 .set(CART.RECIPIENT_ID, getRecipientId(recipientDTO))
                 .set(CART.DELIVERY_DATE, deliveryDate)
+                .set(CART.DELIVERY_HOUR, deliveryHour)
                 .execute());
     }
 
