@@ -95,6 +95,7 @@ public class AdminUserController {
         HttpSession session = request.getSession();
         UserDTO userLogin = (UserDTO) session.getAttribute("userLogin");
         userDTO.setId(id);
+        userDTO.setEmail(userService.findUserByIdUser(id).getEmail());
         boolean check = true;
         if ("".equals(userDTO.getPassWord())) {
             String pw = userService.findUserByIdUser(id).getPassWord();

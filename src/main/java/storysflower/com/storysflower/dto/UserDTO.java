@@ -15,7 +15,6 @@ public class UserDTO {
     @Size(min = 5, max = 100, message = "Độ dài dài mật khẩu không tốt!")
     private String passWord;
     private String rePassWord;
-    @NotEmpty(message = "Email không được trống!")
     @Email(message = "Không đúng định dạng Email!")
     private String email;
     private String role;

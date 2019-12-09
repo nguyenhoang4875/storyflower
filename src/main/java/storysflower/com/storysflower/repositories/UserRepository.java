@@ -36,12 +36,20 @@ public class UserRepository {
     }
 
     public boolean registerNewUserAccount(UserProfileDTO userProfileDTO) {
-        return dslContext.insertInto(USER)
+        int id =  dslContext.insertInto(USER)
                 .set(USER.FIRSTNAME, userProfileDTO.getFisrtName())
                 .set(USER.LASTNAME, userProfileDTO.getLastName())
                 .set(USER.EMAIL, userProfileDTO.getEmail())
                 .set(USER.PASSWORD, userProfileDTO.getPassword())
-                .execute() > 0;
+                .returning(USER.ID)
+                .execute();
+        dslContext.insertInto(USER_ROLE)
+                .set(USER_ROLE.EMAIL, userProfileDTO.getEmail())
+                .set(USER_ROLE.ROLE, "ROLE_CUS")
+                .execute();
+
+        return true;
+
     }
 
     public int countPagination() {

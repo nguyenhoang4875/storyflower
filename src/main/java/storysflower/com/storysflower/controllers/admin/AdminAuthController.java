@@ -37,11 +37,20 @@ public class AdminAuthController {
     @PostMapping(UrlConstants.URL_LOGIN)
     public String login(@ModelAttribute("userDTO") UserDTO userDTO,
                         HttpServletRequest request, RedirectAttributes redirec) {
-        if(userDTO.getEmail()== null || userDTO.getPassWord() == null) {
+        System.out.println(userDTO);
+        if(userDTO == null ){
+            redirec.addFlashAttribute("msg", "The email or phone number you entered does not match any accounts");
+            return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_LOGIN;
+        }
+        if("".equals(userDTO.getEmail()) ||"".equals(userDTO.getPassWord())) {
             redirec.addFlashAttribute("msg", "The email or phone number you entered does not match any accounts");
             return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_LOGIN;
         }
         if(userService.login(userDTO)){
+            if("CUS".equals(userService.findUserByEmail(userDTO.getEmail()).getRole())){
+                redirec.addFlashAttribute("msg", "The email or phone number you entered does not match any accounts");
+                return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_LOGIN;
+            }
             UserDTO userLogin = userService.findUserByEmail(userDTO.getEmail());
             HttpSession session = request.getSession();
             session.setAttribute("userLogin", userLogin);
