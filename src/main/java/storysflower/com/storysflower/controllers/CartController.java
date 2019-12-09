@@ -4,10 +4,7 @@ package storysflower.com.storysflower.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import storysflower.com.storysflower.dto.CartDTO;
 import storysflower.com.storysflower.dto.ReceiptDTO;
 import storysflower.com.storysflower.services.CartService;
@@ -38,12 +35,12 @@ public class CartController {
     }
 
     @PostMapping
-    public String saveCart(@ModelAttribute(RECEIPTDTO) ReceiptDTO receiptDTO, HttpSession httpSession, Model model) {
+    public String saveCart(@ModelAttribute(RECEIPTDTO) ReceiptDTO receiptDTO, HttpSession httpSession, Model model, @RequestParam("deliveryHour") String deliveryHour) {
         List<CartDTO> cartDTOList = (httpSession.getAttribute(CARTS) == null) ? new ArrayList<>() : (List<CartDTO>) httpSession.getAttribute(CARTS);
         if (cartDTOList.isEmpty()) {
             return "redirect:cart";
         }
-        System.out.println(receiptDTO.toString());
+        receiptDTO.setDeliveryHour(deliveryHour);
         cartService.updateCartData(receiptDTO, cartDTOList);
         return "redirect:/";
     }

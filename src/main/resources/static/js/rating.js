@@ -20,7 +20,7 @@ function slice(string) {
 }
 
 function handleMouseEnter(id) {
-    let rating = slice(id);
+    var  rating = slice(id);
     setCheckedStar(rating);
 }
 
@@ -29,7 +29,7 @@ function handleMouseOut(id) {
 }
 
 function handleClick(id) {
-    let rating = slice(id);
+    var rating = slice(id);
     mainRating = rating;
     setCheckedStar(mainRating);
 }
@@ -90,7 +90,7 @@ function changeRatingButtonInDetailPage() {
 
 function setCheckedStar(rating) {
     for (i = 1; i <= 5; i++) {
-        let button = $("#star-" + i);
+        var button = $("#star-" + i);
         if (i <= rating) {
             button.addClass("yellow");
         } else button.removeClass("yellow");
