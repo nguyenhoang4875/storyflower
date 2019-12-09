@@ -10,6 +10,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import storysflower.com.storysflower.constants.UrlConstants;
 import storysflower.com.storysflower.dto.UserDTO;
 import storysflower.com.storysflower.services.OccasionService;
+import storysflower.com.storysflower.services.ProductService;
 import storysflower.com.storysflower.services.RevenueService;
 import storysflower.com.storysflower.services.UserService;
 import storysflower.com.storysflower.utils.AuthUtil;
@@ -39,9 +40,25 @@ public class AdminUserController {
 
     @Autowired
     private OccasionService occasionService;
+
+    @Autowired
+    ProductService productService;
+
     @ModelAttribute
     public void leftbar(Model model){
         model.addAttribute(OCCASIONS, occasionService.findAllOccasion());
+    }
+    @GetMapping(UrlConstants.URL_INDEX)
+    public String ind(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        if(session.getAttribute("userLogin")!= null){
+            request.setAttribute("numberUser", userService.countPagination());
+            request.setAttribute("numberPost", productService.getAllFlower().size());
+            return  "admin/index";
+        }
+
+
+        return  "admin/login";
     }
     @GetMapping({UrlConstants.URL_ADMIN_USER_INDEX})
     public String index(Model model, HttpServletRequest request) throws Exception {
