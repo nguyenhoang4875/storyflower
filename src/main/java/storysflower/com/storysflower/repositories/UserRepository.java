@@ -129,4 +129,11 @@ public class UserRepository {
                 .where(USER.EMAIL.eq(email))
                 .fetchOneInto(UserDTO.class);
     }
+
+    public UserDTO login(UserDTO userDTO) {
+        return dslContext.select(USER.PASSWORD.as("passWord"), USER.EMAIL)
+                .from(USER)
+                .where(USER.EMAIL.eq(userDTO.getEmail()))
+                .fetchOneInto(UserDTO.class);
+    }
 }

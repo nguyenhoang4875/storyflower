@@ -6,6 +6,8 @@ package storysflower.com.storysflower.constants;
 public class UrlConstants {
     public static final String URL_ADMIN = "/admin";
     public static final String URL_LOGIN = "/login";
+    public static final String URL_LOGOUT = "/logout";
+    public static final String URL_INDEX = "/index";
     public static final String URL_403_ = "/403";
     public static final String URL_404_ = "/404";
 

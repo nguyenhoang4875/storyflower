@@ -11,6 +11,7 @@ import storysflower.com.storysflower.dto.ProductDetailDTO;
 import storysflower.com.storysflower.dto.ReviewDTO;
 import storysflower.com.storysflower.dto.TopicDTO;
 import storysflower.com.storysflower.services.*;
+import storysflower.com.storysflower.utils.AuthUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -53,7 +54,10 @@ public class AdminManagerFlowerController {
 
     @GetMapping({UrlConstants.URL_ADMIN_PRODUCT_INDEX, UrlConstants.URL_ADMIN_PRODUCT_INDEX_ID})
     public String getAllProduct(Model model, HttpServletRequest request, RedirectAttributes redirect,
-                                @PathVariable(name = "id", required = false) Long id) {
+                                @PathVariable(name = "id", required = false) Long id) throws Exception {
+        if(!AuthUtil.isLogin(request)) {
+            return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_LOGIN;
+        }
         if (id == null) id = 1L;
         model.addAttribute("occ",id);
         model.addAttribute(OCCASION, occasionService.getOccasionDTOById(id));
@@ -62,8 +66,10 @@ public class AdminManagerFlowerController {
     }
 
     @GetMapping({UrlConstants.URL_ADMIN_PRODUCT_EDIT_ID})
-    public String getProductPage(Model model, @PathVariable("id") Long id) {
-
+    public String getProductPage(Model model, @PathVariable("id") Long id, HttpServletRequest request) throws Exception {
+        if(!AuthUtil.isLogin(request)) {
+            return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_LOGIN;
+        }
         if (id == null) id = 1L;
         List<TopicDTO> listTopic= topicService.findAllTopic();
         ProductDetailDTO productDetailDTO = productService.getProductDetailDTOById(id);
@@ -88,7 +94,10 @@ public class AdminManagerFlowerController {
 
     @GetMapping({UrlConstants.URL_ADMIN_PRODUCT_ADD})
     public String addProduct(Model model, HttpServletRequest request, RedirectAttributes redirect,
-                             @PathVariable(name = "occ", required = false) Long occ ) {
+                             @PathVariable(name = "occ", required = false) Long occ ) throws Exception {
+        if(!AuthUtil.isLogin(request)) {
+            return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_LOGIN;
+        }
         if (occ == null) occ = 1L;
         if(occ==1L){
             List<OccasionDTO> listOccision = occasionService.findAllOccasion();
@@ -113,8 +122,10 @@ public class AdminManagerFlowerController {
     }
     @GetMapping({UrlConstants.URL_ADMIN_PRODUCT_DEL_OCC_ID})
     public String delProduct(Model model, HttpServletRequest request, RedirectAttributes redirect,
-                             @PathVariable(name = "id", required = false) Long id , @PathVariable(name = "occ", required = false) Long occ ) {
-
+                             @PathVariable(name = "id", required = false) Long id , @PathVariable(name = "occ", required = false) Long occ ) throws Exception {
+        if(!AuthUtil.isLogin(request)) {
+            return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_LOGIN;
+        }
         productService.delProduct(id);
         redirect.addFlashAttribute("msg", "Dữ liệu đã được xóa một dòng");
         return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_ADMIN_PRODUCT_INDEX+"/"+occ;

@@ -95,4 +95,22 @@ public class UserDTO {
     public void setRole(String role) {
         this.role = role;
     }
+
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "id=" + id +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", passWord='" + passWord + '\'' +
+                ", rePassWord='" + rePassWord + '\'' +
+                ", email='" + email + '\'' +
+                ", role='" + role + '\'' +
+                '}';
+    }
+
+    public UserDTO(String passWord, String email) {
+        this.passWord = passWord;
+        this.email = email;
+    }
 }

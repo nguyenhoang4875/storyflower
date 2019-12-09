@@ -12,6 +12,7 @@ import storysflower.com.storysflower.dto.ProductRevenueDTO;
 import storysflower.com.storysflower.dto.RevenueDTO;
 import storysflower.com.storysflower.services.OccasionService;
 import storysflower.com.storysflower.services.RevenueService;
+import storysflower.com.storysflower.utils.AuthUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,15 +38,20 @@ public class AdminRevenueController {
     }
 
     @GetMapping({UrlConstants.URL_ADMIN_REVENUE_INDEX})
-    public String edit(Model model, @PathVariable(value = "id", required = false) Long id, HttpServletRequest request) {
+    public String edit(Model model, @PathVariable(value = "id", required = false) Long id, HttpServletRequest request) throws Exception {
+        if(!AuthUtil.isLogin(request)) {
+            return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_LOGIN;
+        }
         List<RevenueDTO> listRevenueDTOS = revenueService.findAllRevenue();
         model.addAttribute("listRevenueDTOS", listRevenueDTOS);
         return "admin/revenue/index";
     }
 
     @GetMapping({UrlConstants.URL_ADMIN_REVENUE_DETAIL})
-    public String detail(Model model, @PathVariable(value = "date", required = false) String date) {
-
+    public String detail(Model model, @PathVariable(value = "date", required = false) String date, HttpServletRequest request) throws Exception {
+        if(!AuthUtil.isLogin(request)) {
+            return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_LOGIN;
+        }
         RevenueDTO revenueDTO = revenueService.findRevenueDTOByDate(date);
         if (revenueDTO == null) return "";
         model.addAttribute("revenueDTO", revenueDTO);

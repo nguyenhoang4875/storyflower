@@ -13,6 +13,7 @@ import storysflower.com.storysflower.dto.ProductCustomerDTO;
 import storysflower.com.storysflower.services.CustomerService;
 import storysflower.com.storysflower.services.OccasionService;
 import storysflower.com.storysflower.services.ProductService;
+import storysflower.com.storysflower.utils.AuthUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -40,7 +41,10 @@ public class AdminCustomerController {
     }
 
     @GetMapping({UrlConstants.URL_ADMIN_CUSTOMER_INDEX})
-    public String index(Model model, HttpServletRequest request, RedirectAttributes redirect) {
+    public String index(Model model, HttpServletRequest request, RedirectAttributes redirect) throws Exception {
+        if(!AuthUtil.isLogin(request)) {
+            return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_LOGIN;
+        }
         request.getSession().setAttribute("customer", null);
         if (model.asMap().get("success") != null)
             redirect.addFlashAttribute("success", model.asMap().get("success").toString());
@@ -49,8 +53,10 @@ public class AdminCustomerController {
     }
 
     @GetMapping({UrlConstants.URL_ADMIN_CUSTOMER_INDEX_PAGINATION})
-    public String shoListCustomerPage(HttpServletRequest request, @PathVariable int page, Model model) {
-
+    public String shoListCustomerPage(HttpServletRequest request, @PathVariable int page, Model model) throws Exception {
+        if(!AuthUtil.isLogin(request)) {
+            return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_LOGIN;
+        }
         PagedListHolder<?> pages = (PagedListHolder<?>) request.getSession().getAttribute("customer");
         List<CustomerDTO> list = (List<CustomerDTO>) customerService.findAll();
         if (pages == null) {
@@ -80,7 +86,10 @@ public class AdminCustomerController {
     }
 
     @GetMapping({UrlConstants.URL_ADMIN_CUSTOMER_DETAIL})
-    public String showListProductByCustomer(HttpServletRequest request, @PathVariable Long id, Model model) {
+    public String showListProductByCustomer(HttpServletRequest request, @PathVariable Long id, Model model) throws Exception {
+        if(!AuthUtil.isLogin(request)) {
+            return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_LOGIN;
+        }
         CustomerDTO customerDTO = customerService.findCustomerById(id);
         List<ProductCustomerDTO> listProduct = customerService.findAllProductByIdCustomer(id);
         int totalAmountAll = 0;

@@ -46,34 +46,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.addFilterBefore(characterEncodingFilter(), CsrfFilter.class)
                 .authorizeRequests()
-
-                    .antMatchers("/admin/user/del").hasRole("ADMIN")
-                    .antMatchers("/admin/user/add").hasRole("ADMIN")
-                    .antMatchers("/admin/customer/**").hasAnyRole("ADMIN","USER")
-                    .antMatchers("/admin/cart/**").hasAnyRole("ADMIN","USER")
-                    .antMatchers("/admin/user/**").hasAnyRole("ADMIN","USER")
-                    .antMatchers("/admin/revenue/**").hasAnyRole("ADMIN","USER")
-                    .antMatchers( "/api/rating/**", "/api/favourite/**", "/api/review/**")
-                    .authenticated()
-                    .anyRequest().permitAll()
-                    .and()
-
+                .antMatchers( "/api/rating/**", "/api/favourite/**", "/api/review/**")
+                .authenticated()
+                .anyRequest().permitAll()
+                .and()
                 .formLogin()
-                    .loginPage("/admin/login")
-                    .usernameParameter("email")
-                    .passwordParameter("password")
-                    .defaultSuccessUrl("/admin/user/index")
-                    .failureUrl("/admin/login?error")
-                    .and()
-                    .logout()
-                    .logoutRequestMatcher(new AntPathRequestMatcher("/admin/logout"))
-                    .logoutSuccessUrl("/admin/login").deleteCookies("JSESSIONID").invalidateHttpSession(true)
-                    .and()
-                .exceptionHandling()
-                    .accessDeniedPage("/admin/403");
-        http.csrf().disable();
-
-
+                .loginPage("/login")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .failureUrl("/login?error")
+                .and()
+                .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/")
+                .and().csrf().disable();
     }
 
     private CharacterEncodingFilter characterEncodingFilter() {

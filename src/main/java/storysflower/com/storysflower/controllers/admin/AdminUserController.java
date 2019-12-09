@@ -12,6 +12,7 @@ import storysflower.com.storysflower.dto.UserDTO;
 import storysflower.com.storysflower.services.OccasionService;
 import storysflower.com.storysflower.services.RevenueService;
 import storysflower.com.storysflower.services.UserService;
+import storysflower.com.storysflower.utils.AuthUtil;
 import storysflower.com.storysflower.utils.ErrorUtil;
 import storysflower.com.storysflower.validator.NameUserValidator;
 import storysflower.com.storysflower.validator.RePassWordValidator;
@@ -43,13 +44,12 @@ public class AdminUserController {
         model.addAttribute(OCCASIONS, occasionService.findAllOccasion());
     }
     @GetMapping({UrlConstants.URL_ADMIN_USER_INDEX})
-    public String index(Model model, HttpServletRequest request, Principal principal) {
+    public String index(Model model, HttpServletRequest request) throws Exception {
+        if(!AuthUtil.isLogin(request)) {
+            return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_LOGIN;
+        }
         HttpSession session = request.getSession();
-        UserDTO userLogin = userService.findUserByEmail(principal.getName());
-        System.out.println("aaaas");
-        revenueService.findAllRevenue();
-        System.out.println(userLogin.getFirstName());
-        session.setAttribute("userLogin", userLogin);
+        UserDTO userLogin = (UserDTO) session.getAttribute("userLogin");
         List<UserDTO> listUser = userService.findAll();
         model.addAttribute("userLogin", userLogin);
         model.addAttribute("listUser", listUser);
@@ -57,7 +57,10 @@ public class AdminUserController {
     }
 
     @GetMapping({UrlConstants.URL_ADMIN_USER_EDIT})
-    public String edit(Model model, @PathVariable(value = "id", required = false) Long id, HttpServletRequest request) {
+    public String edit(Model model, @PathVariable(value = "id", required = false) Long id, HttpServletRequest request) throws Exception {
+        if(!AuthUtil.isLogin(request)) {
+            return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_LOGIN;
+        }
         HttpSession session = request.getSession();
         UserDTO userDTO = userService.findUserByIdUser(id);
         UserDTO userLogin = (UserDTO) session.getAttribute("userLogin");
@@ -111,7 +114,10 @@ public class AdminUserController {
 
     @GetMapping({UrlConstants.URL_ADMIN_USER_DEL})
     public String del(Model model, HttpServletRequest request, RedirectAttributes redirec,
-                      @PathVariable(value = "id", required = false) Long id) {
+                      @PathVariable(value = "id", required = false) Long id) throws Exception {
+        if(!AuthUtil.isLogin(request)) {
+            return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_LOGIN;
+        }
         HttpSession session = request.getSession();
         UserDTO userLogin = (UserDTO) session.getAttribute("userLogin");
         if("ADMIN".equals(userLogin.getRole())){
@@ -126,7 +132,10 @@ public class AdminUserController {
     }
 
     @GetMapping({UrlConstants.URL_ADMIN_USER_ADD})
-    public String add(Model model, HttpServletRequest request) {
+    public String add(Model model, HttpServletRequest request) throws Exception {
+        if(!AuthUtil.isLogin(request)) {
+            return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_LOGIN;
+        }
         HttpSession session = request.getSession();
         UserDTO userLogin = (UserDTO) session.getAttribute("userLogin");
         if(userLogin.getRole().equals("ADMIN"))

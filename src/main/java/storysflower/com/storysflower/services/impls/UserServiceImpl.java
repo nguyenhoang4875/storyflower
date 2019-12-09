@@ -3,10 +3,12 @@ package storysflower.com.storysflower.services.impls;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import storysflower.com.storysflower.config.security.CustomUserDetail;
 import storysflower.com.storysflower.dto.UserDTO;
 import storysflower.com.storysflower.dto.UserProfileDTO;
+import storysflower.com.storysflower.model.tables.tables.User;
 import storysflower.com.storysflower.repositories.UserRepository;
 import storysflower.com.storysflower.services.UserService;
 
@@ -20,6 +22,9 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public CustomUserDetail getUser() {
@@ -96,6 +101,16 @@ public class UserServiceImpl implements UserService {
         } else {
             System.out.println("false");
             return false;
+        }
+    }
+
+    @Override
+    public boolean login(UserDTO userDTO) {
+        UserDTO user=  userRepository.login(userDTO);
+        if(bCryptPasswordEncoder.matches(userDTO.getPassWord(), user.getPassWord())){
+            return  true;
+        }else {
+            return  false;
         }
     }
 

@@ -19,6 +19,7 @@ import storysflower.com.storysflower.services.CartService;
 import storysflower.com.storysflower.services.CustomerService;
 import storysflower.com.storysflower.services.OccasionService;
 import storysflower.com.storysflower.services.RecipientService;
+import storysflower.com.storysflower.utils.AuthUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -43,7 +44,10 @@ public class AdminCartController {
     }
 
     @GetMapping({UrlConstants.URL_ADMIN_CART_INDEX})
-    public String index(Model model, HttpServletRequest request, RedirectAttributes redirect) {
+    public String index(Model model, HttpServletRequest request, RedirectAttributes redirect) throws Exception {
+        if(!AuthUtil.isLogin(request)) {
+            return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_LOGIN;
+        }
         request.getSession().setAttribute("cart", null);
         if (model.asMap().get("success") != null)
             redirect.addFlashAttribute("success", model.asMap().get("success").toString());
@@ -51,7 +55,10 @@ public class AdminCartController {
     }
 
     @GetMapping({UrlConstants.URL_ADMIN_CART_INDEX_PAGINATION})
-    public String shoListCustomerPage(HttpServletRequest request, @PathVariable int page, Model model) {
+    public String shoListCustomerPage(HttpServletRequest request, @PathVariable int page, Model model) throws Exception {
+        if(!AuthUtil.isLogin(request)) {
+            return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_LOGIN;
+        }
         PagedListHolder<?> pages = (PagedListHolder<?>) request.getSession().getAttribute("cart");
         List<CartAdminDTO> list = cartService.findAll();
         if (pages == null) {
@@ -79,8 +86,10 @@ public class AdminCartController {
     }
 
     @GetMapping({UrlConstants.URL_ADMIN_CART_DETAIL})
-    public String detail(@PathVariable Long id, Model model, RedirectAttributes redirect) {
-
+    public String detail(@PathVariable Long id, Model model, HttpServletRequest request) throws Exception {
+        if(!AuthUtil.isLogin(request)) {
+            return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_LOGIN;
+        }
         RecipientCartDTO recipientCartDTO = recipientService.findRecipientCartDTObyIdBuyProduct(id);
         if (recipientCartDTO == null) {
             return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_404_;
@@ -102,7 +111,10 @@ public class AdminCartController {
     }
 
     @GetMapping({UrlConstants.URL_ADMIN_CART_ORDER})
-    public String order(@PathVariable Long id, RedirectAttributes redirect) {
+    public String order(@PathVariable Long id, RedirectAttributes redirect, HttpServletRequest request) throws Exception {
+        if(!AuthUtil.isLogin(request)) {
+            return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_LOGIN;
+        }
         if (cartService.updateStatus(id)) {
             redirect.addFlashAttribute("msg", "Success");
             return "redirect:" + UrlConstants.URL_ADMIN + UrlConstants.URL_ADMIN_CART_INDEX;

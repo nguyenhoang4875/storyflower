@@ -31,4 +31,6 @@ public interface UserService {
     boolean edit(UserDTO userDTO);
 
     boolean del(Long id);
+
+    boolean login(UserDTO userDTO);
 }
