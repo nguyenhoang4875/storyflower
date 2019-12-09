@@ -53,7 +53,6 @@ function handleClickAddCart() {
         url: "/api/cart/" + getProductId(),
         type: "GET",
         data: {
-            quantity: $("#quantity").val()
         }
     }).done(function (data) {
 

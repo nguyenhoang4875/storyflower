@@ -24,14 +24,14 @@ public class CartRestController {
     private UserService userService;
 
     @GetMapping("/{productId}")
-    public Object addCart(HttpSession httpSession, @PathVariable("productId") Long productId, @RequestParam("quantity") String quantity) {
+    public Object addCart(HttpSession httpSession, @PathVariable("productId") Long productId) {
         List<CartDTO> cartDTOList;
         if (httpSession.getAttribute(CARTS) == null) {
             cartDTOList = new ArrayList<>();
         } else {
             cartDTOList = (List<CartDTO>) httpSession.getAttribute(CARTS);
         }
-        if (cartService.addCard(cartDTOList, productId, quantity) == false) {
+        if (cartService.addCard(cartDTOList, productId, "1") == false) {
             return ApiResponse.failed("The product has been added");
         }
         ;
